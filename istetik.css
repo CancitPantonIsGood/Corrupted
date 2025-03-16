@@ -339,19 +339,19 @@
     font-size: 45px;
     transform: scale(3);
     padding: 30px;
-    top: 350px;
-    left: 125px;
+    top: 50px;
+    left: 175px;
     letter-spacing: 2px;
     text-transform: uppercase;
   }
   .corruptedprompt .text2{
     position: relative;
     color: #fff;
-    text-shadow: 0.05em 0 0 rgb(255, 0, 43), -0.025em 0 0 rgb(1, 211, 1), -0.03em 1.5px 0 rgb(0, 102, 255);
+    text-shadow: 0.05em 0 0 #e503a2, -0.025em 0 0 #fbff00, -0.03em 1.5px 0 rgb(0, 102, 255);
     font-weight: 700;
     font-size: 45px;
     transform: scale(1.5);
-    top: 450px;
+    top: 150px;
     left: 150px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -370,7 +370,7 @@
   }
   .corruptedprompt .text:before{
     left: 3px;
-    text-shadow: -2px 0 red;
+    text-shadow: -2px 0 #e503a2;
     animation: glitch-1 2s linear infinite reverse;
   }
   .corruptedprompt .text:after{

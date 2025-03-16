@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     difficultiesMenu.style.display = 'none';
     languageMenu.style.display = 'none';
     gameScreen.style.display = 'none';
-    corruptedText.style.top = '350px';
+    corruptedText.style.top = '50px';
 
     let selectedLanguage = "";
     let selectedDifficulty = "";
