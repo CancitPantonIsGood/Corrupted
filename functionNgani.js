@@ -1,3 +1,9 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/+esm';
+
+const supabaseUrl = 'https://qnhciscuypjihlebiyuy.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuaGNpc2N1eXBqaWhsZWJpeXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwMjkxODUsImV4cCI6MjA1NzYwNTE4NX0.ZbLXbq2gauvJN8tpQjGqQnMkXKvgB_78ewCdscd00ag'; // Replace with your actual Supabase key for testing
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 function playSelectionSound() {
     let sound = document.getElementById("selectingSound");
     sound.currentTime = 0;
@@ -79,8 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
         corruptedText.style.top = '50px';
     });
 
-    
-
     languageMenu.addEventListener('click', () => {
         difficultiesMenu.style.display = 'block';
     });
@@ -112,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     html: {
             easy: `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
-            moderate: `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hardcore Mode</li>\n    </ul>\n</div>`,
+            moderate: `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
             hardcore: `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username">\n    <input type="submit" value="Submit">\n</form>`
         },
         css: {
@@ -259,6 +263,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 console.log('User code:', userCode); // Debugging line
                 console.log('Correct code:', correctCode); // Debugging line
+
+                const isCorrect = correctCodes.some(correctCode => userCode.trim() === correctCode.trim());
 
                 if (userCode.trim() === correctCode.trim()) {
                     alert('Correct! Loading next challenge...');
