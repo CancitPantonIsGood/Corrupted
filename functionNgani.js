@@ -423,16 +423,29 @@ document.addEventListener("DOMContentLoaded", function () {
         if (error) {
             alert("Error: " + error.message);
         } else {
-            alert("Login successful!");
-            // Redirect to main content or perform other actions
-        }
-        // success login for my 
-        localStorage.setItem("loggedInUser", username);
-        profileName.textContent = username;
-        profileID.textContent = `ID: ${userData.id}`;
-        profileTitle.textContent = `Status: ${userData.title}`;
-        profileSection.textContent = `${userData.section}`;
+            // Show main content
+            authContainer.style.display = "none";
+            mainContainer.style.display = "block";
 
+            // Save user data to local storage
+            const username = email.split('@')[0];
+            const userData = {
+                id: user.id,
+                title: registerTitle.value,
+                section: registerSection.value,
+                profilePicture: "noprofile.png"
+            };
+            localStorage.setItem("loggedInUser", username);
+            localStorage.setItem(username, JSON.stringify(userData));
+
+            // Update profile information
+            profileName.textContent = username;
+            profileID.textContent = `ID: ${userData.id}`;
+            profileTitle.textContent = `Status: ${userData.title}`;
+            profileSection.textContent = userData.section;
+            profilePicture.src = userData.profilePicture;
+        }
+    
         const userProfilePicture = userData.profilePicture || "noprofile.png";
         profilePicture.src = userProfilePicture;
 
@@ -463,7 +476,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mainContainer.style.display = "none";
     });
 
-    // auto login if already login for my HOMIES B)
+    // Auto login if already logged in
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
         const userData = JSON.parse(localStorage.getItem(loggedInUser));
@@ -471,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
         profileID.textContent = `ID: ${userData.id}`;
         profileTitle.textContent = `Title: ${userData.title}`;
         profileSection.textContent = userData.section;
-        
+
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
     }
