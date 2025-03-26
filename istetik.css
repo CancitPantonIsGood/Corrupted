@@ -1322,7 +1322,17 @@
   padding: 5px;
   width: 300px;
 }
+/* Show password*/
+#login-show-password {
+  display: none   ;
+}
 
+#login-eye-icon {
+  position: absolute;
+  top: -363px;
+  left: 375px;
+  color: white;
+}
 /* play Menu */
 .playMenu div {
   top: 150px;
@@ -1742,3 +1752,4 @@
   text-align: center;
   padding-top: 10px;
 }
+

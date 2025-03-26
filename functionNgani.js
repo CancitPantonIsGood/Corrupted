@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginBox = document.querySelector(".login-box");
     const registerBox = document.querySelector(".register-box");
 
+    const loginShowPassword = document.querySelector("#login-show-password");
+    const loginEyeIcon = document.querySelector("#login-eye-icon");
+
     const loginUsername = document.querySelector("#login-username");
     const loginPassword = document.querySelector("#login-password");
     const loginButton = document.querySelector("#login-button");
@@ -92,6 +95,30 @@ document.addEventListener("DOMContentLoaded", function () {
     languageMenu.addEventListener('click', () => {
         difficultiesMenu.style.display = 'block';
     });
+
+    loginShowPassword.addEventListener("change", function () {
+        const loginPassword = document.querySelector("#login-password");
+        if (loginShowPassword.checked) {
+            loginPassword.type = "text";
+            loginEyeIcon.classList.remove("fa-eye");
+            loginEyeIcon.classList.add("fa-eye-slash");
+        } else {
+            loginPassword.type = "password";
+            loginEyeIcon.classList.remove("fa-eye-slash");
+            loginEyeIcon.classList.add("fa-eye");
+        }
+    });
+
+    function validateLoginInputs() {
+        if (loginUsername.value.trim() !== "" && loginPassword.value.trim() !== "") {
+            loginButton.disabled = false;
+        } else {
+            loginButton.disabled = true;
+        }
+    }
+
+    loginUsername.addEventListener("input", validateLoginInputs);
+    loginPassword.addEventListener("input", validateLoginInputs);
     //game  
     
     const buggyCodeSamples = {
@@ -123,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             moderate: `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
             hardcore: `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username">\n    <input type="submit" value="Submit">\n</form>`
         },
-        css: {
+    css: {
             easy: `body {\n    background-color: #222;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
             moderate: `.button {\n    background: blue;\n    padding: 10px;\n    border-radius: 5px;\n    color: #fff;\n}`,
             hardcore: `#gameScreen {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}`
