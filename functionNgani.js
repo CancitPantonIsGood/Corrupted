@@ -1,14 +1,18 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/+esm';
 
-const supabaseUrl = 'https://qnhciscuypjihlebiyuy.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuaGNpc2N1eXBqaWhsZWJpeXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwMjkxODUsImV4cCI6MjA1NzYwNTE4NX0.ZbLXbq2gauvJN8tpQjGqQnMkXKvgB_78ewCdscd00ag'; // Replace with your actual Supabase key for testing
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 function playSelectionSound() {
     let sound = document.getElementById("selectingSound");
     sound.currentTime = 0;
     sound.play();
 }
+
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/+esm';
+
+const supabaseUrl = 'https://qnhciscuypjihlebiyuy.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuaGNpc2N1eXBqaWhsZWJpeXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwMjkxODUsImV4cCI6MjA1NzYwNTE4NX0.ZbLXbq2gauvJN8tpQjGqQnMkXKvgB_78ewCdscd00ag'; // Replace with your actual Supabase key for testing
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // Login
@@ -374,68 +378,54 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // login and register SWITCH 
-    showRegister.addEventListener("click", function () {
+    showRegister.addEventListener("click", function (event) {
+        event.preventDefault();
+        console.log("Register clicked");
         loginBox.style.display = "none";
         registerBox.style.display = "block";
     });
 
-    showLogin.addEventListener("click", function () {
+    // Event listener for "Login" hyperlink
+    showLogin.addEventListener("click", function (event) {
+        event.preventDefault();
         registerBox.style.display = "none";
         loginBox.style.display = "block";
     });
-
-    // new 
-    registerButton.addEventListener("click", function () {
-        const username = registerUsername.value.trim();
+    // Register user
+    registerButton.addEventListener("click", async function () {
+        const email = registerUsername.value.trim();
         const password = registerPassword.value.trim();
-        const id = registerID.value.trim();
-        const title = registerTitle.value;
-        const section = registerSection.value;
 
-        if (username === "" || password === "" || id === "") {
-            alert("Please fill in all fields.");
-            return;
+        const { user, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+        });
+
+        if (error) {
+            alert("Error: " + error.message);
+        } else {
+            alert("Registration successful! Please check your email to confirm your account.");
+            registerBox.style.display = "none";
+            loginBox.style.display = "block";
         }
-
-        if (id.length !== 10 || isNaN(id)) {
-            alert("ID must be exactly 10 digits.");
-            return;
-        }
-
-        if (title !== "Student" && title !== "Professor") {
-            alert("Invalid title selection.");
-            return;
-        }
-
-        if (localStorage.getItem(username)) {
-            alert("Username already taken!");
-            return;
-        }
-
-        localStorage.setItem(username, JSON.stringify({ password, id, title, section }));
-        alert("Registration successful! You can now log in.");
-        registerBox.style.display = "none";
-        loginBox.style.display = "block";
     });
 
     // existing 
     loginButton.addEventListener("click", function () {
-        const username = loginUsername.value.trim();
+        const email = loginUsername.value.trim();
         const password = loginPassword.value.trim();
 
-        const storedUser = localStorage.getItem(username);
-        if (!storedUser) {
-            alert("User not found! Please register.");
-            return;
-        }
+        const { user, error } = supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
 
-        const userData = JSON.parse(storedUser);
-        if (userData.password !== password) {
-            alert("Incorrect password!");
-            return;
+        if (error) {
+            alert("Error: " + error.message);
+        } else {
+            alert("Login successful!");
+            // Redirect to main content or perform other actions
         }
-
         // success login for my 
         localStorage.setItem("loggedInUser", username);
         profileName.textContent = username;
