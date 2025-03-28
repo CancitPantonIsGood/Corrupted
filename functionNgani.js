@@ -1,5 +1,3 @@
-
-
 function playSelectionSound() {
     let sound = document.getElementById("selectingSound");
     sound.currentTime = 0;
@@ -211,142 +209,150 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
     
-    document.querySelectorAll('.languageMenu div').forEach(option => {
-        option.addEventListener('click', function () {
-            selectedLanguage = option.className.toLowerCase();
-            console.log("Selected language:", selectedLanguage);
-            languageMenu.style.display = "none";
-            difficultiesMenu.style.display = "block";
-        });
-    });
-
-    document.querySelectorAll('.difficultiesMenu div').forEach(option => {
-        option.addEventListener('click', function () {
-            selectedDifficulty = option.className.toLowerCase();
-            console.log("Selected difficulty:", selectedDifficulty);
-            difficultiesMenu.style.display = "none";
-            startGame(selectedLanguage, selectedDifficulty);
-            gameScreen.style.display = "block";
-        });
-    });
-    
+    // Initialize question indices for all languages and difficulties
     const questionIndices = {};
     for (const lang in buggyCodeSamples) {
         questionIndices[lang] = {};
         for (const level in buggyCodeSamples[lang]) {
-            questionIndices[lang][level] = 0;
+            questionIndices[lang][level] = 0; // Start at the first question
         }
     }
 
-    // Function to get the next question index
-    function getNextQuestionIndex(language, difficulty) {
-        const index = questionIndices[language][difficulty];
-        questionIndices[language][difficulty] = (index + 1) % buggyCodeSamples[language][difficulty].length;
-        return index;
-    }
-
-    // Update startGame function to use the next question index
-    function startGame(language, difficulty) {
-        console.log(`Starting game with ${language} - ${difficulty}`);
+    // Function to start the game
+    function startGame(language, difficulty, questionIndex = 0) {
+        console.log(`Starting game with ${language} - ${difficulty}, Question: ${questionIndex + 1}`);
 
         const unfixedCodeDiv = document.querySelector('.unfixedCode');
         const guideTextDiv = document.querySelector('.guide-text');
-        const questionIndex = getNextQuestionIndex(language, difficulty);
-        const code = buggyCodeSamples[language][difficulty][questionIndex];
-        const guide = guideQuestions[language][difficulty];
+        const editorContainer = document.getElementById('editor-container');
+        const submitButton = document.getElementById('submit-button');
 
+        // Ensure the editor container exists
+        if (!editorContainer) {
+            console.error("Editor container not found in the DOM.");
+            return;
+        }
+
+        // Validate language and difficulty
+        if (!buggyCodeSamples[language]) {
+            console.error(`Language "${language}" not found in buggyCodeSamples.`);
+            unfixedCodeDiv.innerHTML = `<pre>Language "${language}" not found.</pre>`;
+            return;
+        }
+        if (!buggyCodeSamples[language][difficulty]) {
+            console.error(`Difficulty "${difficulty}" not found for language "${language}".`);
+            unfixedCodeDiv.innerHTML = `<pre>Difficulty "${difficulty}" not found for language "${language}".</pre>`;
+            return;
+        }
+
+        // Get the buggy code and guide text
+        const code = buggyCodeSamples[language][difficulty][questionIndex];
+        const guide = guideQuestions[language]?.[difficulty];
+
+        // Check if the code exists
         if (code) {
             unfixedCodeDiv.innerHTML = `<pre>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
         } else {
             unfixedCodeDiv.innerHTML = '<pre>Code not found for this selection</pre>';
+            console.error(`Buggy code not found for language "${language}", difficulty "${difficulty}", question ${questionIndex + 1}.`);
+            return;
         }
-        // Update the guide text display
+
+        // Set the guide text
         guideTextDiv.innerHTML = guide ? `<p>${guide}</p>` : '<p>No guide available for this selection</p>';
 
         // Update the game title
         document.querySelector('.gameTitle').textContent = `${language.toUpperCase()} - ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}`;
 
-        // Show the game screen and hide other menus
+        // Show the game screen
         document.querySelector('.gameScreen').style.display = 'block';
         document.querySelector('.languageMenu').style.display = 'none';
         document.querySelector('.difficultiesMenu').style.display = 'none';
-        userMenu.style.display = 'none';
-        notifier.style.display = 'none';
-        logo.style.display = 'none';
 
         // Initialize the Monaco editor
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
-        require(['vs/editor/editor.main'], function() {
+        require(['vs/editor/editor.main'], function () {
             if (window.editor) {
-                window.editor.dispose();
+                window.editor.dispose(); // Dispose of the previous editor instance
             }
-            window.editor = monaco.editor.create(document.getElementById('editor-container'), {
-                value: code,
-                language: language,
+
+            // Create the Monaco editor
+            window.editor = monaco.editor.create(editorContainer, {
+                value: code || '', // Use the buggy code or an empty string
+                language: language, // Set the language for syntax highlighting
                 theme: 'vs-dark',
                 fontSize: 14,
                 automaticLayout: true
             });
 
+            // Define the handleSubmit function
             function handleSubmit() {
-                const userCode = window.editor.getValue();
-                const correctCode = solutions[language][difficulty];
+                const userCode = window.editor.getValue().trim();
+                const correctCodes = solutions[language]?.[difficulty];
 
-                console.log('User code:', userCode); // Debugging line
-                console.log('Correct code:', correctCode); // Debugging line
+                const progressIcon = document.querySelector(`.questions-finished[data-question="${questionIndex}"]`);
+                const customNotification = document.getElementById('customNotification');
 
-                const isCorrect = correctCodes.some(correctCode => userCode.trim() === correctCode.trim());
+                // Fix: Case-insensitive and whitespace-trimmed comparison
+                if (correctCodes?.some(correctCode => userCode.toLowerCase() === correctCode.trim().toLowerCase())) {
+                     customNotification.style.display = 'block';
+                    customNotification.innerHTML = '<p>You fixed it! Loading next challenge...</p>';
+                    customNotification.style.backgroundColor = 'green';
 
-                if (userCode.trim() === correctCode.trim()) {
-                    alert('Correct! Loading next challenge...');
-                    // Load next buggy code
-                    startGame(language, difficulty);
+                    if (progressIcon) {
+                        progressIcon.textContent = '✔'; // Set to check icon
+                        progressIcon.style.color = 'green';
+                    }
+
+                    // Load the next question
+                    const nextQuestionIndex = (questionIndex + 1) % buggyCodeSamples[language][difficulty].length;
+                    setTimeout(() => {
+                        customNotification.style.display = 'none'; // Hide notification after 2 seconds
+                        startGame(language, difficulty, nextQuestionIndex); // Pass the next question index
+                    }, 2000);
                 } else {
-                    alert('Incorrect. Please try again.');
+                    customNotification.style.display = 'block';
+        customNotification.innerHTML = '<p>Incorrect. Please try again.</p>';
+        customNotification.style.backgroundColor = 'red';
+                    if (progressIcon) {
+                        progressIcon.textContent = '✖'; // Set to X icon
+                        progressIcon.style.color = 'red';
+                    }
                 }
             }
 
-            // Remove existing event listener before adding a new one
-            submitAnswer.removeEventListener('click', handleSubmit);
-            submitAnswer.addEventListener('click', handleSubmit);
+            // Attach the handleSubmit function to the submit button
+            submitButton.removeEventListener('click', handleSubmit); // Remove any previous listeners
+            submitButton.addEventListener('click', handleSubmit);
         });
     }
-    
+
     // Event listeners for language selection
-    document.getElementById('java-button').addEventListener('click', () => chooseLanguage('java'));
-    document.getElementById('html-button').addEventListener('click', () => chooseLanguage('html'));
-    document.getElementById('css-button').addEventListener('click', () => chooseLanguage('css'));
-    
+    document.querySelectorAll('.languageMenu div').forEach(option => {
+        option.addEventListener('click', function () {
+            selectedLanguage = option.getAttribute('data-language'); // Use a data attribute for language
+            console.log("Selected language:", selectedLanguage);
+
+            // Hide language menu and show difficulties menu
+            languageMenu.style.display = "none";
+            difficultiesMenu.style.display = "block";
+        });
+    });
+
     // Event listeners for difficulty selection
-    document.querySelector('.Normal').addEventListener('click', () => {
-        if (selectedLanguage) {
-            startGame(selectedLanguage, 'easy');
-        } else {
-            alert("Please select a language first.");
-        }
+    document.querySelectorAll('.difficultiesMenu div').forEach(option => {
+        option.addEventListener('click', function () {
+            selectedDifficulty = option.getAttribute('data-difficulty'); // Use a data attribute for difficulty
+            console.log("Selected difficulty:", selectedDifficulty);
+
+            // Hide difficulties menu and show game screen
+            difficultiesMenu.style.display = "none";
+            gameScreen.style.display = "block";
+
+            // Start the game with the selected language and difficulty
+            startGame(selectedLanguage, selectedDifficulty);
+        });
     });
-    
-    document.querySelector('.Moderate').addEventListener('click', () => {
-        if (selectedLanguage) {
-            startGame(selectedLanguage, 'moderate');
-        } else {
-            alert("Please select a language first.");
-        }
-    });
-    
-    document.querySelector('.Hardcore').addEventListener('click', () => {
-        if (selectedLanguage) {
-            startGame(selectedLanguage, 'hardcore');
-        } else {
-            alert("Please select a language first.");
-        }
-    });
-    
-    function chooseLanguage(language) {
-        selectedLanguage = language;
-        document.querySelector('.languageMenu').style.display = 'none';
-        document.querySelector('.difficultiesMenu').style.display = 'block';
-    }
     
     //---------------------------------------
     
@@ -437,12 +443,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // existing 
-    loginButton.addEventListener("click", function () {
+    // Login user
+    loginButton.addEventListener("click", async function () {
         const email = loginUsername.value.trim();
         const password = loginPassword.value.trim();
 
-        const { user, error } = supabase.auth.signInWithPassword({
+        const { data: user, error } = await supabase.auth.signInWithPassword({
             email: email,
             password: password,
         });
@@ -457,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Save user data to local storage
             const username = email.split('@')[0];
             const userData = {
-                id: user.id,
+                id: user.user.id, // Correctly access the user ID
                 title: registerTitle.value,
                 section: registerSection.value,
                 profilePicture: "noprofile.png"
@@ -472,12 +478,6 @@ document.addEventListener("DOMContentLoaded", function () {
             profileSection.textContent = userData.section;
             profilePicture.src = userData.profilePicture;
         }
-    
-        const userProfilePicture = userData.profilePicture || "noprofile.png";
-        profilePicture.src = userProfilePicture;
-
-        authContainer.style.display = "none";
-        mainContainer.style.display = "block";
     });
 
     profileInput.addEventListener("change", function () {

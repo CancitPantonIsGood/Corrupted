@@ -114,17 +114,17 @@
 
         <div class="languageMenu">
             <h2 class="selects">Choose Markup/Language</h2>
-            <div class="java" id="java-button">
+            <div class="java" id="java-button" data-language="java">
                 <h2>JAVA</h2>
                 <p>A quiz type mode having each difficulties inside</p>
                 <b></b> 
             </div>
-            <div class="html" id="html-button">
+            <div class="html" id="html-button" data-language="html">
                 <h2>HTML</h2>
                 <p>Surpass through your knowledge, conquer your limits, and be the BEST</p>
                 <b></b>
             </div>
-            <div class="css" id="css-button">
+            <div class="css" id="css-button" data-language="css">
                 <h2>CSS</h2>
                 <p>Surpass through your knowledge, conquer your limits, and be the BEST</p>
                 <b></b>
@@ -137,7 +137,7 @@
                 <p>Unfixed Code Here</p>
             </div>
             <div id="editor-container" class="codeInput" placeholder="Fix the code here..."><p id="unfixedCode"></p></div>
-            <button class="submit" onclick="handleSubmit()">Submit</button>
+            <button class="submit" id="submit-button">Submit</button>
             <div class="progress">
                 <p class="p1">Progress: 1/10</p>
                 <div class="questions-finished">
@@ -166,17 +166,17 @@
 
         <div class="difficultiesMenu">
             <h2 class="selects">Choose Difficulty</h2>
-            <div class="Normal">
+            <div class="Normal" data-difficulty="easy">
                 <h2>Easy</h2>
                 <p>A quiz type mode having each difficulties inside</p>
                 <b></b> 
             </div>
-            <div class="Moderate">
+            <div class="Moderate" data-difficulty="moderate">
                 <h2>Moderate</h2>
                 <p>Surpass through your knowledge, conquer your limits, and be the BEST</p>
                 <b></b>
             </div>
-            <div class="Hardcore">
+            <div class="Hardcore" data-difficulty="hardcore">
                 <h2>Hardcore</h2>
                 <p>Surpass through your knowledge, conquer your limits, and be the BEST</p>
                 <b></b>

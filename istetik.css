@@ -1753,3 +1753,44 @@
   padding-top: 10px;
 }
 
+.post-selection-container {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  display: none; /* Initially hidden */
+  background-color: #f9f9f9; /* Light background */
+  border: 2px solid #ccc; /* Subtle border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Inner spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  text-align: center; /* Center-align text */
+  max-width: 400px; /* Limit width */
+  margin: 20px auto; /* Center horizontally */
+}
+
+.post-selection-container h2 {
+  font-size: 24px; /* Larger font for the title */
+  color: #333; /* Dark text color */
+  margin-bottom: 10px; /* Space below the title */
+}
+
+.post-selection-container p {
+  font-size: 18px; /* Medium font size */
+  color: #555; /* Slightly lighter text color */
+  margin: 5px 0; /* Space between paragraphs */
+}
+
+.post-selection-container button {
+  background-color: #4CAF50; /* Green button */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px; /* Button text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.post-selection-container button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
