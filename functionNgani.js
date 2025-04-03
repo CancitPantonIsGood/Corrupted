@@ -77,8 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = [playButton, profileButton, settingsButton, leaderboardButton, creditsButton];
     const menus = [playMenu, profileMenu, settingsMenu, leaderboardMenu, creditsMenu];
 
-    
-
     difficultiesMenu.style.display = 'none';
     languageMenu.style.display = 'none';
     gameScreen.style.display = 'none';
@@ -279,28 +277,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.customNotifier').style.display = 'none';
         document.querySelector('.userMenu').style.display = 'none';
 
-        // Initialize the Monaco editor
+        
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             if (window.editor) {
-                window.editor.dispose(); // Dispose of the previous editor instance
+                window.editor.dispose(); 
             }
 
-            // Create the Monaco editor
             window.editor = monaco.editor.create(editorContainer, {
-                value: code || '', // Use the buggy code or an empty string
-                language: language, // Set the language for syntax highlighting
+                value: code || '',
+                language: language,
                 theme: 'vs-dark',
                 fontSize: 14,
                 automaticLayout: true
             });
-
-            // Define the handleSubmit function
+            
             function handleSubmit() {
                 const userCode = window.editor.getValue().trim();
                 const correctCodes = solutions[language]?.[difficulty];
 
-                // Dynamically target the current question's progress icon
                 const progressIcon = document.querySelector(`.questions-finished-num[data-question="${questionIndex + 1}"] .icon`);
                 const customNotification = document.getElementById('customNotification');
 
@@ -309,30 +304,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                // Ensure correctCodes is defined before comparison
                 if (correctCodes && correctCodes.some(correctCode => userCode.toLowerCase() === correctCode.trim().toLowerCase())) {
-                    // Only update if the status is not already "completed"
                     if (progressIcon.dataset.status !== 'completed' && progressIcon.dataset.status !== 'incorrect') {
                         customNotification.style.display = 'block';
                         customNotification.innerHTML = '<p>You fixed it! Loading next challenge...</p>';
                         customNotification.style.backgroundColor = 'green';
             
-                        // Update progress icon to a checkmark and mark it as completed
-                        progressIcon.textContent = '✔'; // Set to check icon
+                        progressIcon.textContent = '✔'; 
                         progressIcon.style.color = 'green';
-                        progressIcon.dataset.status = 'completed'; // Mark as completed
+                        progressIcon.dataset.status = 'completed';
                     }
                 } else {
-                    // Only update if the status is not already "completed"
                     if (progressIcon.dataset.status !== 'completed') {
                         customNotification.style.display = 'block';
                         customNotification.innerHTML = '<p>Incorrect. Try again!</p>';
                         customNotification.style.backgroundColor = 'red';
             
-                        // Update progress icon to an X only if it hasn't been marked as correct
-                        progressIcon.textContent = '✖'; // Set to X icon
+                        progressIcon.textContent = '✖';
                         progressIcon.style.color = 'red';
-                        progressIcon.dataset.status = 'incorrect'; // Mark as incorrect
+                        progressIcon.dataset.status = 'incorrect';
                     }
                 }
 
@@ -348,8 +338,9 @@ document.addEventListener("DOMContentLoaded", function () {
             submitButton.removeEventListener('click', handleSubmit); // Remove any previous listeners
             submitButton.addEventListener('click', handleSubmit);
         });
+        
     }
-
+    
     // Event listeners for language selection
     document.querySelectorAll('.languageMenu div').forEach(option => {
         option.addEventListener('click', function () {
@@ -662,7 +653,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <th>${user.section}</th>
                 <th>${user.id}</th>
                 <th>${user.points}</th>
-            `;
+            </tr>`;
 
             leaderboardTable.appendChild(row);
         });
@@ -674,24 +665,22 @@ document.addEventListener("DOMContentLoaded", function () {
 // Call the function to fetch and populate the leaderboard
 fetchAndPopulateLeaderboard();
 
-document.getElementById('exit-button').addEventListener('click', function () {
-    resetUI();
+
+const exitButton = document.querySelector("#exit-button");
+
+exitButton.addEventListener("click", function () {
+    gameScreen.style.display = "none";
+
+    languageMenu.style.display = "none";
+    difficultiesMenu.style.display = "none";
+    document.querySelector('.randomtext').style.display = 'block';
+    document.querySelector('.logo').style.display = 'block';
+    document.querySelector('.userMenu').style.display = 'block';
+
+    console.log("Game exited and hidden.");
 });
 
-function resetUI() {
-    // Show all previously hidden elements
-    document.querySelector('.menu').style.display = 'block';
-    document.querySelector('.profileMenu').style.display = 'none'; // Adjust based on your logic
-    document.querySelector('.settingsMenu').style.display = 'none';
-    document.querySelector('.leaderboardMenu').style.display = 'none';
-    document.querySelector('.creditsMenu').style.display = 'none';
-    document.querySelector('.languageMenu').style.display = 'none';
-    document.querySelector('.difficultiesMenu').style.display = 'none';
-    document.querySelector('.gameScreen').style.display = 'none';
-    document.querySelector('.randomtext').style.display = 'block';
-    document.querySelector('.feedback').style.display = 'block';
-    document.querySelector('.logo').style.display = 'block';
-    document.querySelector('.customNotifier').style.display = 'block';
-    document.querySelector('.userMenu').style.display = 'block';
-}
+
+
 });
+
