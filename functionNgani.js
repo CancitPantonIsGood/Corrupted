@@ -4,10 +4,13 @@ function playSelectionSound() {
     sound.play();
 }
 
+
+
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/+esm';
+import bcrypt from 'https://cdn.jsdelivr.net/npm/bcryptjs/+esm';
 
 const supabaseUrl = 'https://qnhciscuypjihlebiyuy.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuaGNpc2N1eXBqaWhsZWJpeXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwMjkxODUsImV4cCI6MjA1NzYwNTE4NX0.ZbLXbq2gauvJN8tpQjGqQnMkXKvgB_78ewCdscd00ag'; // Replace with your actual Supabase key for testing
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuaGNpc2N1eXBqaWhsZWJpeXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwMjkxODUsImV4cCI6MjA1NzYwNTE4NX0.ZbLXbq2gauvJN8tpQjGqQnMkXKvgB_78ewCdscd00ag';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 
@@ -73,6 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const buttons = [playButton, profileButton, settingsButton, leaderboardButton, creditsButton];
     const menus = [playMenu, profileMenu, settingsMenu, leaderboardMenu, creditsMenu];
+
+    
 
     difficultiesMenu.style.display = 'none';
     languageMenu.style.display = 'none';
@@ -268,6 +273,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.gameScreen').style.display = 'block';
         document.querySelector('.languageMenu').style.display = 'none';
         document.querySelector('.difficultiesMenu').style.display = 'none';
+        document.querySelector('.randomtext').style.display = 'none';
+        document.querySelector('.feedback').style.display = 'none';
+        document.querySelector('.logo').style.display = 'none';
+        document.querySelector('.customNotifier').style.display = 'none';
+        document.querySelector('.userMenu').style.display = 'none';
 
         // Initialize the Monaco editor
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
@@ -290,35 +300,48 @@ document.addEventListener("DOMContentLoaded", function () {
                 const userCode = window.editor.getValue().trim();
                 const correctCodes = solutions[language]?.[difficulty];
 
-                const progressIcon = document.querySelector(`.questions-finished[data-question="${questionIndex}"]`);
+                // Dynamically target the current question's progress icon
+                const progressIcon = document.querySelector(`.questions-finished-num[data-question="${questionIndex + 1}"] .icon`);
                 const customNotification = document.getElementById('customNotification');
 
-                // Fix: Case-insensitive and whitespace-trimmed comparison
-                if (correctCodes?.some(correctCode => userCode.toLowerCase() === correctCode.trim().toLowerCase())) {
-                     customNotification.style.display = 'block';
-                    customNotification.innerHTML = '<p>You fixed it! Loading next challenge...</p>';
-                    customNotification.style.backgroundColor = 'green';
+                if (!progressIcon) {
+                    console.error(`Progress icon for "Question ${questionIndex + 1}" not found.`);
+                    return;
+                }
 
-                    if (progressIcon) {
+                // Ensure correctCodes is defined before comparison
+                if (correctCodes && correctCodes.some(correctCode => userCode.toLowerCase() === correctCode.trim().toLowerCase())) {
+                    // Only update if the status is not already "completed"
+                    if (progressIcon.dataset.status !== 'completed' && progressIcon.dataset.status !== 'incorrect') {
+                        customNotification.style.display = 'block';
+                        customNotification.innerHTML = '<p>You fixed it! Loading next challenge...</p>';
+                        customNotification.style.backgroundColor = 'green';
+            
+                        // Update progress icon to a checkmark and mark it as completed
                         progressIcon.textContent = '✔'; // Set to check icon
                         progressIcon.style.color = 'green';
+                        progressIcon.dataset.status = 'completed'; // Mark as completed
                     }
-
-                    // Load the next question
-                    const nextQuestionIndex = (questionIndex + 1) % buggyCodeSamples[language][difficulty].length;
-                    setTimeout(() => {
-                        customNotification.style.display = 'none'; // Hide notification after 2 seconds
-                        startGame(language, difficulty, nextQuestionIndex); // Pass the next question index
-                    }, 2000);
                 } else {
-                    customNotification.style.display = 'block';
-        customNotification.innerHTML = '<p>Incorrect. Please try again.</p>';
-        customNotification.style.backgroundColor = 'red';
-                    if (progressIcon) {
+                    // Only update if the status is not already "completed"
+                    if (progressIcon.dataset.status !== 'completed') {
+                        customNotification.style.display = 'block';
+                        customNotification.innerHTML = '<p>Incorrect. Try again!</p>';
+                        customNotification.style.backgroundColor = 'red';
+            
+                        // Update progress icon to an X only if it hasn't been marked as correct
                         progressIcon.textContent = '✖'; // Set to X icon
                         progressIcon.style.color = 'red';
+                        progressIcon.dataset.status = 'incorrect'; // Mark as incorrect
                     }
                 }
+
+                // Load the next question after a delay
+                const nextQuestionIndex = (questionIndex + 1) % buggyCodeSamples[language][difficulty].length;
+                setTimeout(() => {
+                    customNotification.style.display = 'none'; // Hide notification after 2 seconds
+                    startGame(language, difficulty, nextQuestionIndex); // Pass the next question index
+                }, 2000);
             }
 
             // Attach the handleSubmit function to the submit button
@@ -416,6 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Register clicked");
         loginBox.style.display = "none";
         registerBox.style.display = "block";
+        
     });
 
     // Event listener for "Login" hyperlink
@@ -424,63 +448,127 @@ document.addEventListener("DOMContentLoaded", function () {
         registerBox.style.display = "none";
         loginBox.style.display = "block";
     });
-    // Register user
+    
     registerButton.addEventListener("click", async function () {
-        const email = registerUsername.value.trim();
-        const password = registerPassword.value.trim();
-
-        const { user, error } = await supabase.auth.signUp({
-            email: email,
-            password: password,
-        });
-
-        if (error) {
-            alert("Error: " + error.message);
-        } else {
-            alert("Registration successful! Please check your email to confirm your account.");
+        const username = document.getElementById("register-username").value.trim();
+        const password = document.getElementById("register-password").value.trim();
+        const id = document.getElementById("register-id").value.trim();
+        const section = document.getElementById("register-section").value.trim();
+        const title = document.getElementById("register-title").value.trim();
+    
+        if (!username || !password || !id || !section || !title) {
+            alert("Please fill out all fields.");
+            return;
+        }
+        
+    
+        try {
+            const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
+            const { data, error } = await supabase
+                .from("user")
+                .insert([
+                    {
+                        username: username,
+                        password: hashedPassword, // Store the hashed password
+                        id: id,
+                        section: section,
+                        title: title,
+                    },
+                ]);
+    
+            if (error) {
+                console.error("Error registering user:", error);
+                alert(`Registration failed: ${error.message}`);
+                return;
+            }
+    
+            alert("Registration successful!");
             registerBox.style.display = "none";
             loginBox.style.display = "block";
+        } catch (error) {
+            console.error("Unexpected error during registration:", error);
+            alert("An unexpected error occurred. Please try again.");
         }
     });
 
-    // Login user
+    
+    
+    
+
     loginButton.addEventListener("click", async function () {
-        const email = loginUsername.value.trim();
+        const username = loginUsername.value.trim();
         const password = loginPassword.value.trim();
-
-        const { data: user, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-        });
-
-        if (error) {
-            alert("Error: " + error.message);
-        } else {
+    
+        if (!username || !password) {
+            alert("Please fill out both username and password.");
+            return;
+        }
+    
+        try {
+            // Fetch the user data from Supabase
+            const { data: users, error } = await supabase
+                .from("user") // Replace 'user' with your actual table name
+                .select("username, password, id, section, title")
+                .eq("username", username);
+    
+            if (error) {
+                console.error("Error fetching user data:", error);
+                alert("An error occurred while logging in. Please try again.");
+                return;
+            }
+    
+            if (!users || users.length === 0) {
+                alert("Invalid username or password.");
+                return;
+            }
+    
+            const user = users[0];
+    
+            // Debugging: Log the entered and stored passwords
+            console.log("Entered password:", password);
+            console.log("Stored hashed password:", user.password);
+    
+            // Validate the password
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+            console.log("Password valid:", isPasswordValid); // Debugging
+    
+            if (!isPasswordValid) {
+                alert("Invalid username or password.");
+                return;
+            }
+    
+            // Login successful
+            alert("Login successful!");
+    
             // Show main content
             authContainer.style.display = "none";
             mainContainer.style.display = "block";
-
+    
             // Save user data to local storage
-            const username = email.split('@')[0];
             const userData = {
-                id: user.user.id, // Correctly access the user ID
-                title: registerTitle.value,
-                section: registerSection.value,
-                profilePicture: "noprofile.png"
+                id: user.id,
+                title: user.title,
+                section: user.section,
+                profilePicture: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
             };
             localStorage.setItem("loggedInUser", username);
             localStorage.setItem(username, JSON.stringify(userData));
-
+    
             // Update profile information
             profileName.textContent = username;
-            profileID.textContent = `ID: ${userData.id}`;
-            profileTitle.textContent = `Status: ${userData.title}`;
-            profileSection.textContent = userData.section;
+            profileID.textContent = `ID: ${user.id}`;
+            profileTitle.textContent = `Status: ${user.title}`;
+            profileSection.textContent = user.section;
             profilePicture.src = userData.profilePicture;
+        } catch (error) {
+            console.error("Unexpected error during login:", error);
+            alert("An unexpected error occurred. Please try again.");
         }
     });
 
     profileInput.addEventListener("change", function () {
+        const defProfile = document.querySelector(".profile-picture");
+        defProfile.src = "noprofile.png";
         const file = profileInput.files[0];
         if (file) {
             const reader = new FileReader();
@@ -515,4 +603,95 @@ document.addEventListener("DOMContentLoaded", function () {
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
     }
+
+    document.querySelector('.feedback h2').addEventListener('click', function () {
+        document.querySelector('.feedback').style.right = '5px';
+    });
+    document.querySelector('.feedback .close').addEventListener('click', function () {
+        document.querySelector('.feedback').style.right = '-455px';
+    });
+    const textElement = document.querySelector(".randomtext .text .first");
+    const textContent = textElement.textContent;
+    textElement.textContent = ""; // Clear the text initially
+
+
+    let index = 0;
+    function typeEffect() {
+        if (index < textContent.length) {
+            textElement.textContent += textContent.charAt(index);
+            index++;
+            setTimeout(typeEffect, 100); // Adjust typing speed here (100ms per character)
+        }
+    }
+    typeEffect();
+    
+    // Function to fetch registered users from Supabase and populate the leaderboard
+    async function fetchAndPopulateLeaderboard() {
+    const leaderboardTable = document.querySelector("#leaderboard-table tbody");
+
+    try {
+        // Fetch user data from Supabase
+        const { data: user, error } = await supabase
+            .from('user') // Replace 'user' with your actual table name
+            .select('username, section, id, points');
+
+        if (error) {
+            console.error("Error fetching users from Supabase:", error);
+            return;
+        }
+
+        if (!user || user.length === 0) {
+            console.log("No users found in the database.");
+            leaderboardTable.innerHTML = "<tr><td colspan='5'>No data available</td></tr>";
+            return;
+        }
+
+        // Sort users by points in descending order
+        const sortedUsers = user.sort((a, b) => b.points - a.points);
+
+        // Clear existing rows
+        leaderboardTable.innerHTML = "";
+
+        // Add sorted user data to the table
+        sortedUsers.forEach((user, index) => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <th class="top${index + 1}">${index + 1}</th>
+                <th>${user.username}</th>
+                <th>${user.section}</th>
+                <th>${user.id}</th>
+                <th>${user.points}</th>
+            `;
+
+            leaderboardTable.appendChild(row);
+        });
+    } catch (error) {
+        console.error("Error fetching or populating leaderboard:", error);
+    }
+}
+
+// Call the function to fetch and populate the leaderboard
+fetchAndPopulateLeaderboard();
+
+document.getElementById('exit-button').addEventListener('click', function () {
+    resetUI();
+});
+
+function resetUI() {
+    // Show all previously hidden elements
+    document.querySelector('.menu').style.display = 'block';
+    document.querySelector('.profileMenu').style.display = 'none'; // Adjust based on your logic
+    document.querySelector('.settingsMenu').style.display = 'none';
+    document.querySelector('.leaderboardMenu').style.display = 'none';
+    document.querySelector('.creditsMenu').style.display = 'none';
+    document.querySelector('.languageMenu').style.display = 'none';
+    document.querySelector('.difficultiesMenu').style.display = 'none';
+    document.querySelector('.gameScreen').style.display = 'none';
+    document.querySelector('.randomtext').style.display = 'block';
+    document.querySelector('.feedback').style.display = 'block';
+    document.querySelector('.logo').style.display = 'block';
+    document.querySelector('.customNotifier').style.display = 'block';
+    document.querySelector('.userMenu').style.display = 'block';
+}
 });
