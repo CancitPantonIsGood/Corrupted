@@ -1845,7 +1845,8 @@
 .leaderboard-table tbody tr {
   background-color: #494949;
   color: white;
-  
+  border-left: 5px solid white;
+  border-right: 5px solid white;
 }
 
 .leaderboard-table tbody tr:nth-child(1) {
