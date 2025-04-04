@@ -569,7 +569,7 @@
 
  .menu .prof:hover {
   text-shadow: 0.05em 0 0 rgb(255, 0, 43), -0.025em 0 0 rgb(1, 211, 1), -0.03em 1.5px 0 rgb(0, 102, 255);
-  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpRWWQG8sw8fC6Y4lisK5aZdmQuYRBTaNyg&s);
+  background: url(PROFILE.png);
 }
 
  .menu .sett:hover {
@@ -683,6 +683,7 @@
   height: 700px;
   color: white;
   background: #222;
+  background-size: cover;
 }
 
 .profileMenu .container {
@@ -1626,11 +1627,15 @@
   }
 
 .menu .profile.active {
-  background: url(profilebutt.jpg);
+  background: url(PROFILE.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .menu .profile:hover {
-  background: url(profilebutt.jpg);
+  background: url(PROFILE.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -1827,7 +1832,6 @@
   text-transform: uppercase;
   position: sticky;
   top: 0;
-  border-left: 1px solid white;
   z-index: 1;
 }
 
@@ -1852,6 +1856,41 @@
   font-weight: bold;
   border: 5px solid yellow;
 }
+/* Crown container to position the crown */
+.crown-container {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+/* Crown image styling */
+.animated-crown {
+  position: absolute;
+  top: -30px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  animation: crown-move 2s infinite ease-in-out;
+}
+
+@keyframes crown-move {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-20px) translateX(-20px) rotate(360deg);
+  }
+  20% {
+    transform: translateY(10px) rotate(0deg) scale(1.5);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1.5);
+  }
+  
+}
+
 
 .leaderboard-table tbody tr .top1 {
   font-size: 50px;
@@ -2109,7 +2148,7 @@
   background: rgb(48, 48, 48);
 }
 /*randomtext*/
-.code1 .text p{
+.randomtext {
   position: absolute;
   top: 458px;
   left: 3px;

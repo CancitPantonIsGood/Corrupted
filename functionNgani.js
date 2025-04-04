@@ -1,9 +1,26 @@
-function playSelectionSound() {
-    let sound = document.getElementById("selectingSound");
-    sound.currentTime = 0;
-    sound.play();
-}
 
+// Select all menu hyperlinks
+const menuLinks = document.querySelectorAll('.userMenu .menu a, .userMenu .sources a');
+const hoverSound = document.getElementById('selectingSound');
+
+let audioEnabled = true;
+
+// Enable audio playback after user interaction
+document.addEventListener('mouseover', () => {
+    audioEnabled = true;
+});
+
+// Add event listeners for hover
+menuLinks.forEach(link => {
+    link.addEventListener('mouseover', () => {
+        if (audioEnabled) {
+            hoverSound.currentTime = 0; // Reset the audio to the start
+            hoverSound.play().catch(error => {
+                console.error("Audio playback failed:", error);
+            });
+        }
+    });
+});
 
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/+esm';
@@ -125,11 +142,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const buggyCodeSamples = {
         java: {
             easy: [
-                'public class Main {\n    \npublic static void main(String[] args) {\n    system.out.println("Hello, World!")\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Corrupted!")\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n    System.out.println("Hello, Santos!")\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n    System.out.println("Hello, Neighbor!")\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n    System.out.println("Hello, League!")\n   }\n}'
+                'public class Main {\n    \npublic static void main(String[] arg) {\n    zystem.out.println("Hello, World!")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    system.out.println("Hello, Corrupted!")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Santos!")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Neighbor!")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, League!")\n   }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Java!");\n    }\n', // Missing closing brace
+        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Easy!");\n    }\n}', // Typo in "System" (e.g., "Systm")
+        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Buggy!");\n    }\n}', // Missing semicolon
+        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Code!");\n    }\n}', // Incorrect method name (e.g., "mainn")
+        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}' // Extra parentheses in "println"
             ],
             moderate: [
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
@@ -163,9 +185,14 @@ document.addEventListener("DOMContentLoaded", function () {
             easy: [
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, World!");\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Corrupted!");\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n    System.out.println("Hello, Santos!");\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n    System.out.println("Hello, Neighbor!");\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n    System.out.println("Hello, League!");\n   }\n}'
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Santos!");\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Neighbor!");\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, League!");\n   }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Java!");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Easy!");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Buggy!");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Code!");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}'
             ],
             moderate: [
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
@@ -224,18 +251,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to start the game
     function startGame(language, difficulty, questionIndex = 0) {
         console.log(`Starting game with ${language} - ${difficulty}, Question: ${questionIndex + 1}`);
-
+    
         const unfixedCodeDiv = document.querySelector('.unfixedCode');
         const guideTextDiv = document.querySelector('.guide-text');
         const editorContainer = document.getElementById('editor-container');
         const submitButton = document.getElementById('submit-button');
-
+    
         // Ensure the editor container exists
         if (!editorContainer) {
             console.error("Editor container not found in the DOM.");
             return;
         }
-
+    
         // Validate language and difficulty
         if (!buggyCodeSamples[language]) {
             console.error(`Language "${language}" not found in buggyCodeSamples.`);
@@ -247,11 +274,11 @@ document.addEventListener("DOMContentLoaded", function () {
             unfixedCodeDiv.innerHTML = `<pre>Difficulty "${difficulty}" not found for language "${language}".</pre>`;
             return;
         }
-
+    
         // Get the buggy code and guide text
         const code = buggyCodeSamples[language][difficulty][questionIndex];
         const guide = guideQuestions[language]?.[difficulty];
-
+    
         // Check if the code exists
         if (code) {
             unfixedCodeDiv.innerHTML = `<pre>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
@@ -260,13 +287,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error(`Buggy code not found for language "${language}", difficulty "${difficulty}", question ${questionIndex + 1}.`);
             return;
         }
-
+    
         // Set the guide text
         guideTextDiv.innerHTML = guide ? `<p>${guide}</p>` : '<p>No guide available for this selection</p>';
-
+    
         // Update the game title
         document.querySelector('.gameTitle').textContent = `${language.toUpperCase()} - ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}`;
-
+    
         // Show the game screen
         document.querySelector('.gameScreen').style.display = 'block';
         document.querySelector('.languageMenu').style.display = 'none';
@@ -276,14 +303,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.logo').style.display = 'none';
         document.querySelector('.customNotifier').style.display = 'none';
         document.querySelector('.userMenu').style.display = 'none';
-
-        
+    
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             if (window.editor) {
                 window.editor.dispose(); 
             }
-
+    
             window.editor = monaco.editor.create(editorContainer, {
                 value: code || '',
                 language: language,
@@ -295,15 +321,19 @@ document.addEventListener("DOMContentLoaded", function () {
             function handleSubmit() {
                 const userCode = window.editor.getValue().trim();
                 const correctCodes = solutions[language]?.[difficulty];
-
+            
                 const progressIcon = document.querySelector(`.questions-finished-num[data-question="${questionIndex + 1}"] .icon`);
                 const customNotification = document.getElementById('customNotification');
-
+            
                 if (!progressIcon) {
                     console.error(`Progress icon for "Question ${questionIndex + 1}" not found.`);
                     return;
                 }
-
+            
+                // Disable the submit button to prevent multiple clicks
+                const submitButton = document.getElementById('submit-button');
+                submitButton.disabled = true;
+            
                 if (correctCodes && correctCodes.some(correctCode => userCode.toLowerCase() === correctCode.trim().toLowerCase())) {
                     if (progressIcon.dataset.status !== 'completed' && progressIcon.dataset.status !== 'incorrect') {
                         customNotification.style.display = 'block';
@@ -325,21 +355,126 @@ document.addEventListener("DOMContentLoaded", function () {
                         progressIcon.dataset.status = 'incorrect';
                     }
                 }
-
+            
                 // Load the next question after a delay
                 const nextQuestionIndex = (questionIndex + 1) % buggyCodeSamples[language][difficulty].length;
                 setTimeout(() => {
                     customNotification.style.display = 'none'; // Hide notification after 2 seconds
+                    submitButton.disabled = false; // Re-enable the submit button for the next question
                     startGame(language, difficulty, nextQuestionIndex); // Pass the next question index
                 }, 2000);
             }
-
-            // Attach the handleSubmit function to the submit button
-            submitButton.removeEventListener('click', handleSubmit); // Remove any previous listeners
-            submitButton.addEventListener('click', handleSubmit);
+    
+            // Remove any previous event listeners and attach the handleSubmit function to the submit button
+            submitButton.replaceWith(submitButton.cloneNode(true));
+            const newSubmitButton = document.getElementById('submit-button');
+            newSubmitButton.addEventListener('click', handleSubmit);
         });
         
     }
+
+    // Pool of buggy code templates
+const infiniteBuggyCodeTemplates = {
+    java: [
+        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}',
+        'public class Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n}',
+        'import java.util.ArrayList;\npublic class DataManager {\n    ArrayList<String> data = new ArrayList<>();\n    public void addData(String item) {\n        data.add(item);\n    }\n}'
+    ],
+    html: [
+        '<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample Page</title>\n</head>\n<body>\n    <h1>Welcome</h1>\n</body>\n</html>',
+        '<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal</li>\n        <li>Infinite</li>\n    </ul>\n</div>',
+        '<form action="/submit" method="post">\n    <label for="name">Name:</label>\n    <input type="text" id="name" name="name">\n    <input type="submit" value="Submit">\n</form>'
+    ],
+    css: [
+        'body {\n    background-color: #fff;\n    color: #000;\n    font-family: Arial, sans-serif;\n}',
+        '.button {\n    background-color: blue;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}',
+        '#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}'
+    ]
+};
+
+// Function to introduce random bugs into code
+function generateBuggyCode(language) {
+    const templates = infiniteBuggyCodeTemplates[language];
+    if (!templates) {
+        console.error(`No templates found for language: ${language}`);
+        return '/* No buggy code available for this language */';
+    }
+
+    // Select a random template
+    const template = templates[Math.floor(Math.random() * templates.length)];
+
+    // Introduce random bugs
+    let buggyCode = template;
+    if (language === 'java') {
+        buggyCode = buggyCode.replace('System.out.println', 'system.out.println'); // Lowercase 'System'
+        buggyCode = buggyCode.replace(';', ''); // Remove semicolons
+    } else if (language === 'html') {
+        buggyCode = buggyCode.replace('<h1>', '<h1'); // Missing closing '>'
+        buggyCode = buggyCode.replace('</h1>', '</h1 '); // Extra space in closing tag
+    } else if (language === 'css') {
+        buggyCode = buggyCode.replace('background-color', 'backgroundcolor'); // Typo in property name
+        buggyCode = buggyCode.replace(':', ''); // Remove colons
+    }
+
+    return buggyCode;
+}
+
+function startInfiniteMode() {
+    document.querySelector('.playMenu').style.display = 'none';
+    document.querySelector('.languageMenu').style.display = 'none';
+    document.querySelector('.difficultiesMenu').style.display = 'none';
+
+    const gameScreen = document.querySelector('.gameScreen');
+    gameScreen.style.display = 'block';
+
+    const gameTitle = document.querySelector('.gameTitle');
+    gameTitle.textContent = "INFINITE Mode - Test Your Limits";
+
+    const unfixedCodeDiv = document.querySelector('.unfixedCode');
+    const guideTextDiv = document.querySelector('.guide-text');
+    const editorContainer = document.querySelector('#editor-container');
+
+    const languages = Object.keys(infiniteBuggyCodeTemplates);
+    const selectedLanguage = languages[Math.floor(Math.random() * languages.length)];
+
+    const buggyCode = generateBuggyCode(selectedLanguage);
+
+    unfixedCodeDiv.innerHTML = `<pre>${buggyCode.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
+    guideTextDiv.innerHTML = `<p>Fix the bugs in the ${selectedLanguage.toUpperCase()} code!</p>`;
+
+    editorContainer.innerHTML = `
+        <textarea id="infinite-textarea" class="code-editor" rows="15" style="width: 100%; font-family: monospace; font-size: 14px;">${buggyCode}</textarea>
+    `;
+
+    console.log("Infinite mode started with language:", selectedLanguage);
+
+    const submitButton = document.getElementById('submit-button');
+    submitButton.onclick = function () {
+        const userCode = document.getElementById('infinite-textarea').value.trim();
+
+        const correctCodes = solutions[selectedLanguage]?.easy; // Adjust difficulty if needed
+        const customNotification = document.getElementById('customNotification');
+
+        if (correctCodes && correctCodes.some(correctCode => userCode === correctCode.trim())) {
+            customNotification.style.display = 'block';
+            customNotification.innerHTML = '<p>You fixed it! Loading next challenge...</p>';
+            customNotification.style.backgroundColor = 'green';
+
+            // Load the next buggy code after a delay
+            setTimeout(() => {
+                customNotification.style.display = 'none';
+                startInfiniteMode(); // Restart infinite mode with a new buggy code
+            }, 2000);
+        } else {
+            customNotification.style.display = 'block';
+            customNotification.innerHTML = '<p>Incorrect. Try again!</p>';
+            customNotification.style.backgroundColor = 'red';
+        }
+    };
+}
+
+// Attach event listener to the infinite button
+document.getElementById('infinite-button').addEventListener('click', startInfiniteMode);
     
     // Event listeners for language selection
     document.querySelectorAll('.languageMenu div').forEach(option => {
@@ -452,7 +587,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         
-    
         try {
             const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
             const { data, error } = await supabase
@@ -481,10 +615,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("An unexpected error occurred. Please try again.");
         }
     });
-
-    
-    
-    
 
     loginButton.addEventListener("click", async function () {
         const username = loginUsername.value.trim();
@@ -618,52 +748,55 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Function to fetch registered users from Supabase and populate the leaderboard
     async function fetchAndPopulateLeaderboard() {
-    const leaderboardTable = document.querySelector("#leaderboard-table tbody");
-
-    try {
-        // Fetch user data from Supabase
-        const { data: user, error } = await supabase
-            .from('user') // Replace 'user' with your actual table name
-            .select('username, section, id, points');
-
-        if (error) {
-            console.error("Error fetching users from Supabase:", error);
-            return;
+        const leaderboardTable = document.querySelector("#leaderboard-table tbody");
+    
+        try {
+            // Fetch user data from Supabase
+            const { data: user, error } = await supabase
+                .from('user') // Replace 'user' with your actual table name
+                .select('username, section, id, points');
+    
+            if (error) {
+                console.error("Error fetching users from Supabase:", error);
+                return;
+            }
+    
+            if (!user || user.length === 0) {
+                console.log("No users found in the database.");
+                leaderboardTable.innerHTML = "<tr><td colspan='5'>No data available</td></tr>";
+                return;
+            }
+    
+            // Sort users by points in descending order
+            const sortedUsers = user.sort((a, b) => b.points - a.points);
+    
+            // Clear existing rows
+            leaderboardTable.innerHTML = "";
+    
+            // Add sorted user data to the table
+            sortedUsers.forEach((user, index) => {
+                const row = document.createElement("tr");
+    
+                row.innerHTML = `
+                    <th class="top${index + 1}">
+        ${index === 0 ? '<div class="crown-container"><img src="crown.png" alt="Crown" class="animated-crown"></div>' : ''}
+        ${index + 1}
+    </th>
+                    <th>${user.username}</th>
+                    <th>${user.section}</th>
+                    <th>${user.id}</th>
+                    <th>${user.points}</th>
+                `;
+    
+                leaderboardTable.appendChild(row);
+            });
+        } catch (error) {
+            console.error("Error fetching or populating leaderboard:", error);
         }
-
-        if (!user || user.length === 0) {
-            console.log("No users found in the database.");
-            leaderboardTable.innerHTML = "<tr><td colspan='5'>No data available</td></tr>";
-            return;
-        }
-
-        // Sort users by points in descending order
-        const sortedUsers = user.sort((a, b) => b.points - a.points);
-
-        // Clear existing rows
-        leaderboardTable.innerHTML = "";
-
-        // Add sorted user data to the table
-        sortedUsers.forEach((user, index) => {
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-                <th class="top${index + 1}">${index + 1}</th>
-                <th>${user.username}</th>
-                <th>${user.section}</th>
-                <th>${user.id}</th>
-                <th>${user.points}</th>
-            </tr>`;
-
-            leaderboardTable.appendChild(row);
-        });
-    } catch (error) {
-        console.error("Error fetching or populating leaderboard:", error);
     }
-}
-
-// Call the function to fetch and populate the leaderboard
-fetchAndPopulateLeaderboard();
+    
+    // Call the function to fetch and populate the leaderboard
+    fetchAndPopulateLeaderboard();
 
 
 const exitButton = document.querySelector("#exit-button");
@@ -676,11 +809,11 @@ exitButton.addEventListener("click", function () {
     document.querySelector('.randomtext').style.display = 'block';
     document.querySelector('.logo').style.display = 'block';
     document.querySelector('.userMenu').style.display = 'block';
+    document.querySelector('.customNotifier').style.display = 'block';
+    document.querySelector('.feedback').style.display = 'block';    
 
     console.log("Game exited and hidden.");
 });
-
-
 
 });
 
