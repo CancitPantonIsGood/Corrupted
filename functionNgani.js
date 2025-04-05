@@ -1,4 +1,3 @@
-
 // Select all menu hyperlinks
 const menuLinks = document.querySelectorAll('.userMenu .menu a, .userMenu .sources a');
 const hoverSound = document.getElementById('selectingSound');
@@ -248,8 +247,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Function to start the game
-    function startGame(language, difficulty, questionIndex = 0) {
+     // Function to start the game
+     function startGame(language, difficulty, questionIndex = 0) {
         console.log(`Starting game with ${language} - ${difficulty}, Question: ${questionIndex + 1}`);
     
         const unfixedCodeDiv = document.querySelector('.unfixedCode');
@@ -337,9 +336,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (correctCodes && correctCodes.some(correctCode => userCode.toLowerCase() === correctCode.trim().toLowerCase())) {
                     if (progressIcon.dataset.status !== 'completed' && progressIcon.dataset.status !== 'incorrect') {
                         customNotification.style.display = 'block';
-                        customNotification.innerHTML = '<p>You fixed it! Loading next challenge...</p>';
-                        customNotification.style.backgroundColor = 'green';
-            
+                        customNotification.innerHTML = '<p>YOU FIXED IT!';
+                        customNotification.style.color = 'green';
+                        customNotification.style.border = '2px solid rgb(0, 255, 42)';
+                        customNotification.style.boxShadow = '0 0 10px rgb(0, 255, 115), 0 0 20px rgb(30, 255, 0)';
+                        customNotification.style.webkitTextStroke = '2px #00ff80';
+
                         progressIcon.textContent = '✔'; 
                         progressIcon.style.color = 'green';
                         progressIcon.dataset.status = 'completed';
@@ -347,8 +349,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     if (progressIcon.dataset.status !== 'completed') {
                         customNotification.style.display = 'block';
-                        customNotification.innerHTML = '<p>Incorrect. Try again!</p>';
-                        customNotification.style.backgroundColor = 'red';
+                        customNotification.innerHTML = '<p>ERROR OCCURED!</p>';
+                        customNotification.style.color = 'red';
+                        customNotification.style.border = '2px solid red';
+                        customNotification.style.webkitTextStroke = '2px white';
+                        customNotification.style.boxShadow = '0 0 10px rgb(255, 0, 128), 0 0 20px rgb(255, 0, 76)';
             
                         progressIcon.textContent = '✖';
                         progressIcon.style.color = 'red';
@@ -798,21 +803,40 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     // Call the function to fetch and populate the leaderboard
     fetchAndPopulateLeaderboard();
 
+// Function to reset the game state
+function resetGame() {
+    // Reset the editor content
+    if (window.editor) {
+        window.editor.setValue('');
+    }
+
+    // Reset game-related UI elements
+    document.querySelector('.gameTitle').textContent = '';
+    document.querySelector('.unfixedCode').innerHTML = '';
+    document.querySelector('.guide-text').innerHTML = '';
+    document.querySelector('#editor-container').innerHTML = '';
+    document.querySelector('.questions-finished-num .icon').textContent = '';
+    document.querySelector('.questions-finished-num .icon').dataset.status = '';
+
+    // Hide game-specific elements
+    document.querySelector('.gameScreen').style.display = 'none';
+    document.querySelector('.languageMenu').style.display = 'none';
+    document.querySelector('.difficultiesMenu').style.display = 'none';
+}
 
 const exitButton = document.querySelector("#exit-button");
 
 exitButton.addEventListener("click", function () {
-    gameScreen.style.display = "none";
+    resetGame(); // Call the reset function
 
-    languageMenu.style.display = "none";
-    difficultiesMenu.style.display = "none";
+    // Show the main menu and other UI elements
     document.querySelector('.randomtext').style.display = 'block';
     document.querySelector('.logo').style.display = 'block';
     document.querySelector('.userMenu').style.display = 'block';
     document.querySelector('.customNotifier').style.display = 'block';
-    document.querySelector('.feedback').style.display = 'block';    
+    document.querySelector('.feedback').style.display = 'block';
 
-    console.log("Game exited and hidden.");
+    console.log("Game exited and reset.");
 });
 
 });
