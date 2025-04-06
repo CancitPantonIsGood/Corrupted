@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'public class Main {\n    \npublic static void main(String[] args) {\n    print("Hello World")\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    string x;\n    system.out.print(x);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    int a = 5;\n    int b = 10\n    System.out.println(a + b);\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Neighbor!")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    String name = "Jhon Doe";\n    System.our.println(name);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, League!")\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Java!");\n    }\n',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Easy!");\n    }\n}',
@@ -351,8 +351,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const guide = guideQuestions[language]?.[difficulty];
 
         // Escape HTML characters in the buggy code
-const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
+        const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
 
     
         // Set the guide text
@@ -389,7 +389,7 @@ unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
                 const userCode = window.editor.getValue().trim();
                 const correctCodes = solutions[language]?.[difficulty];
                 console.log("User Code:", userCode);
-console.log("Correct Codes:", correctCodes);
+                console.log("Correct Codes:", correctCodes);
             
                 const progressIcon = document.querySelector(`.questions-finished-num[data-question="${questionIndex + 1}"] .icon`);
                 const customNotification = document.getElementById('customNotification');
@@ -494,59 +494,6 @@ function generateBuggyCode(language) {
     return buggyCode;
 }
 
-function startInfiniteMode() {
-    document.querySelector('.playMenu').style.display = 'none';
-    document.querySelector('.languageMenu').style.display = 'none';
-    document.querySelector('.difficultiesMenu').style.display = 'none';
-
-    const gameScreen = document.querySelector('.gameScreen');
-    gameScreen.style.display = 'block';
-
-    const gameTitle = document.querySelector('.gameTitle');
-    gameTitle.textContent = "INFINITE Mode - Test Your Limits";
-
-    const unfixedCodeDiv = document.querySelector('.unfixedCode');
-    const guideTextDiv = document.querySelector('.guide-text');
-    const editorContainer = document.querySelector('#editor-container');
-
-    const languages = Object.keys(infiniteBuggyCodeTemplates);
-    const selectedLanguage = languages[Math.floor(Math.random() * languages.length)];
-
-    const buggyCode = generateBuggyCode(selectedLanguage);
-
-    unfixedCodeDiv.innerHTML = `<pre>${buggyCode.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
-    guideTextDiv.innerHTML = `<p>Fix the bugs in the ${selectedLanguage.toUpperCase()} code!</p>`;
-
-    editorContainer.innerHTML = `
-        <textarea id="infinite-textarea" class="code-editor" rows="15" style="width: 100%; font-family: monospace; font-size: 14px;">${buggyCode}</textarea>
-    `;
-
-    console.log("Infinite mode started with language:", selectedLanguage);
-
-    const submitButton = document.getElementById('submit-button');
-    submitButton.onclick = function () {
-        const userCode = document.getElementById('infinite-textarea').value.trim();
-
-        const correctCodes = solutions[selectedLanguage]?.easy; // Adjust difficulty if needed
-        const customNotification = document.getElementById('customNotification');
-
-        if (correctCodes && correctCodes.some(correctCode => userCode === correctCode.trim())) {
-            customNotification.style.display = 'block';
-            customNotification.innerHTML = '<p>You fixed it! Loading next challenge...</p>';
-            customNotification.style.backgroundColor = 'green';
-
-            // Load the next buggy code after a delay
-            setTimeout(() => {
-                customNotification.style.display = 'none';
-                startInfiniteMode(); // Restart infinite mode with a new buggy code
-            }, 2000);
-        } else {
-            customNotification.style.display = 'block';
-            customNotification.innerHTML = '<p>Incorrect. Try again!</p>';
-            customNotification.style.backgroundColor = 'red';
-        }
-    };
-}
 
 // Attach event listener to the infinite button
 document.getElementById('infinite-button').addEventListener('click', startInfiniteMode);
@@ -906,6 +853,142 @@ exitButton.addEventListener("click", function () {
 
     console.log("Game exited and reset.");
 });
+// Function to start Infinite Mode
+function startInfiniteMode() {
+    console.log("Starting Infinite Mode");
+
+    // Hide menus and show the game screen
+    document.querySelector('.languageMenu').style.display = 'none';
+    document.querySelector('.difficultiesMenu').style.display = 'none';
+    document.querySelector('.gameScreen').style.display = 'block';
+    document.querySelector('.randomtext').style.display = 'none';
+    document.querySelector('.feedback').style.display = 'none';
+    document.querySelector('.logo').style.display = 'none';
+    document.querySelector('.customNotifier').style.display = 'none';
+    document.querySelector('.userMenu').style.display = 'none';
+    document.querySelector('.playMenu').style.display = 'none';
+
+    const editorContainer = document.getElementById('editor-container');
+    const unfixedCodeDiv = document.querySelector('.unfixedCode');
+    const guideTextDiv = document.querySelector('.guide-text');
+    const submitButton = document.getElementById('submit-button');
+
+    // Function to load a random question
+    function loadRandomQuestion() {
+        const languages = Object.keys(infiniteBuggyCodeTemplates);
+        const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
+        const buggyCode = generateBuggyCode(randomLanguage);
+
+        // Escape HTML characters in the buggy code
+        const escapedCode = buggyCode.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
+
+        // Set the guide text
+        guideTextDiv.innerHTML = `<p>Fix the code in ${randomLanguage.toUpperCase()}!</p>`;
+
+        // Update the game title
+        document.querySelector('.gameTitle').textContent = `INFINITE MODE`;
+
+        // Initialize the editor
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
+        require(['vs/editor/editor.main'], function () {
+            if (window.editor) {
+                window.editor.dispose();
+            }
+
+            window.editor = monaco.editor.create(editorContainer, {
+                value: buggyCode || '',
+                language: randomLanguage,
+                theme: 'vs-dark',
+                fontSize: 14,
+                automaticLayout: true
+            });
+        });
+
+        // Attach submit button logic
+        submitButton.replaceWith(submitButton.cloneNode(true));
+        const newSubmitButton = document.getElementById('submit-button');
+        newSubmitButton.addEventListener('click', function () {
+            handleSubmit(randomLanguage, buggyCode, loadRandomQuestion);
+        });
+    }
+
+    // Load the first random question
+    loadRandomQuestion();
+}
+
+// Reusable handleSubmit function
+function handleSubmit(language, buggyCode, loadNextQuestion) {
+    const userCode = window.editor.getValue().trim();
+    const correctSolutions = infiniteSolutions[language];
+    const customNotification = document.getElementById('customNotification');
+    const progressIcon = document.querySelector('.questions-finished-num .icon'); // Progress indicator
+
+    if (correctSolutions && correctSolutions.some(solution => userCode === solution.trim())) {
+        // Correct solution
+        customNotification.style.display = 'block';
+        customNotification.innerHTML = '<p>YOU FIXED IT!</p>';
+        customNotification.style.color = 'green';
+        customNotification.style.border = '2px solid rgb(0, 255, 42)';
+        customNotification.style.boxShadow = '0 0 10px rgb(0, 255, 115), 0 0 20px rgb(30, 255, 0)';
+        customNotification.style.webkitTextStroke = '2px #00ff80';
+
+        // Update progress indicator
+        if (progressIcon) {
+            progressIcon.textContent = '✔'; // Mark as correct
+            progressIcon.style.color = 'green';
+            progressIcon.dataset.status = 'completed';
+        }
+
+        // Load the next random question after a delay
+        setTimeout(() => {
+            customNotification.style.display = 'none';
+            loadNextQuestion(); // Call to load the next question
+        }, 2000);
+    } else {
+        // Incorrect solution
+        customNotification.style.display = 'block';
+        customNotification.innerHTML = '<p>SYNTAX ERROR!</p>';
+        customNotification.style.color = 'red';
+        customNotification.style.border = '2px solid red';
+        customNotification.style.webkitTextStroke = '2px white';
+        customNotification.style.boxShadow = '0 0 10px rgb(255, 0, 128), 0 0 20px rgb(255, 0, 76)';
+
+        // Update progress indicator
+        if (progressIcon) {
+            progressIcon.textContent = '✖'; // Mark as incorrect
+            progressIcon.style.color = 'red';
+            progressIcon.dataset.status = 'incorrect';
+        }
+
+        // Allow the user to try again
+        setTimeout(() => {
+            customNotification.style.display = 'none';
+            loadNextQuestion(); // Call to load the next question even after an incorrect attempt
+        }, 2000);
+    }
+}
+
+// Define the infiniteSolutions object
+const infiniteSolutions = {
+    java: [
+        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}',
+        'public class Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n}',
+        'import java.util.ArrayList;\npublic class DataManager {\n    ArrayList<String> data = new ArrayList<>();\n    public void addData(String item) {\n        data.add(item);\n    }\n}'
+    ],
+    html: [
+        '<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample Page</title>\n</head>\n<body>\n    <h1>Welcome</h1>\n</body>\n</html>',
+        '<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal</li>\n        <li>Infinite</li>\n    </ul>\n</div>',
+        '<form action="/submit" method="post">\n    <label for="name">Name:</label>\n    <input type="text" id="name" name="name">\n    <input type="submit" value="Submit">\n</form>'
+    ],
+    css: [
+        'body {\n    background-color: #fff;\n    color: #000;\n    font-family: Arial, sans-serif;\n}',
+        '.button {\n    background-color: blue;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}',
+        '#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}'
+    ]
+};
 
 });
+
+
 
