@@ -859,14 +859,15 @@
   background: rgba(0, 0, 0, 0.5);
   width: 340px;
   height: 487px;
-}
-
-
-
-.CHALLENGEMODE:hover h3 {
   opacity: 1;
 }
 
+
+/*
+.CHALLENGEMODE:hover h3 {
+  opacity: 0;
+}
+*/
 
 /*difficulties */
 .difficultiesMenu {
@@ -1569,6 +1570,9 @@
   background: linear-gradient(315deg,#ff0058,#ff7b00);
   transition: all 0.09s ease;
 }
+.CHALLENGEMODE h3 {
+  opacity: 1;
+}
 
 .CHALLENGEMODE b {
   position: absolute;
@@ -1583,7 +1587,7 @@
 .CHALLENGEMODE h2 {
   z-index: 5;
   position: relative;
-  
+  color: black;
   top: 0;
   transition: all 0.2s ease;
   -webkit-text-stroke: .1px red;
