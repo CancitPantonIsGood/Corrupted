@@ -987,6 +987,21 @@ const infiniteSolutions = {
         '#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}'
     ]
 };
+// Function to detect if the user is on a mobile or tablet device
+function isMobileOrTablet() {
+    return /Mobi|Android|iPad|iPhone|Tablet/i.test(navigator.userAgent);
+}
+
+// Restrict access for mobile or tablet devices
+if (isMobileOrTablet()) {
+    document.body.innerHTML = `
+        <div style="text-align: center; margin-top: 20%; font-family: Arial, sans-serif;">
+            <h1>Access Restricted</h1>
+            <p>This website is only available for computers or laptops.</p>
+            <p>Please access this website from a desktop or laptop device.</p>
+        </div>
+    `;
+}
 
 });
 
