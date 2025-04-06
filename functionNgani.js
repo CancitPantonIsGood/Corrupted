@@ -141,16 +141,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const buggyCodeSamples = {
         java: {
             easy: [
-                'public class Main {\n    \npublic static void main(String[] arg) {\n    zystem.out.println("Hello, World!")\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    system.out.println("Hello, Corrupted!")\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Santos!")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    print("Hello World")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    string x;\n    system.out.print(x);\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    int a = 5;\n    int b = 10\n    System.out.println(a + b);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Neighbor!")\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, League!")\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Java!");\n    }\n', // Missing closing brace
-        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Easy!");\n    }\n}', // Typo in "System" (e.g., "Systm")
-        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Buggy!");\n    }\n}', // Missing semicolon
-        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Code!");\n    }\n}', // Incorrect method name (e.g., "mainn")
-        'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}' // Extra parentheses in "println"
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Java!");\n    }\n',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Easy!");\n    }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Buggy!");\n    }\n}', 
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Code!");\n    }\n}', 
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, World!");\n    }\n}'
             ],
             moderate: [
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
@@ -168,23 +168,58 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
     },
     html: {
-            easy: `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
-            moderate: `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
-            hardcore: `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username">\n    <input type="submit" value="Submit">\n</form>`
-        },
+        easy: [
+            `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
+            `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample Page</title>\n</head>\n<body>\n    <h1>Sample Header</h1>\n    <p>Sample paragraph.</p>\n</body>\n</html>`,
+            `<!DOCTYPE html>\n<html>\n<head>\n    <title>Test Page</title>\n</head>\n<body>\n    <h1>Test Header</h1>\n    <p>Test paragraph.</p>\n</body>\n</html>`,
+            `<!DOCTYPE html>\n<html>\n<head>\n    <title>Example Page</title>\n</head>\n<body>\n    <h1>Example Header</h1>\n    <p>Example paragraph.</p>\n</body>\n</html>`,
+            `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo Page</title>\n</head>\n<body>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</body>\n</html>`
+        ],
+        moderate: [
+            `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
+            `<div class="content">\n    <h1>Welcome</h1>\n    <p>This is a sample content block.</p>\n</div>`,
+            `<div class="header">\n    <h1>Header</h1>\n    <nav>\n        <ul>\n            <li>Home</li>\n            <li>About</li>\n            <li>Contact</li>\n        </ul>\n    </nav>\n</div>`,
+            `<section>\n    <h2>Section Title</h2>\n    <p>Section content goes here.</p>\n</section>`,
+            `<footer>\n    <p>Footer content</p>\n</footer>`
+        ],
+        hardcore: [
+            `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username">\n    <input type="submit" value="Submit">\n</form>`,
+            `<form>\n    <label for="email">Email:</label>\n    <input type="email" id="email" name="email">\n    <button type="submit">Submit</button>\n</form>`,
+            `<article>\n    <h1>Article Title</h1>\n    <p>Article content goes here.</p>\n</article>`,
+            `<aside>\n    <h2>Sidebar</h2>\n    <p>Sidebar content goes here.</p>\n</aside>`,
+            `<header>\n    <h1>Header Title</h1>\n    <p>Header description.</p>\n</header>`
+        ]
+    },
     css: {
-            easy: `body {\n    background-color: #222;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
-            moderate: `.button {\n    background: blue;\n    padding: 10px;\n    border-radius: 5px;\n    color: #fff;\n}`,
-            hardcore: `#gameScreen {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}`
-        }
-    };
+        easy: [
+            `body {\n    background-color: yellow;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
+            `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
+            `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
+            `.container {\n    width: 80%;\n    margin: 0 auto;\n    padding: 20px;\n}`,
+            `.button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}`
+        ],
+        moderate: [
+            `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
+            `.footer {\n    background-color: #222;\n    color: #ccc;\n    padding: 20px;\n    text-align: center;\n}`,
+            `.nav {\n    display: flex;\n    justify-content: space-around;\n    background-color: #444;\n    padding: 10px;\n}`,
+            `.card {\n    border: 1px solid #ccc;\n    padding: 15px;\n    border-radius: 10px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n}`,
+            `.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 20px;\n}`
+        ],
+        hardcore: [
+            `#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}`,
+            `.modal {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background-color: white;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n}`,
+            `.tooltip {\n    position: relative;\n    display: inline-block;\n    cursor: pointer;\n}`,
+            `.tooltip .tooltip-text {\n    visibility: hidden;\n    width: 120px;\n    background-color: black;\n    color: #fff;\n    text-align: center;\n    padding: 5px;\n    border-radius: 5px;\n    position: absolute;\n    z-index: 1;\n}`,
+            `.tooltip:hover .tooltip-text {\n    visibility: visible;\n}`
+        ]
+    }};
     
     const solutions = {
         java: {
             easy: [
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, World!");\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Corrupted!");\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Santos!");\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello World");\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    String x = "Hello World";\n    system.out.print(x);\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    int a = 5;\n    int b = 10;\n    System.out.println(a + b);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Neighbor!");\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, League!");\n   }\n}',
                 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Java!");\n    }\n}',
@@ -209,16 +244,53 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
         html: {
-            easy: `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
-            moderate: `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
-            hardcore: `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username" required>\n    <input type="submit" value="Submit">\n</form>`
+            easy: [
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample Page</title>\n</head>\n<body>\n    <h1>Sample Header</h1>\n    <p>Sample paragraph.</p>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Test Page</title>\n</head>\n<body>\n    <h1>Test Header</h1>\n    <p>Test paragraph.</p>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Example Page</title>\n</head>\n<body>\n    <h1>Example Header</h1>\n    <p>Example paragraph.</p>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo Page</title>\n</head>\n<body>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</body>\n</html>`
+            ],
+            moderate: [
+                `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
+                `<div class="content">\n    <h1>Welcome</h1>\n    <p>This is a sample content block.</p>\n</div>`,
+                `<div class="header">\n    <h1>Header</h1>\n    <nav>\n        <ul>\n            <li>Home</li>\n            <li>About</li>\n            <li>Contact</li>\n        </ul>\n    </nav>\n</div>`,
+                `<section>\n    <h2>Section Title</h2>\n    <p>Section content goes here.</p>\n</section>`,
+                `<footer>\n    <p>Footer content</p>\n</footer>`
+            ],
+            hardcore: [
+                `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username" required>\n    <input type="submit" value="Submit">\n</form>`,
+                `<form>\n    <label for="email">Email:</label>\n    <input type="email" id="email" name="email" required>\n    <button type="submit">Submit</button>\n</form>`,
+                `<article>\n    <h1>Article Title</h1>\n    <p>Article content goes here.</p>\n</article>`,
+                `<aside>\n    <h2>Sidebar</h2>\n    <p>Sidebar content goes here.</p>\n</aside>`,
+                `<header>\n    <h1>Header Title</h1>\n    <p>Header description.</p>\n</header>`
+            ]
         },
         css: {
-            easy: `body {\n    background-color: transparent;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
-            moderate: `.button {\n    background: blue;\n    padding: 10px;\n    border-radius: 5px;\n    color: #fff;\n    cursor: pointer;\n}`,
-            hardcore: `#gameScreen {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n    flex-direction: column;\n}`
+            easy: [
+                `body {\n    background-color: yellow;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
+                `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
+                `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
+                `.container {\n    width: 80%;\n    margin: 0 auto;\n    padding: 20px;\n}`,
+                `.button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}`
+            ],
+            moderate: [
+                `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
+                `.footer {\n    background-color: #222;\n    color: #ccc;\n    padding: 20px;\n    text-align: center;\n}`,
+                `.nav {\n    display: flex;\n    justify-content: space-around;\n    background-color: #444;\n    padding: 10px;\n}`,
+                `.card {\n    border: 1px solid #ccc;\n    padding: 15px;\n    border-radius: 10px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n}`,
+                `.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 20px;\n}`
+            ],
+            hardcore: [
+                `#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}`,
+                `.modal {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background-color: white;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n}`,
+                `.tooltip {\n    position: relative;\n    display: inline-block;\n    cursor: pointer;\n}`,
+                `.tooltip .tooltip-text {\n    visibility: hidden;\n    width: 120px;\n    background-color: black;\n    color: #fff;\n    text-align: center;\n    padding: 5px;\n    border-radius: 5px;\n    position: absolute;\n    z-index: 1;\n}`,
+                `.tooltip:hover .tooltip-text {\n    visibility: visible;\n}`
+            ]
         }
     };
+
     
     const guideQuestions = {
         java: {
@@ -277,15 +349,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get the buggy code and guide text
         const code = buggyCodeSamples[language][difficulty][questionIndex];
         const guide = guideQuestions[language]?.[difficulty];
-    
-        // Check if the code exists
-        if (code) {
-            unfixedCodeDiv.innerHTML = `<pre>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>`;
-        } else {
-            unfixedCodeDiv.innerHTML = '<pre>Code not found for this selection</pre>';
-            console.error(`Buggy code not found for language "${language}", difficulty "${difficulty}", question ${questionIndex + 1}.`);
-            return;
-        }
+
+        // Escape HTML characters in the buggy code
+const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
+
     
         // Set the guide text
         guideTextDiv.innerHTML = guide ? `<p>${guide}</p>` : '<p>No guide available for this selection</p>';
@@ -320,6 +388,8 @@ document.addEventListener("DOMContentLoaded", function () {
             function handleSubmit() {
                 const userCode = window.editor.getValue().trim();
                 const correctCodes = solutions[language]?.[difficulty];
+                console.log("User Code:", userCode);
+console.log("Correct Codes:", correctCodes);
             
                 const progressIcon = document.querySelector(`.questions-finished-num[data-question="${questionIndex + 1}"] .icon`);
                 const customNotification = document.getElementById('customNotification');
@@ -349,7 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     if (progressIcon.dataset.status !== 'completed') {
                         customNotification.style.display = 'block';
-                        customNotification.innerHTML = '<p>ERROR OCCURED!</p>';
+                        customNotification.innerHTML = '<p>SYNTAX ERROR!</p>';
                         customNotification.style.color = 'red';
                         customNotification.style.border = '2px solid red';
                         customNotification.style.webkitTextStroke = '2px white';
@@ -675,7 +745,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
                 id: user.id,
                 title: user.title,
                 section: user.section,
-                profilePicture: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+                profilePicture: "",
             };
             localStorage.setItem("loggedInUser", username);
             localStorage.setItem(username, JSON.stringify(userData));
@@ -693,8 +763,6 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     });
 
     profileInput.addEventListener("change", function () {
-        const defProfile = document.querySelector(".profile-picture");
-        defProfile.src = "noprofile.png";
         const file = profileInput.files[0];
         if (file) {
             const reader = new FileReader();
