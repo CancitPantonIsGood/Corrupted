@@ -1021,7 +1021,7 @@ function isMobileOrTablet() {
 }
 
 // Restrict access for mobile or tablet devices
-/*if (isMobileOrTablet()) {
+if (isMobileOrTablet()) {
     document.body.innerHTML = `
     <body background="black"; color:white;>
         <div style="text-align: center; margin-top: 20%; font-family: Arial, sans-serif;">
@@ -1030,7 +1030,7 @@ function isMobileOrTablet() {
             <p>Please access this website from a desktop or laptop device.</p>
         </div>
     </body>`;
-}*/
+}
 function showCinematicText(callback) {
     const messages = [
         "GAME ON",
