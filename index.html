@@ -86,11 +86,11 @@
         <!-- USER MENU -->
         <div class="userMenu">
             <div class="menu">
-                <a href="#"  class="play">Play</a>
-                <a href="#"  class="profile">Profile</a>
-                <a href="#"  class="settings">Settings</a>
-                <a href="#"  class="leaderboard">Leaderboard</a>
-                <a href="#"  class="credits">Credits</a>
+                <a href="#"  class="play">PLAY</a>
+                <a href="#"  class="profile">PROFILE</a>
+                <a href="#"  class="settings">SETTINGS</a>
+                <a href="#"  class="leaderboard">LEADERBOARD</a>
+                <a href="#"  class="credits">ABOUT US</a>
             </div>
             <div class="sources">
                 <a href="#" ><img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png " width="55px" class="fb"></a>
@@ -165,6 +165,7 @@
                     <p>Some guiding text</p>
                 </div>
             </div>
+        </div>
             
         </div>
         <div class="customNotification" id="customNotification" style="display:none;">
@@ -241,7 +242,8 @@
             </div>
         </div>
         <div class="creditsMenu">
-            <h2 class="titleName">Credits</h2>
+            <h2 class="titleName">About Us</h2>
+            <p>We are the CORRUPTED PROMPT developer from ICT-402 of STI COLLEGE FAIRVIEW</p>
             
         </div>
         <div class="randomtext">
@@ -255,13 +257,22 @@
         <div class="feedback">
             <c class="close">-</c>
             <p class="text">We value your opinion! Please take a moment to share your thoughts with us. Let us know your experiences through our website</p>
+            <textarea class="feedback-textarea" placeholder="Type your feedback here..."></textarea>
             <b class="wall"></b>
             <div class="textarea"></div>
             <h2>FEEDBACK</h2>
         </div>
+        <div class="cinematic-text" id="cinematicText" style="display: none;">
+            <p id="cinematicMessage" data-text="CORRUPTED PROMPT"></p>
+        </div>
+        <div class="gameOverScreen" style="display: none;">
+            <h2>Game Over</h2>
+            <div class="gameOverButtons">
+                <button id="return-button">Return</button>
+                <button id="play-again-button">Play Again</button>
+            </div>
+        </div>
         <script type="module" src="functionNgani.js"></script>
     </div>
-
-
 </body>
 </html>

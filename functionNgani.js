@@ -315,26 +315,37 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const lang in buggyCodeSamples) {
         questionIndices[lang] = {};
         for (const level in buggyCodeSamples[lang]) {
-            questionIndices[lang][level] = 0; // Start at the first question
+            questionIndices[lang][level] = 0; /* 0 */ // Start at the first question
         }
     }
 
-     // Function to start the game
-     function startGame(language, difficulty, questionIndex = 0) {
+    function startGame(language, difficulty, questionIndex = 0, isFirstGame = true) {
         console.log(`Starting game with ${language} - ${difficulty}, Question: ${questionIndex + 1}`);
+    
+        if (isFirstGame) {
+            showCinematicText(() => {
+                initializeGame(language, difficulty, questionIndex);
+            });
+        } else {
+            initializeGame(language, difficulty, questionIndex);
+        }
+    }
+    
+    function initializeGame(language, difficulty, questionIndex) {
+        console.log("Game is starting...");
+
+        document.querySelector('.gameScreen').style.display = 'block';
     
         const unfixedCodeDiv = document.querySelector('.unfixedCode');
         const guideTextDiv = document.querySelector('.guide-text');
         const editorContainer = document.getElementById('editor-container');
         const submitButton = document.getElementById('submit-button');
-    
-        // Ensure the editor container exists
+
         if (!editorContainer) {
             console.error("Editor container not found in the DOM.");
             return;
         }
     
-        // Validate language and difficulty
         if (!buggyCodeSamples[language]) {
             console.error(`Language "${language}" not found in buggyCodeSamples.`);
             unfixedCodeDiv.innerHTML = `<pre>Language "${language}" not found.</pre>`;
@@ -346,19 +357,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
     
-        // Get the buggy code and guide text
         const code = buggyCodeSamples[language][difficulty][questionIndex];
         const guide = guideQuestions[language]?.[difficulty];
 
-        // Escape HTML characters in the buggy code
         const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
-
     
-        // Set the guide text
         guideTextDiv.innerHTML = guide ? `<p>${guide}</p>` : '<p>No guide available for this selection</p>';
-    
-        // Update the game title
+
         document.querySelector('.gameTitle').textContent = `${language.toUpperCase()} - ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}`;
     
         // Show the game screen
@@ -374,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             if (window.editor) {
-                window.editor.dispose(); 
+                window.editor.dispose();
             }
     
             window.editor = monaco.editor.create(editorContainer, {
@@ -384,26 +390,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 fontSize: 14,
                 automaticLayout: true
             });
-            
+    
             function handleSubmit() {
                 const userCode = window.editor.getValue().trim();
                 const correctCodes = solutions[language]?.[difficulty];
                 console.log("User Code:", userCode);
                 console.log("Correct Codes:", correctCodes);
-            
+    
                 const progressIcon = document.querySelector(`.questions-finished-num[data-question="${questionIndex + 1}"] .icon`);
                 const customNotification = document.getElementById('customNotification');
-            
+    
                 if (!progressIcon) {
                     console.error(`Progress icon for "Question ${questionIndex + 1}" not found.`);
                     return;
                 }
-            
-                // Disable the submit button to prevent multiple clicks
+
+                function normalizeCode(code) {
+                    return code.replace(/\s+/g, ' ').trim();
+                }
+
+                console.log("User Code:", JSON.stringify(userCode));
+                console.log("Correct Codes:", correctCodes.map(code => JSON.stringify(code)));
                 const submitButton = document.getElementById('submit-button');
                 submitButton.disabled = true;
-            
-                if (correctCodes && correctCodes.some(correctCode => userCode.toLowerCase() === correctCode.trim().toLowerCase())) {
+    
+                if (correctCodes && correctCodes.some(correctCode => normalizeCode(userCode) === normalizeCode(correctCode))) {
                     if (progressIcon.dataset.status !== 'completed' && progressIcon.dataset.status !== 'incorrect') {
                         customNotification.style.display = 'block';
                         customNotification.innerHTML = '<p>YOU FIXED IT!';
@@ -411,8 +422,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         customNotification.style.border = '2px solid rgb(0, 255, 42)';
                         customNotification.style.boxShadow = '0 0 10px rgb(0, 255, 115), 0 0 20px rgb(30, 255, 0)';
                         customNotification.style.webkitTextStroke = '2px #00ff80';
-
-                        progressIcon.textContent = '✔'; 
+    
+                        progressIcon.textContent = '✔';
                         progressIcon.style.color = 'green';
                         progressIcon.dataset.status = 'completed';
                     }
@@ -424,28 +435,34 @@ document.addEventListener("DOMContentLoaded", function () {
                         customNotification.style.border = '2px solid red';
                         customNotification.style.webkitTextStroke = '2px white';
                         customNotification.style.boxShadow = '0 0 10px rgb(255, 0, 128), 0 0 20px rgb(255, 0, 76)';
-            
+    
                         progressIcon.textContent = '✖';
                         progressIcon.style.color = 'red';
                         progressIcon.dataset.status = 'incorrect';
                     }
                 }
-            
-                // Load the next question after a delay
-                const nextQuestionIndex = (questionIndex + 1) % buggyCodeSamples[language][difficulty].length;
-                setTimeout(() => {
-                    customNotification.style.display = 'none'; // Hide notification after 2 seconds
-                    submitButton.disabled = false; // Re-enable the submit button for the next question
-                    startGame(language, difficulty, nextQuestionIndex); // Pass the next question index
-                }, 2000);
+    
+                if (questionIndex + 1 === buggyCodeSamples[language][difficulty].length) {
+                    setTimeout(() => {
+                        customNotification.style.display = 'none';
+                        showGameOverScreen();
+                    }, 2000);
+                } else {
+
+                    const nextQuestionIndex = (questionIndex + 1) % buggyCodeSamples[language][difficulty].length;
+                    setTimeout(() => {
+                        customNotification.style.display = 'none'; 
+                        submitButton.disabled = false; 
+                        startGame(language, difficulty, nextQuestionIndex, false); 
+                    }, 2000);
+                }
             }
     
-            // Remove any previous event listeners and attach the handleSubmit function to the submit button
+            
             submitButton.replaceWith(submitButton.cloneNode(true));
             const newSubmitButton = document.getElementById('submit-button');
             newSubmitButton.addEventListener('click', handleSubmit);
         });
-        
     }
 
     // Pool of buggy code templates
@@ -501,7 +518,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     // Event listeners for language selection
     document.querySelectorAll('.languageMenu div').forEach(option => {
         option.addEventListener('click', function () {
-            selectedLanguage = option.getAttribute('data-language'); // Use a data attribute for language
+            selectedLanguage = option.getAttribute('data-language');
             console.log("Selected language:", selectedLanguage);
 
             // Hide language menu and show difficulties menu
@@ -513,7 +530,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     // Event listeners for difficulty selection
     document.querySelectorAll('.difficultiesMenu div').forEach(option => {
         option.addEventListener('click', function () {
-            selectedDifficulty = option.getAttribute('data-difficulty'); // Use a data attribute for difficulty
+            selectedDifficulty = option.getAttribute('data-difficulty'); 
             console.log("Selected difficulty:", selectedDifficulty);
 
             // Hide difficulties menu and show game screen
@@ -610,13 +627,13 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         }
         
         try {
-            const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
+            const hashedPassword = await bcrypt.hash(password, 10);
             const { data, error } = await supabase
                 .from("user")
                 .insert([
                     {
                         username: username,
-                        password: hashedPassword, // Store the hashed password
+                        password: hashedPassword,
                         id: id,
                         section: section,
                         title: title,
@@ -648,9 +665,8 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         }
     
         try {
-            // Fetch the user data from Supabase
             const { data: users, error } = await supabase
-                .from("user") // Replace 'user' with your actual table name
+                .from("user")
                 .select("username, password, id, section, title")
                 .eq("username", username);
     
@@ -667,27 +683,22 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     
             const user = users[0];
     
-            // Debugging: Log the entered and stored passwords
             console.log("Entered password:", password);
             console.log("Stored hashed password:", user.password);
     
-            // Validate the password
             const isPasswordValid = await bcrypt.compare(password, user.password);
-            console.log("Password valid:", isPasswordValid); // Debugging
+            console.log("Password valid:", isPasswordValid);
     
             if (!isPasswordValid) {
                 alert("Invalid username or password.");
                 return;
             }
     
-            // Login successful
             alert("Login successful!");
     
-            // Show main content
             authContainer.style.display = "none";
             mainContainer.style.display = "block";
     
-            // Save user data to local storage
             const userData = {
                 id: user.id,
                 title: user.title,
@@ -697,7 +708,6 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             localStorage.setItem("loggedInUser", username);
             localStorage.setItem(username, JSON.stringify(userData));
     
-            // Update profile information
             profileName.textContent = username;
             profileID.textContent = `ID: ${user.id}`;
             profileTitle.textContent = `Status: ${user.title}`;
@@ -799,9 +809,9 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     
                 row.innerHTML = `
                     <th class="top${index + 1}">
-        ${index === 0 ? '<div class="crown-container"><img src="crown.png" alt="Crown" class="animated-crown"></div>' : ''}
-        ${index + 1}
-    </th>
+                        ${index === 0 ? '<div class="crown-container"><img src="crown.png" alt="Crown" class="animated-crown"></div>' : ''}
+                        ${index + 1}
+                    </th>
                     <th>${user.username}</th>
                     <th>${user.section}</th>
                     <th>${user.id}</th>
@@ -822,21 +832,39 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
 function resetGame() {
     // Reset the editor content
     if (window.editor) {
-        window.editor.setValue('');
+        window.editor.setValue(''); // Clear the editor
+        window.editor.dispose(); // Dispose of the editor instance
+        window.editor = null; // Reset the editor reference
     }
 
-    // Reset game-related UI elements
+    // Reset game UI elements
     document.querySelector('.gameTitle').textContent = '';
     document.querySelector('.unfixedCode').innerHTML = '';
     document.querySelector('.guide-text').innerHTML = '';
-    document.querySelector('#editor-container').innerHTML = '';
+    document.querySelector('#editor-container').innerHTML = ''; // Clear the editor container
     document.querySelector('.questions-finished-num .icon').textContent = '';
     document.querySelector('.questions-finished-num .icon').dataset.status = '';
 
-    // Hide game-specific elements
+
+    // Reset progress indicators for the new game
+    const progressIcons = document.querySelectorAll('.questions-finished-num .icon');
+    progressIcons.forEach(icon => {
+        icon.textContent = ''; // Clear progress text
+        icon.style.color = ''; // Reset color
+        icon.dataset.status = ''; // Reset status
+    });
+
+    // Hide game screen and show main menu
     document.querySelector('.gameScreen').style.display = 'none';
     document.querySelector('.languageMenu').style.display = 'none';
     document.querySelector('.difficultiesMenu').style.display = 'none';
+    document.querySelector('.randomtext').style.display = 'block';
+    document.querySelector('.logo').style.display = 'block';
+    document.querySelector('.userMenu').style.display = 'block';
+    document.querySelector('.customNotifier').style.display = 'block';
+    document.querySelector('.feedback').style.display = 'block';
+
+    console.log("Game state has been reset.");
 }
 
 const exitButton = document.querySelector("#exit-button");
@@ -993,17 +1021,63 @@ function isMobileOrTablet() {
 }
 
 // Restrict access for mobile or tablet devices
-if (isMobileOrTablet()) {
+/*if (isMobileOrTablet()) {
     document.body.innerHTML = `
+    <body background="black"; color:white;>
         <div style="text-align: center; margin-top: 20%; font-family: Arial, sans-serif;">
             <h1>Access Restricted</h1>
             <p>This website is only available for computers or laptops.</p>
             <p>Please access this website from a desktop or laptop device.</p>
         </div>
-    `;
+    </body>`;
+}*/
+function showCinematicText(callback) {
+    const messages = [
+        "GAME ON",
+        "WELCOME TO THE GAME",
+        "LET THE CODING BEGIN",
+        "GET READY TO CODE",
+        "PREPARE FOR THE CHALLENGE",
+        "DEBUGGING IS AN ART",
+        "THINK BEFORE YOU CODE",
+        "GET READY TO SOLVE"
+    ];
+
+    // Randomize the message
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+    // Display the cinematic text
+    const cinematicText = document.getElementById('cinematicText');
+    const cinematicMessage = document.getElementById('cinematicMessage');
+    cinematicMessage.setAttribute('data-text', randomMessage);
+    cinematicMessage.textContent = randomMessage;
+    cinematicText.style.display = 'block';
+
+    // Hide the cinematic text after 6 seconds and start the game
+    setTimeout(() => {
+        cinematicText.style.display = 'none';
+        if (callback) callback(); // Call the callback function to start the game
+    }, 2000);
 }
 
+function showGameOverScreen() {
+    const gameOverScreen = document.querySelector('.gameOverScreen');
+    const returnButton = document.getElementById('return-button');
+
+    // Show the Game Over screen
+    gameOverScreen.style.display = 'block';
+
+    // Hide other game elements
+    document.querySelector('.gameScreen').style.display = 'none';
+
+    // Return button logic
+    returnButton.addEventListener('click', () => {
+        gameOverScreen.style.display = 'none';
+        resetGame(); // Reset the game state
+        document.querySelector('.randomtext').style.display = 'block';
+        document.querySelector('.logo').style.display = 'block';
+        document.querySelector('.userMenu').style.display = 'block';
+    });
+}
 });
-
-
 
