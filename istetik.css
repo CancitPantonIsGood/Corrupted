@@ -2420,7 +2420,7 @@
   font-size: 30px;
   color: white;
   text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
-  animation: fadeInOut 6s ease-in-out;
+  animation: fadeInOut 2s ease-in-out;
   z-index: 1000;
 }
 
@@ -2432,7 +2432,7 @@
   10% {
       opacity: 1;
   }
-  90% {
+  30% {
       opacity: 1;
   }
   100% {

@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'public class Main {\n    \npublic static void main(String[] args) {\n    string x;\n    system.out.print(x);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    int a = 5;\n    int b = 10\n    System.out.println(a + b);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    String name = "Jhon Doe";\n    System.our.println(name);\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, League!")\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    boolen switch;\n     switch = true;\n    if(switch = true) {\n        System.out.println("The light switch is on");\n     } else {\n      System.out.println("The light switch is off")\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Java!");\n    }\n',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Easy!");\n    }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Buggy!");\n    }\n}', 
@@ -217,11 +217,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const solutions = {
         java: {
             easy: [
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello World");\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.print("Hello World");\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    String x = "Hello World";\n    system.out.print(x);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    int a = 5;\n    int b = 10;\n    System.out.println(a + b);\n   }\n}',
                 'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Neighbor!");\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, League!");\n   }\n}',
+                'public class Main {\n    \npublic static void main(String[] args) {\n    boolen switch;\n     switch = true;\n    if(switch = true) {\n        System.out.println("The light switch is on");\n     } else {\n      System.out.println("The light switch is off")\n   }\n}',,
                 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Java!");\n    }\n}',
                 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Easy!");\n    }\n}',
                 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Buggy!");\n    }\n}',
@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const guideQuestions = {
         java: {
-            easy: "Why is this Java program not printing correctly?",
+            easy: "The program is missing a statement, it should be printed using 'System'. You should not use the 'println' on a single lined statement",
             moderate: "What’s missing in this Java class definition?",
             hardcore: "How can you fix the data management in this Java code?"
         },
