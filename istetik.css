@@ -163,7 +163,7 @@
   top: 60px;
   padding: 20px;
   font-size: 15px;
-  left: 50%;
+  left: 225px;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.7);
   border: 1px solid white;
@@ -171,8 +171,12 @@
   color: white;
   font-family: 'Press Start 2P', cursive;
   transition: all 0.5s;
+  
 } 
 
+.register-box .register-username {
+  left: 192.5px;
+}
 .register-box div .status {
   position: absolute;
   top: -155px;
