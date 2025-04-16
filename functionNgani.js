@@ -99,7 +99,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     gameScreen.style.display = 'none';
     corruptedText.style.top = '50px';
     randomText.style.display = 'none'; 
-    feedback.style.display = 'none';
 
     let selectedLanguage = "";
     let selectedDifficulty = "";
@@ -685,7 +684,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             if (m !== menu) {
                 m.classList.remove("show");
                 buttons[i].classList.remove("active");
-            }
+            } 
         });
     }
 
@@ -700,6 +699,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
                 event.stopPropagation();
                 toggleMenu(menus[index], button);
             });
+
         }
     });
 
@@ -772,45 +772,46 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     loginButton.addEventListener("click", async function () {
         const username = loginUsername.value.trim();
         const password = loginPassword.value.trim();
-
+    
         if (!username || !password) {
             alert("Please fill out both username and password.");
             return;
         }
-
+    
         try {
             const { data: users, error } = await supabase
                 .from("user")
                 .select("username, password, id, section, title, points")
                 .eq("username", username);
-
+    
             if (error) {
                 console.error("Error fetching user data:", error);
                 alert("An error occurred while logging in. Please try again.");
                 return;
             }
-
+    
             if (!users || users.length === 0) {
                 alert("Invalid username or password.");
                 return;
             }
-
+    
             const user = users[0];
             const isPasswordValid = await bcrypt.compare(password, user.password);
-
+    
             if (!isPasswordValid) {
                 alert("Invalid username or password.");
                 return;
             }
-
+    
             alert("Login successful!");
-
+    
             // Update UI after login
             authContainer.style.display = "none";
             mainContainer.style.display = "block";
-            randomText.style.display = "block";
+            randomText.style.display = "block"; // Ensure random text is displayed
             feedback.style.display = "block";
-
+            note.style.display = "block"; // Ensure the note is displayed
+    
             // Update user data in localStorage
             const userData = {
                 id: user.id,
@@ -821,7 +822,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             };
             localStorage.setItem("loggedInUser", username);
             localStorage.setItem(username, JSON.stringify(userData));
-
+    
             // Update profile information
             profileName.textContent = username;
             profileID.textContent = `ID: ${user.id}`;
@@ -829,6 +830,18 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             profileSection.textContent = user.section;
             profilePicture.src = userData.profilePicture || "noprofile.jpg";
             profilePoints.textContent = `Total Points: ${user.points || 0}`;
+    
+            // Reattach event listeners for the profile button
+            buttons.forEach((button, index) => {
+                if (button) {
+                    button.addEventListener("click", function (event) {
+                        event.stopPropagation();
+                        toggleMenu(menus[index], button);
+                    });
+                }
+            });
+    
+            console.log("UI initialized properly after login.");
         } catch (error) {
             console.error("Unexpected error during login:", error);
             alert("An unexpected error occurred. Please try again.");
@@ -859,6 +872,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         profileMenu.style.display = "none";
         randomText.style.display = "none";
         feedback.style.display = "none";
+        note.style.display = 'none';
     });
 
     // Auto login if already logged in
@@ -870,10 +884,11 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         profileTitle.textContent = `Title: ${userData.title}`;
         profileSection.textContent = userData.section;
         profilePicture.src = userData.profilePicture || "noprofile.jpg";
-        profilePoints.textContent = `Total Points: ${userData.points || 0}`; // Display total points
+        profilePoints.textContent = `Total Points: ${userData.points || 0}`;
 
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
+        randomText.style.display = "block"; // Ensure random text is displayed
     }
 
     document.querySelector('.feedback h2').addEventListener('click', function () {
@@ -948,6 +963,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     }
     
     // Call the function to fetch and populate the leaderboard
+    setInterval(fetchAndPopulateLeaderboard, 100);
 
     await fetchAndPopulateLeaderboard();
 
@@ -975,7 +991,7 @@ function resetGame() {
 
     // Hide game screen and show main menu
     document.querySelector('.gameScreen').style.display = 'none';
-    document.querySelector('.languageMenu').style.display = 'block'; // Show language menu
+    document.querySelector('.languageMenu').style.display = 'none';
     document.querySelector('.difficultiesMenu').style.display = 'none';
     document.querySelector('.randomtext').style.display = 'block';
     document.querySelector('.logo').style.display = 'block';
@@ -989,18 +1005,7 @@ function resetGame() {
 document.getElementById('exit-button').addEventListener("click", resetGame);
 document.getElementById('return-button').addEventListener("click", resetGame);
 
-exitButton.addEventListener("click", function () {
-    resetGame(); // Call the reset function
 
-    // Show the main menu and other UI elements
-    document.querySelector('.randomtext').style.display = 'block';
-    document.querySelector('.logo').style.display = 'block';
-    document.querySelector('.userMenu').style.display = 'block';
-    document.querySelector('.customNotifier').style.display = 'block';
-    document.querySelector('.feedback').style.display = 'block';
-
-    console.log("Game exited and reset.");
-});
     // Function to start Infinite Mode
     function startInfiniteMode() {
     console.log("Starting Infinite Mode");
@@ -1158,11 +1163,14 @@ function showGameOverScreen() {
         document.querySelector('.userMenu').style.display = 'block';
         document.querySelector('.customNotifier').style.display = 'block';
         document.querySelector('.feedback').style.display = 'block';
+        note.style.display = 'block';
         gameOverScreen.style.display = 'none'; // Hide the Game Over screen
     
         console.log("Game exited and reset.");
     });
 }
+
+
 });
 
 

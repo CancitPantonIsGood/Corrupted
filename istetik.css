@@ -157,6 +157,16 @@
   left: 237.5px;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
 .register-box input {
   position: relative;
   margin-top: 30px;
@@ -2291,6 +2301,34 @@
   border-top: 0px solid white;
   border-bottom: 0px solid white;
 }
+
+.feedback Button {
+  position: absolute;
+  top: 350px;
+  left: 55%;
+  width: 150px;
+  height: 30px;
+  border: 1px solid #0ff;
+  background: #0056b3;
+  color: white;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}   
+.feedback Button:hover {
+  background: #007bff;
+  color: white;
+  width: 140px;
+  border: 1px solid #0ff;
+  box-shadow: 0 0 15px #0ff, 0 0 30px #00f;
+}
+
+.feedback button:active {
+  width: 160px;
+  height: 40px;
+  top: 345px;
+}
+
 /*randomtext*/
 .randomtext {
   position: absolute;
@@ -2462,6 +2500,77 @@
       margin-bottom: 10px;
   }
 }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .logo .text {
+      font-size: 2.5rem;
+  }
+
+  .logo .text2 {
+      font-size: 1.8rem;
+  }
+
+  .userMenu .menu a {
+      font-size: 1.2rem;
+      padding: 8px 15px;
+  }
+
+  .userMenu .sources img {
+      width: 35px;
+      height: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo .text {
+      font-size: 2rem;
+  }
+
+  .logo .text2 {
+      font-size: 1.5rem;
+  }
+
+  .userMenu .menu {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .userMenu .menu a {
+      font-size: 1rem;
+      padding: 6px 10px;
+  }
+
+  .userMenu .sources img {
+      width: 30px;
+      height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo .text {
+      font-size: 1.5rem;
+  }
+
+  .logo .text2 {
+      font-size: 1.2rem;
+  }
+
+  .userMenu .menu a {
+      font-size: 0.9rem;
+      padding: 5px 8px;
+  }
+
+  .userMenu .sources img {
+      width: 25px;
+      height: 25px;
+  }
+}
+
+.menu.show {
+  display: block;
+}
+
 .gameScreen {
   display: flex;
   flex-direction: column;
@@ -2633,6 +2742,7 @@
   width: 50px;
   text-align: center;
   border: 2px solid rgb(255, 0, 0);
+  user-select: none;
 }
 
 .note .context {
