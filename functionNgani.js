@@ -995,7 +995,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     
                 row.innerHTML = `
                     <th class="top${index + 1}">
-                        ${index === 0 ? '<div class="crown-container"><img src="crown.png" alt="Crown" class="animated-crown"></div>' : ''}
+                        ${index === 0 ? '<div class="crown-container"><img src="top1.png" alt="Crown" "></div>' : ''}
                         ${index + 1}
                     </th>
                     <th>${user.username}</th>
