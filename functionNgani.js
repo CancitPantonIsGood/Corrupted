@@ -471,7 +471,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         border3.style.background = '#00ff80';
                         border4.style.background = '#00ff80';
                         points++;
-                
+                        console.log("Correct");
                 } else {
                         customNotification.style.display = 'block';
                         customNotification.innerHTML = '<p>SYNTAX ERROR!</p>';
@@ -483,6 +483,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         border2.style.background = 'red';
                         border3.style.background = 'red';
                         border4.style.background = 'red';
+                        console.log("Incorrect");
                     }
         // Increment questionsAnswered and update progress
         questionsAnswered++;
@@ -1191,30 +1192,21 @@ const exitButton = document.getElementById("exit-button");
 function showGameOverScreen() {
     const gameOverScreen = document.querySelector('.gameOverScreen');
     const returnButton = document.getElementById('return-button');
-
-    // Show the Game Over screen
     gameOverScreen.style.display = 'block';
 
-    // Hide other game elements
     document.querySelector('.gameScreen').style.display = 'none';
     returnButton.addEventListener("click", function () {
-        resetGame(); // Call the reset function
+        resetGame();
     
-        // Show the main menu and other UI elements
         document.querySelector('.randomtext').style.display = 'block';
         document.querySelector('.logo').style.display = 'block';
         document.querySelector('.userMenu').style.display = 'block';
         document.querySelector('.customNotifier').style.display = 'block';
         document.querySelector('.feedback').style.display = 'block';
         note.style.display = 'block';
-        gameOverScreen.style.display = 'none'; // Hide the Game Over screen
+        gameOverScreen.style.display = 'none'; 
     
         console.log("Game exited and reset.");
     });
 }
-
-
 });
-
-
-
