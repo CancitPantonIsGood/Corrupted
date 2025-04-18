@@ -184,9 +184,6 @@
   
 } 
 
-.register-box .register-username {
-  left: 192.5px;
-}
 .register-box div .status {
   position: absolute;
   top: -155px;
@@ -2948,7 +2945,7 @@
   height: 9px;
   position: absolute;
   top: -129px;
-  left: 422.5px;
+  left: 423.5px;
   color: white;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
@@ -3072,7 +3069,7 @@
 }
 
 .register-box .blue .blue-1 {
-  width: 100px;
+  width: 77px;
   background: #0ff;
   height: 20px;
   position: absolute;
@@ -3163,8 +3160,16 @@
   border-bottom: 2px solid white;
   border-top: 2px solid white;
   border-left: 2px solid white;
+}
 
-
+.register-box .blue .blue-9 {
+  width: 24px;
+  background: cyan;
+  height: 17px;
+  position: absolute;
+  top: 11px;
+  left: -73px;
+  color: white;
 }
 
 .register-box .pink {
@@ -3177,7 +3182,7 @@
   height: 9px;
   position: absolute;
   top: -129px;
-  left: 422.5px;
+  left: 423.5px;
   color: white;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
@@ -3210,7 +3215,7 @@
 .register-box .pink .pink-4 {
   width: 120px;
   background: #ff00ff;
-  height: 12px;
+  height: 20px;
   position: absolute;
   top: -510px;
   left: -80px;
@@ -3226,7 +3231,7 @@
   height: 12px;
   position: absolute;
   top: -501px;
-  left: -120px;
+  left: 500px;
   color: white;
   border-bottom: 2px solid white;
   border-right: 2px solid white;
