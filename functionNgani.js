@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 " Shirt: $15\n Pants: $10\n Cost: $25",
                 " The light is on",
                 " Sasha is legal",
-                " Hello, Buggy!",
+                " Total: 45",
                 " Marry got an A on the exam",
                 " Hello, World!"
             ],

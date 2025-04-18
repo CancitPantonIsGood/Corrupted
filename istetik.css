@@ -2107,15 +2107,12 @@
   position: absolute;
   top: 6%;
   left: 71%;
-  width: 225px;
-  height: 40px;
-
+  background: #007bff;
 }
 
 .gameScreen .progress .p1 {
   font-size: 15px;
-  top: 15px;
-  position: absolute;
+  position: relative;
 }
 
 .gameScreen .buggedCode {
@@ -2636,7 +2633,7 @@
   padding: 50%;
   text-align: center;
   font-family: 'Press Start 2P', cursive;
-  font-size: 30px;
+  font-size: 20px;
   color: white;
   text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
   animation: fadeInOut 2s ease-in-out;
@@ -3302,7 +3299,7 @@
   left: 50px;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 0px) { 
   .gameScreen {
     width: 47%;
     height: 98%;
@@ -3349,13 +3346,14 @@
     height: 10%;
     font-size: 25px;
   }
-}
 
-@media (max-width: 1000px) {
-  .gameScreen .guide-question .guide-text pre {
-    font-size: 20px;
+  .gameScreen .progress {
+    width: 10%;
+    height: 1%;
   }
 }
+
+
 
   
 
