@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n      System.out.print("Name: " + name);\n   }\n}', //done
                 'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total = 0;\n      System.out.println("Total: " + total);\n   }\n}',//done
                 'public class Main {\n   public static void main(String[] args) {\n      int apple = 5;\n      int orange = 10;\n      System.out.println("Apple: $" + apple);\n      System.out.println("Orange: $" + orange);\n   }\n}',//done
-                'public class Main {\n   public static void main(String[] args) {\n      int shirt = 15;\n      int pants = 10;\n      int total = shirt + pants;\n      System.out.println("Shirt: " + shirt);\n      System.out.println("Pants: " + pants);\n      System.out.println("Cost: " + total);\n   }\n}',//done
+                'public class Main {\n   public static void main(String[] args) {\n      int shirt = 15;\n      int pants = 10;\n      int total = shirt + pants;\n      System.out.println("Shirt: $" + shirt);\n      System.out.println("Pants: $" + pants);\n      System.out.println("Cost: $" + total);\n   }\n}',//done
                 'public class Main {\n   public static void main(String[] args) {\n      boolean light = true;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
@@ -860,7 +860,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             alert("Login successful!");
 
             const backgroundMusic = document.getElementById("backgroundMusic");
-            backgroundMusic.volume = 0.5; // Set volume (optional)
+            backgroundMusic.volume = 0.2; // Set volume (optional)
             backgroundMusic.play();
     
             // Update UI after login
@@ -933,6 +933,9 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         profilePicture.src = userData.profilePicture || "noprofile.jpg";
         profilePoints.textContent = `Total Points: ${userData.points || 0}`;
 
+        const backgroundMusic = document.getElementById("backgroundMusic");
+        backgroundMusic.volume = 0.2; // Set volume (optional)
+        backgroundMusic.play();
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
         randomText.style.display = "block"; // Ensure random text is displayed
