@@ -858,6 +858,10 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             }
     
             alert("Login successful!");
+
+            const backgroundMusic = document.getElementById("backgroundMusic");
+            backgroundMusic.volume = 0.5; // Set volume (optional)
+            backgroundMusic.play();
     
             // Update UI after login
             authContainer.style.display = "none";
