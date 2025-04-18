@@ -410,7 +410,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     };
     
-    // Initialize question indices for all languages and difficulties
     // Function to shuffle an array
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -426,8 +425,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     function startGame(language, difficulty, questionIndex = 0, isFirstGame = true) {
         if (isFirstGame) {
             const totalQuestions = buggyCodeSamples[language][difficulty].length;
-            questionOrder = shuffleArray(Array.from({ length: totalQuestions }, (_, i) => i)); // Shuffle the order
-            questionsAnswered = 0; // Reset the counter
+            questionOrder = shuffleArray(Array.from({ length: totalQuestions }, (_, i) => i));
+            questionsAnswered = 0;
             showCinematicText();
         }
 
@@ -485,7 +484,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         border4.style.background = 'red';
                         console.log("Incorrect");
                     }
-        // Increment questionsAnswered and update progress
+
         questionsAnswered++;
         updateProgress();
     
