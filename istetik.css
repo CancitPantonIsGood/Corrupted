@@ -1829,21 +1829,37 @@
 }
 
 .borderz{
-  color: #111;
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  top: 0;
-  left: 0;
   z-index: 100;
 }
 .borderz .border1 {
   width:  210vh;
-  background: yellow;
   position: absolute;
-  height: 0.5px;
+  height: 1.5px;
   top: 0;
   left: 0;
+}
+.borderz .border2 {
+  width:  210vh;
+  position: absolute;
+  height: 2.5px;
+  bottom: 1px;
+  left: 0;
+}
+
+.borderz .border3 {
+  width:  2.5px;
+  position: absolute;
+  height: 210vh;
+  bottom: 1px;
+  left: 0;
+}
+
+.borderz .border4 {
+  width:  2.5px;
+  position: absolute;
+  height: 210vh;
+  bottom: 1px;
+  right: 0;
 }
 
 /*leaderboard*/
@@ -2011,10 +2027,11 @@
   height: 925px;
   display: none;
   background-color: #1a1a1a;
-  color: #0ff;
+  color: white;
   padding: 20px;
   text-align: center;
-  border: 2px solid #0ff;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, rgb(255, 0, 179), #0ff) 1;
   font-family: 'Press Start 2P', cursive;
 }
 
@@ -2035,7 +2052,26 @@
   box-shadow: 0 0 15px #0ff, 0 0 30px #00f;
   border: 1px solid #0ff;
   max-height: 300px;
-  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+  white-space: pre-wrap;
+  overflow-y: auto;
+}
+
+.gameScreen .unfixedCode::-webkit-scrollbar {
+  width: 8px; 
+  border-left: 1px solid white;
+}
+
+.gameScreen .unfixedCode::-webkit-scrollbar-thumb {
+  background-color: none;
+  border-radius: 10px;
+}
+
+.gameScreen .unfixedCode:hover::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
+.gameScreen .unfixedCode::-webkit-scrollbar-track {
+  background-color: #383838; 
 }
 
 .gameScreen #editor-container {
@@ -2058,7 +2094,7 @@
 .gameScreen .submit {
   position: absolute;
   top: 805px;
-  left: 900px;
+  left: 134%;
   background-color: #383838;
   border: 2px solid #0ff;
   color: white;
@@ -2067,7 +2103,7 @@
   height: 117px;
   font-size: 40px;
   padding-left: 7px;
-  
+  font-family: 'Press Start 2P', cursive;
 }
 
 .gameScreen .submit:hover {
@@ -2101,6 +2137,7 @@
   font-size: 20px;
   top: 15px;
   position: absolute;
+  -webkit-text-stroke: 1px solid red;
 }
 
 .gameScreen .textEditing {
@@ -2120,11 +2157,12 @@
 .gameScreen .guide-question {
   position: absolute;
   top: -2px;
-  left: 900px;
+  left: 134%;
   background-color: #1a1a1a;
   width: 700px;
   height: 500px;
-  border: 2px solid #0ff;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #0ff, purple) 1;
   text-align: center;
 }
 
@@ -2133,11 +2171,12 @@
   top: 20px;
   width: 675px;
   height: 415px;
-  background-color: #383838;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 30px;
   color: white;
+  line-height: 1.5;
+  letter-spacing: 2px;
 }
 
 .gameScreen .guide-question .guide-header {
@@ -2145,10 +2184,29 @@
   font-size: 30px;
 }
 
-.gameScreen .guide-question .guide-text p {
-  text-align: center;
-  padding-top: 10px;
-  position: relative;
+.gameScreen .guide-question .guide-text pre {
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #0ff, purple) 1;
+  padding: 15px;
+  position: absolute;
+  height: 300px;
+  top: 20px;
+  text-align: left;
+  left: 50%;
+  font-size: 15px;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', cursive;
+  width: 650px;
+}
+
+.gameScreen .guide-question .undertext {
+  position: absolute;
+  top: 85%;
+  color: white;
+  font: 15px;
+  width: 450px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .gameScreen #exit-button {
@@ -2189,35 +2247,37 @@
 .expected-output {
   position: absolute;
   top: 500px;
-  left: 100.5%;
+  left: 134%;
   width: 700px;
+  height: auto;
+  text-align: left;
   background-color: #1a1a1a;
   color: white;
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
   padding: 10px;
-  border: 2px solid #0ff;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #0ff, purple) 1;
   white-space: pre-wrap; /* Preserve whitespace and line breaks */
 }
 
 .expected-output h3 {
   position: absolute;
   font-size: 30px;
-  top: 10px;
+  top: 15px;
 }
 
 .expected-output pre {
-  position: absolute;
+  position: relative;
   font-size: 20px;
-  top: 50%;
-  left: 5px;
-
+  top: 10px;
+  width: 650px;
+  left: 15px;
+  padding: 15px;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #0ff, purple) 1;
 }
 
-.expected-output h3 {
-  position: absolute;
-  top: 1px;
-}
 /*FEEDBACK*/
 .feedback {
   position: absolute;
@@ -2592,6 +2652,7 @@
   text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
   animation: fadeInOut 2s ease-in-out;
   z-index: 1000;
+  user-select: none;
 }
 
 
@@ -2774,7 +2835,7 @@
 }
 
 .login-container .blue .blue-1 {
-  width: 100px;
+  width: 77px;
   background: #0ff;
   height: 20px;
   position: absolute;
@@ -2798,10 +2859,10 @@
 .login-container .blue .blue-3 {
   width: 70px;
   background: #0ff;
-  height: 10px;
+  height: 13px;
   position: absolute;
-  top: -300px;
-  left: 422.5px;
+  top: -301px;
+  left: 423px;
   color: white;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
@@ -2865,8 +2926,16 @@
   border-bottom: 2px solid white;
   border-top: 2px solid white;
   border-left: 2px solid white;
+}
 
-
+.login-container .blue .blue-9 {
+  width: 25px;
+  background: cyan;
+  height: 17px;
+  position: absolute;
+  top: 11px;
+  left: -75px;
+  color: white;
 }
 
 .login-container .pink {
@@ -2912,14 +2981,12 @@
 .login-container .pink .pink-4 {
   width: 120px;
   background: #ff00ff;
-  height: 12px;
+  height: 20px;
   position: absolute;
   top: -510px;
   left: -80px;
   color: white;
-  border-top: 2px solid white;
-  border-right: 2px solid white;
-  border-left: 2px solid white;
+  border: 2px solid white;
 }
 
 .login-container .pink .pink-5 {
@@ -2928,11 +2995,9 @@
   height: 12px;
   position: absolute;
   top: -501px;
-  left: -80px;
+  left: 500px;
   color: white;
-  border-bottom: 2px solid white;
-  border-right: 2px solid white;
-  border-left: 2px solid white;
+  border: 2px solid white;
 }
 
 .login-container .pink .pink-6 {
@@ -3031,10 +3096,10 @@
 .register-box .blue .blue-3 {
   width: 70px;
   background: #0ff;
-  height: 10px;
+  height: 13px;
   position: absolute;
-  top: -300px;
-  left: 422.5px;
+  top: -301px;
+  left: 423px;
   color: white;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
@@ -3161,7 +3226,7 @@
   height: 12px;
   position: absolute;
   top: -501px;
-  left: -80px;
+  left: -120px;
   color: white;
   border-bottom: 2px solid white;
   border-right: 2px solid white;

@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     gameScreen.style.display = 'none';
     corruptedText.style.top = '50px';
     randomText.style.display = 'none'; 
+    playMenu.style.display = 'none';
 
     let selectedLanguage = "";
     let selectedDifficulty = "";
@@ -146,26 +147,32 @@ document.addEventListener("DOMContentLoaded", async function () {
     const buggyCodeSamples = {
         java: {
             easy: [
-                'public class Main {\n    \npublic static void main(String[] args) {\n    print("Hello World")\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    string x;\n    system.out.print(x);\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    int a = 5;\n    int b = 10\n    System.out.println(a + b);\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    String name = "Jhon Doe";\n    System.our.println(name);\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n   boolen switch;\n   switch = "true";\n   if(switch = true) {\n      System.out.println("The light switch is on");\n   } else {\n      System.out.println("The light switch is off")\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    String school = "STI";\n      String goal = "";\n         System.out.println(school + goal);\n    }\n',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Easy!");\n    }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Buggy!");\n    }\n}', 
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Code!");\n    }\n}', 
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, World!");\n    }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, MY LOVE!");\n    }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, SUNSHINE!");\n    }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, NEIGHBOR!");\n    }\n}'
+                'public class Main {\n   public static void main(String[] args) {\n      System.our.print("Hello World")\n   }\n}', //wrong spelling
+                'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n   }\n}', //print the name
+                'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total;\n      System.out.println("Total: ");\n   }\n}', //declare the total's value
+                'public class Main {\n   public static void main(String[] args) {\n      String apple = 5;\n      String orange = 10;\n      System.out.println("Apple: $");\n      System.out.println("Orage: $");\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      int shirt = ;\n      int pants = 10;\n      Sting total;\n      System.out.println(shirt);\n      System.out.println(pants);\n      System.out.println("Cost: " + total);\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      boolean light = false;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      int age = 17;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      char sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo +;\n      System.out.println("Total: ");\n   }\n}',
+                'public class Main {\n   public stakatistic void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam)\n   }\n}',
             ],
             moderate: [
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}'
+                'public class Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n}',
+                'public class Calculator {\n    public int subtract(int a, int b) {\n        return a - b;\n    }\n}',
+                'public class Calculator {\n    public int multiply(int a, int b) {\n        return a * b;\n    }\n}',
+                'public class Calculator {\n    public int divide(int a, int b) {\n        return a / b;\n    }\n}',
+                'public class Calculator {\n    public int modulus(int a, int b) {\n        return a % b;\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5) System.out.println("Greater");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5) System.out.println("Smaller");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Equal");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x != 10) System.out.println("Not Equal");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x >= 10) System.out.println("Greater or Equal");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x <= 10) System.out.println("Smaller or Equal");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5 && x < 15) System.out.println("Between");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5 || x > 15) System.out.println("Outside");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (!(x > 5)) System.out.println("Not Greater");\n    }\n}',
+                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Perfect Match");\n    }\n}'
             ],
             hardcore: [
                 'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
@@ -225,19 +232,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     const solutions = {
         java: {
             easy: [
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.print("Hello World!");\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    String x = "Hello World";\n    system.out.print(x);\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    int a = 5;\n    int b = 10;\n    System.out.println(a + b);\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, Neighbor!");\n   }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n   boolen switch;\n   switch = true;\n   if(switch = true) {\n      System.out.println("The light switch is on");\n   } else {\n      System.out.println("The light switch is off")\n   }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Java!");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Easy!");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Buggy!");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, Code!");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, MY LOVE!");\n    }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, SUNSHINE!");\n    }\n}',
-                'public class Main {\n    \npublic static void main(String[] args) {\n    System.out.println("Hello, NEIGHBOR!");\n    }\n}'
+                'public class Main {\n   public static void main(String[] args) {\n      System.out.print("Hello World");\n   }\n}', // done
+                'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n      System.out.print("Name: " + name);\n   }\n}', //done
+                'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total = 0;\n      System.out.println("Total: " + total);\n   }\n}',//done
+                'public class Main {\n   public static void main(String[] args) {\n      int apple = 5;\n      int orange = 10;\n      System.out.println("Apple: $" + apple);\n      System.out.println("Orage: $" + orange);\n   }\n}',//done
+                'public class Main {\n   public static void main(String[] args) {\n      int shirt = 15;\n      int pants = 10;\n      int total = shirt + pants;\n      System.out.println("Shirt: " + shirt);\n      System.out.println("Pants: " + pants);\n      System.out.println("Cost: " + total);\n   }\n}',//done
+                'public class Main {\n   public static void main(String[] args) {\n      boolean light = true;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam);\n   }\n}',
             ],
             moderate: [
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
@@ -305,16 +308,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     const expectedOutputs = {
         java: {
             easy: [
-                "Hello World",
-                "Hello World",
-                "15",
-                "Jhon Doe",
-                "The light switch is on",
-                "",
-                "Hello, Easy!",
-                "Hello, Buggy!",
-                "Hello, Code!",
-                "Hello, World!"
+                " Hello World",
+                " Name: Jhon",
+                " Total: 45",
+                " Apple: $5\n Orange: $10",
+                " Shirt: $15\n Pants: $10\n Cost: $25",
+                " The light is on",
+                " Sasha is legal",
+                " Hello, Buggy!",
+                " Marry got an A on the exam",
+                " Hello, World!"
             ],
             moderate: [
                 "",
@@ -381,9 +384,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const guideQuestions = {
         java: {
-            easy: "The program is missing a statement, it should be printed using 'System'. You should not use the 'println' on a single lined statement",
-            moderate: "What’s missing in this Java class definition?",
-            hardcore: "How can you fix the data management in this Java code?"
+            easy: [
+                `Read the statement and make sure that\nthe statement is correct.`,
+                `Create a the printing method and set\nthe name 'Jhon'.`,
+                `The "total" data type has no value.\n\nSet the value of the data type to be\nthe sum of the list.`,
+                `The program only prints the product \nname.\n\nThe program should also print the\nvalue of the product.`,
+                `SADAS`,
+                `Make sure the light is on. Check the\nvalue of the data and `,
+                `There is a wrong value that prevents\nSasha from being of legal age.`,
+                `Create data that sums the given list.\n\nAlways double-check the program to ensure the\nright answer`,
+                `The code is corrupted because of the\nwrong statement.\n\nMake sure to check the statement\nproperly.`,
+            ],
+            moderate: ["What’s missing in this Java class definition?",],
+            hardcore: ["How can you fix the data management in this Java code?"]
         },
         html: {
             easy: "Why isn’t this HTML structure rendering properly?",
@@ -434,6 +447,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         const correctCodes = solutions[language]?.[difficulty];
         const customNotification = document.getElementById('customNotification');
         const submitButton = document.getElementById('submit-button');
+        const border1 = document.querySelector('.border1');
+        const border2 = document.querySelector('.border2');
+        const border3 = document.querySelector('.border3');
+        const border4 = document.querySelector('.border4');
+
+        
         submitButton.disabled = true;
     
         function normalizeCode(code) {
@@ -447,6 +466,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                         customNotification.style.border = '2px solid rgb(0, 255, 42)';
                         customNotification.style.boxShadow = '0 0 10px rgb(0, 255, 115), 0 0 20px rgb(30, 255, 0)';
                         customNotification.style.webkitTextStroke = '2px #00ff80';
+                        border1.style.background = '#00ff80';
+                        border2.style.background = '#00ff80';
+                        border3.style.background = '#00ff80';
+                        border4.style.background = '#00ff80';
                         points++;
                 
                 } else {
@@ -456,7 +479,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                         customNotification.style.border = '2px solid red';
                         customNotification.style.webkitTextStroke = '2px white';
                         customNotification.style.boxShadow = '0 0 10px rgb(255, 0, 128), 0 0 20px rgb(255, 0, 76)';
-                }
+                        border1.style.background = 'red';
+                        border2.style.background = 'red';
+                        border3.style.background = 'red';
+                        border4.style.background = 'red';
+                    }
         // Increment questionsAnswered and update progress
         questionsAnswered++;
         updateProgress();
@@ -487,12 +514,20 @@ document.addEventListener("DOMContentLoaded", async function () {
                     console.error("Error updating points:", error);
                 }
                 showGameOverScreen();
+                border1.style.background = 'transparent';
+                border2.style.background = 'transparent';
+                border3.style.background = 'transparent';
+                border4.style.background = 'transparent';
             }, 1000);
         } else {
             // Move to the next question in the shuffled order
             const nextQuestionIndex = questionsAnswered; // Use the next index in the shuffled order
             setTimeout(() => {
                 customNotification.style.display = 'none';
+                border1.style.background = 'transparent';
+                border2.style.background = 'transparent';
+                border3.style.background = 'transparent';
+                border4.style.background = 'transparent';
                 submitButton.disabled = false;
                 startGame(language, difficulty, nextQuestionIndex, false);
             }, 1000);
@@ -507,7 +542,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const unfixedCodeDiv = document.querySelector('.unfixedCode');
         const guideTextDiv = document.querySelector('.guide-text');
         const editorContainer = document.getElementById('editor-container');
-        const expectedOutputDiv = document.getElementById('expectedOutput'); // New expected output div
+        const expectedOutputDiv = document.getElementById('expectedOutput');
         const submitButton = document.getElementById('submit-button');
     
         if (!editorContainer) {
@@ -527,13 +562,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     
         const code = buggyCodeSamples[language][difficulty][questionIndex];
-        const guide = guideQuestions[language]?.[difficulty];
-        const expectedOutput = expectedOutputs[language]?.[difficulty][questionIndex]; // Get the expected output
+        const guide = guideQuestions[language]?.[difficulty]?.[questionIndex];
+        const expectedOutput = expectedOutputs[language]?.[difficulty][questionIndex];
     
         const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
     
-        guideTextDiv.innerHTML = guide ? `<p>${guide}</p>` : '<p>No guide available for this selection</p>';
+        guideTextDiv.innerHTML = guide ? `<pre>${guide}</pre>` : '<p>No guide available for this selection</p>';
     
         // Populate the expected output
         expectedOutputDiv.textContent = expectedOutput ? expectedOutput : "No expected output available.";
@@ -678,14 +713,23 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     });
 
     function toggleMenu(menu, button) {
-        const isOpen = menu.classList.toggle("show");
-        button.classList.toggle("active", isOpen);
+        const isVisible = menu.style.display === "flex";
+    
+        // Hide all other menus and deactivate their buttons
         menus.forEach((m, i) => {
-            if (m !== menu) {
-                m.classList.remove("show");
-                buttons[i].classList.remove("active");
-            } 
+            m.style.display = "none";
+            buttons[i].classList.remove("active");
         });
+    
+        // Toggle the visibility of the clicked menu
+        menu.style.display = isVisible ? "none" : "flex";
+    
+        // Toggle the active state of the button
+        if (!isVisible) {
+            button.classList.add("active");
+        } else {
+            button.classList.remove("active");
+        }
     }
 
     function closeMenu(menu, button) {
@@ -697,7 +741,10 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         if (button) {
             button.addEventListener("click", function (event) {
                 event.stopPropagation();
+                const isVisible = menus[index].style.display === "flex";
                 toggleMenu(menus[index], button);
+                menus.forEach(menu => menu.style.display = "none");
+                menus[index].style.display = isVisible ? "none" : "flex";
             });
 
         }
@@ -706,7 +753,8 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     document.addEventListener("click", function (event) {
         menus.forEach((menu, i) => {
             if (!menu.contains(event.target) && !buttons[i].contains(event.target)) {
-                closeMenu(menu, buttons[i]);
+                menu.style.display = "none";
+                buttons[i].classList.remove("active");
             }
         });
     });
@@ -735,6 +783,12 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
     
         if (!username || !password || !id || !section || !title) {
             alert("Please fill out all fields.");
+            return;
+        }
+
+         // Validate ID format
+        if (!/^02000\d{6}$/.test(id)) {
+            alert("ID must be formatted accordingly to your STI ID.");
             return;
         }
         
@@ -830,17 +884,6 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             profileSection.textContent = user.section;
             profilePicture.src = userData.profilePicture || "noprofile.jpg";
             profilePoints.textContent = `Total Points: ${user.points || 0}`;
-    
-            // Reattach event listeners for the profile button
-            buttons.forEach((button, index) => {
-                if (button) {
-                    button.addEventListener("click", function (event) {
-                        event.stopPropagation();
-                        toggleMenu(menus[index], button);
-                    });
-                }
-            });
-    
             console.log("UI initialized properly after login.");
         } catch (error) {
             console.error("Unexpected error during login:", error);
