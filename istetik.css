@@ -2033,9 +2033,9 @@
 }
 
 .gameScreen .unfixedCode {
-  position: absolute;
+  position: relative;
   text-align: left;
-  top: 100px;
+  top: 60px;
   font-size: 20px;
   color: white;
   padding-left: 5px;
@@ -2043,12 +2043,10 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Courier New', Courier, monospace;
-  width: 800px;
-  height: 300px;
   background: #383838;
   box-shadow: 0 0 15px #0ff, 0 0 30px #00f;
   border: 1px solid #0ff;
-  max-height: 300px;
+  max-height: 400px;
   white-space: pre-wrap;
   overflow-y: auto;
 }
@@ -2073,12 +2071,10 @@
 
 .gameScreen #editor-container {
   text-align: left;
-  position: absolute;
-  top: 500px;
+  position: relative;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
-  width: 800px;
-  height: 400px;
   padding-left: 5px;
   background: #383838;
   font-family: 'Courier New', Courier, monospace;
@@ -2090,7 +2086,7 @@
 
 .gameScreen .submit {
   position: absolute;
-  top: 805px;
+  top: 90.2%;
   left: 134%;
   background-color: #383838;
   border: 2px solid #0ff;
@@ -2166,8 +2162,6 @@
 .gameScreen .guide-question .guide-text {
   position: relative;
   top: 20px;
-  width: 675px;
-  height: 415px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 30px;
@@ -2176,24 +2170,51 @@
   letter-spacing: 2px;
 }
 
+.gameScreen .guide-question .guide-text pre {
+  line-height: 1.5;
+  position: relative;
+  letter-spacing: 2px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 25px;
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow-y: auto;
+}
+
+.gameScreen .guide-text pre::-webkit-scrollbar {
+  width: 8px; 
+  border-left: 1px solid white;
+}
+
+.gameScreen .guide-text pre::-webkit-scrollbar-thumb {
+  background-color: none;
+  border-radius: 10px;
+}
+
+.gameScreen .guide-text pre:hover::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
+.gameScreen .guide-text pre::-webkit-scrollbar-track {
+  background-color: #383838; 
+}
+
 .gameScreen .guide-question .guide-header {
   padding-top: 15px;
   font-size: 30px;
 }
 
-.gameScreen .guide-question .guide-text pre {
+.gameScreen .guide-question .guide-text{
   border: 2px solid transparent;
   border-image: linear-gradient(to right, #0ff, purple) 1;
   padding: 15px;
-  position: absolute;
-  height: 300px;
-  top: 20px;
+  position: relative;
   text-align: left;
   left: 50%;
   font-size: 15px;
   transform: translateX(-50%);
   font-family: 'Press Start 2P', cursive;
-  width: 650px;
 }
 
 .gameScreen .guide-question .undertext {
@@ -2243,10 +2264,8 @@
 
 .expected-output {
   position: absolute;
-  top: 500px;
+  top: 54%;
   left: 134%;
-  width: 700px;
-  height: auto;
   text-align: left;
   background-color: #1a1a1a;
   color: white;
@@ -2268,7 +2287,6 @@
   position: relative;
   font-size: 20px;
   top: 10px;
-  width: 650px;
   left: 15px;
   padding: 15px;
   border: 2px solid transparent;
@@ -2502,32 +2520,6 @@
   .login-box button, .register-box button {
       font-size: 12px;
       padding: 8px;
-  }
-
-  .gameScreen {
-      width: 100%;
-      height: auto;
-      padding: 5px;
-  }
-
-  .gameScreen .unfixedCode, 
-  .gameScreen #editor-container {
-      width: 100%;
-      height: auto;
-      font-size: 12px;
-  }
-
-  .gameScreen .submit {
-      width: 100%;
-      height: auto;
-      font-size: 16px;
-  }
-
-  .gameScreen .progress, 
-  .gameScreen .guide-question {
-      width: 100%;
-      height: auto;
-      margin-top: 10px;
   }
 
   .menu {
@@ -3309,3 +3301,61 @@
   top: -100px;
   left: 50px;
 }
+
+@media (min-width: 1000px) {
+  .gameScreen {
+    width: 47%;
+    height: 98%;
+  }
+  
+  .gameScreen .unfixedCode {
+    width: 95%;
+    height: 30%;
+    font-size: 15px;
+  }
+
+  .gameScreen #editor-container {
+    width: 95%;
+    height: 40%;
+    font-size: 15px;
+  }
+  .gameScreen .guide-question {
+    width: 77.9%;
+    height: 54%;
+  }
+
+  .gameScreen .expected-output {
+    width: 77.9%;
+    height: 25%;
+  }
+
+  .gameScreen .expected-output pre {
+    width: 95%;
+  }
+
+  .gameScreen .guide-question .guide-text {
+    width: 90%;
+    height: 60%;
+  }
+
+  .gameScreen .guide-question .guide-text pre {
+    font-size: 17px;
+    width: 105%;
+    height: 100%;
+  }
+
+  .gameScreen .submit {
+    width: 26%;
+    height: 10%;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .gameScreen .guide-question .guide-text pre {
+    font-size: 20px;
+  }
+}
+
+  
+

@@ -385,15 +385,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     const guideQuestions = {
         java: {
             easy: [
-                `Read the statement and make sure that\nthe statement is correct.`,
-                `Create a the printing method and set\nthe name 'Jhon'.`,
-                `The "total" data type has no value.\n\nSet the value of the data type to be\nthe sum of the list.`,
-                `The program only prints the product \nname.\n\nThe program should also print the\nvalue of the product.`,
+                `Read the statement and make sure that the statement is correct.`,
+                `Create a the printing method and set the name 'Jhon'.`,
+                `The "total" data type has no value. Set the value of the data type to be the sum of the list.`,
+                `The program only prints the product  name. The program should also print the value of the product.`,
                 `SADAS`,
-                `Make sure the light is on. Check the\nvalue of the data and `,
-                `There is a wrong value that prevents\nSasha from being of legal age.`,
-                `Create data that sums the given list.\n\nAlways double-check the program to ensure the\nright answer`,
-                `The code is corrupted because of the\nwrong statement.\n\nMake sure to check the statement\nproperly.`,
+                `Make sure the light is on. Check the value of the data and `,
+                `There is a wrong value that prevents Sasha from being of legal age.`,
+                `Create data that sums the given list. Always double-check the program to ensure the right answer`,
+                `The code is corrupted because of the wrong statement. Make sure to check the statement\nproperly.`,
             ],
             moderate: ["What’s missing in this Java class definition?",],
             hardcore: ["How can you fix the data management in this Java code?"]
