@@ -788,7 +788,7 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
 
          // Validate ID format
         if (!/^02000\d{6}$/.test(id)) {
-            alert("ID must be formatted accordingly to your STI ID.");
+            alert("ID must be your STI ID NUMBER.");
             return;
         }
         
@@ -860,8 +860,9 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             alert("Login successful!");
 
             const backgroundMusic = document.getElementById("backgroundMusic");
-            backgroundMusic.volume = 0.2; // Set volume (optional)
-            backgroundMusic.play();
+        backgroundMusic.volume = 0.5; // Set volume (optional)
+        backgroundMusic.play();
+        localStorage.setItem("isMusicPlaying", "true");
     
             // Update UI after login
             authContainer.style.display = "none";
@@ -910,10 +911,15 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
             reader.readAsDataURL(file);
         }
     });
+    
 
     // logout for my 
     logoutButton.addEventListener("click", function () {
         localStorage.removeItem("loggedInUser");
+        localStorage.setItem("isMusicPlaying", "false"); // Stop music on logout
+        const backgroundMusic = document.getElementById("backgroundMusic");
+        backgroundMusic.pause();
+
         authContainer.style.display = "block";
         mainContainer.style.display = "none";
         profileMenu.style.display = "none";
@@ -922,30 +928,63 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         note.style.display = 'none';
     });
 
+    // Wait for user interaction to play background music
+document.addEventListener("click", function enableMusicPlayback() {
+    const backgroundMusic = document.getElementById("backgroundMusic");
+    backgroundMusic.volume = 0.5; // Set volume (optional)
+
+    // Check if music was playing before
+    const isMusicPlaying = localStorage.getItem("isMusicPlaying");
+    if (isMusicPlaying === "true") {
+        backgroundMusic.play().catch((error) => {
+            console.error("Error playing background music:", error);
+        });
+    }
+
+    // Remove this event listener after the first interaction
+    document.removeEventListener("click", enableMusicPlayback);
+});
+
     // Auto login if already logged in
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
         const userData = JSON.parse(localStorage.getItem(loggedInUser));
         profileName.textContent = loggedInUser;
         profileID.textContent = `ID: ${userData.id}`;
-        profileTitle.textContent = `Title: ${userData.title}`;
+        profileTitle.textContent = `Status: ${userData.title}`;
         profileSection.textContent = userData.section;
         profilePicture.src = userData.profilePicture || "noprofile.jpg";
         profilePoints.textContent = `Total Points: ${userData.points || 0}`;
 
+         // Play background music
         const backgroundMusic = document.getElementById("backgroundMusic");
-        backgroundMusic.volume = 0.2; // Set volume (optional)
-        backgroundMusic.play();
+        backgroundMusic.volume = 0.5; // Set volume (optional)
+
+        // Check if music was playing before
+        const isMusicPlaying = localStorage.getItem("isMusicPlaying");
+        if (isMusicPlaying === "true") {
+            backgroundMusic.play();
+        }
+
+        // Ensure the music continues playing
+        backgroundMusic.addEventListener("play", () => {
+            localStorage.setItem("isMusicPlaying", "true");
+        });
+
+        backgroundMusic.addEventListener("pause", () => {
+            localStorage.setItem("isMusicPlaying", "false");
+        });
+
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
         randomText.style.display = "block"; // Ensure random text is displayed
     }
 
     document.querySelector('.feedback h2').addEventListener('click', function () {
-        document.querySelector('.feedback').style.right = '5px';
+        document.querySelector('.feedback').style.right = '0%';
     });
     document.querySelector('.feedback .close').addEventListener('click', function () {
-        document.querySelector('.feedback').style.right = '-455px';
+        document.querySelector('.feedback').style.right = '-25%';
     });
     const textElement = document.querySelector(".randomtext .text .first");
     const textContent = textElement.textContent;

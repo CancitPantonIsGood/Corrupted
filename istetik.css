@@ -666,53 +666,6 @@
   color: white;
 }
 
- /* SMALL */
-@media (max-width: 1024px) {
-  .text, .text2 {
-      font-size: 2.5rem;
-  }
-  
-  .menu ul li a {
-      font-size: 1.3rem;
-      padding: 8px 15px;
-  }
-}
-
- /* Silpon */
-@media (max-width: 768px) {
-  .text, .text2 {
-      font-size: 2rem;
-  }
-
-   .menu ul {
-      flex-direction: column;
-      padding: 0;
-  }
-
-   .menu ul li {
-      width: 100%;
-      text-align: center;
-  }
-
-   .menu ul li a {
-      font-size: 1.2rem;
-      padding: 10px;
-      width: 80%;
-  }
-}
-
- /* Small Screens */
-@media (max-width: 480px) {
-  .text, .text2 {
-      font-size: 1.5rem;
-  }
-
-   .menu ul li a {
-      font-size: 1rem;
-      padding: 8px;
-      width: 90%;
-  }
-}
 
 .playMenu{
   border: 2px solid red;
@@ -2089,6 +2042,8 @@
 .gameScreen .progress .p1 {
   font-size: 15px;
   position: relative;
+
+  width: 250%;
 }
 
 .gameScreen .buggedCode {
@@ -2269,13 +2224,11 @@
 .feedback {
   position: absolute;
   top: 475px;
-  right: -455px;
+  right: -470px;
   background: linear-gradient(135deg, #1a1a1a, #000);
   border: 2px solid #0ff;
   border-radius: 15px;
   box-shadow: 0 0 15px #0ff, 0 0 30px #00f;
-  width: 500px;
-  height: 400px;
   font-family: 'Press Start 2P', cursive;
   color: white;
   overflow: hidden;
@@ -2409,61 +2362,56 @@
       padding: 10px;
   }
 
-  .gameScreen {
-      width: 100%;
-      height: auto;
-      padding: 10px;
-  }
-
-  .gameScreen .unfixedCode, 
-  .gameScreen #editor-container {
-      width: 90%;
-      height: auto;
-      font-size: 14px;
-  }
-
-  .gameScreen .submit {
-      width: 90%;
-      height: auto;
-      font-size: 20px;
-  }
-
-  .gameScreen .progress {
-      width: 100%;
-      height: auto;
-      margin-top: 20px;
-  }
-
-  .gameScreen .guide-question {
-      width: 100%;
-      height: auto;
-      margin-top: 20px;
-  }
+  
 }
 
 /* Tablet View */
 @media (max-width: 768px) {
   .menu {
-      width: 360px;
-      height: auto;
+      width: 50%;
+      height: 30%;
   }
 
   .menu a {
       font-size: 20px;
-      padding: 10px;
+      width: 95%;
+  }
+
+  .menu a:hover{
+    width: 105%;
+  }
+
+  .menu .play {
+    width: 95%;
+    height: 15%;
+    font-size: 25px;
+    padding-top: 10px;
   }
 
   .playMenu, .settingsMenu, .creditsMenu, .profileMenu, .leaderboardMenu {
-      width: 100%;
-      height: auto;
-      padding: 10px;
+      width: 95%;
   }
 
+  
+
   .playMenu .QUIZMODE, .playMenu .CHALLENGEMODE {
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
+      width: 30%;
+      height: 60%;
   }
+
+  .playMenu .QUIZMODE h3, .playMenu .CHALLENGEMODE h3{
+    width: 90%;
+    height: 97%;
+}
+
+  .playMenu .QUIZMODE h2, .playMenu .CHALLENGEMODE h2{
+  width: 90%;
+  font-size: 15px;
+}
+  .playMenu .QUIZMODE p, .playMenu .CHALLENGEMODE p{
+  width: 90%;
+  font-size: 7px;
+}
 
   .difficultiesMenu, .languageMenu {
       flex-direction: column;
@@ -3326,9 +3274,29 @@
     width: 10%;
     height: 1%;
   }
+
+  .feedback {
+    width: 27%;
+    height: 43%;
+  }
 }
 
+.settingsMenu p{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translateX(-50%) translateY(-50%);
+ font-size: 50px;
+}
 
+.creditsMenu p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 50px;
+ }
+ 
 
   
 
