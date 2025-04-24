@@ -986,20 +986,6 @@ document.addEventListener("click", function enableMusicPlayback() {
     document.querySelector('.feedback .close').addEventListener('click', function () {
         document.querySelector('.feedback').style.right = '-25%';
     });
-    const textElement = document.querySelector(".randomtext .text .first");
-    const textContent = textElement.textContent;
-    textElement.textContent = ""; // Clear the text initially
-
-
-    let index = 0;
-    function typeEffect() {
-        if (index < textContent.length) {
-            textElement.textContent += textContent.charAt(index);
-            index++;
-            setTimeout(typeEffect, 100); // Adjust typing speed here (100ms per character)
-        }
-    }
-    typeEffect();
     
     // Function to fetch registered users from Supabase and populate the leaderboard
     async function fetchAndPopulateLeaderboard() {
