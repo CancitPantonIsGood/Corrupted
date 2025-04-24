@@ -3298,6 +3298,8 @@
   font-size: 50px;
  }
  
-
+.menu a, .QUIZMODE, .CHALLENGEMODE, .java,  .html, .css, #exit-button, .Normal, .Moderate, .Hardcore, #logout-button, .feedback h2, .feedback .close, .feedback Button, .feedback .text, .feedback .wall, .feedback .feedback-textarea, .feedback Button:hover, .feedback button:active, .gameScreen #editor-container, .gameScreen #editor-container textarea {
+  cursor: pointer;
+}
   
 

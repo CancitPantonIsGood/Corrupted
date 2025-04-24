@@ -928,10 +928,17 @@ document.getElementById('infinite-button').addEventListener('click', startInfini
         note.style.display = 'none';
     });
 
+    document.querySelector('.feedback h2').addEventListener('click', function () {
+        document.querySelector('.feedback').style.right = '0%';
+    });
+    document.querySelector('.feedback .close').addEventListener('click', function () {
+        document.querySelector('.feedback').style.right = '-25%';
+    });
+
     // Wait for user interaction to play background music
 document.addEventListener("click", function enableMusicPlayback() {
     const backgroundMusic = document.getElementById("backgroundMusic");
-    backgroundMusic.volume = 0.5; // Set volume (optional)
+    backgroundMusic.volume = 0; // Set volume (optional)
 
     // Check if music was playing before
     const isMusicPlaying = localStorage.getItem("isMusicPlaying");
@@ -958,7 +965,7 @@ document.addEventListener("click", function enableMusicPlayback() {
 
          // Play background music
         const backgroundMusic = document.getElementById("backgroundMusic");
-        backgroundMusic.volume = 0.5; // Set volume (optional)
+        backgroundMusic.volume = 0; // Set volume (optional)
 
         // Check if music was playing before
         const isMusicPlaying = localStorage.getItem("isMusicPlaying");
@@ -980,26 +987,6 @@ document.addEventListener("click", function enableMusicPlayback() {
         randomText.style.display = "block"; // Ensure random text is displayed
     }
 
-    document.querySelector('.feedback h2').addEventListener('click', function () {
-        document.querySelector('.feedback').style.right = '0%';
-    });
-    document.querySelector('.feedback .close').addEventListener('click', function () {
-        document.querySelector('.feedback').style.right = '-25%';
-    });
-    const textElement = document.querySelector(".randomtext .text .first");
-    const textContent = textElement.textContent;
-    textElement.textContent = ""; // Clear the text initially
-
-
-    let index = 0;
-    function typeEffect() {
-        if (index < textContent.length) {
-            textElement.textContent += textContent.charAt(index);
-            index++;
-            setTimeout(typeEffect, 100); // Adjust typing speed here (100ms per character)
-        }
-    }
-    typeEffect();
     
     // Function to fetch registered users from Supabase and populate the leaderboard
     async function fetchAndPopulateLeaderboard() {
