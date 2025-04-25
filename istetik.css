@@ -596,6 +596,7 @@ body {
   border-bottom: 2px solid white;
   font-family: 'Press Start 2P', cursive;
   z-index: 0;
+  height: 450px;
 }
 
 .menu a {
@@ -698,29 +699,7 @@ body {
   border-radius: 5px;
 }
 
-.sources img {
-  margin-left: 10px;
-}
 
-.sources .fb {
-  border-radius: 50%;
-  box-shadow: 0 0 5px cyan, 0 0 20px blue;
-  display: none;
-}
-
-.sources .github {
-  border-radius: 50%;
-  box-shadow: 0 0 5px white, 0 0 20px white;
-  display: none;
-}
-
-.sources .trophy {
-  border-radius: 50%;
-}
-
-.sources .trophy:hover {
-  box-shadow: 0 0 5px rgb(238, 255, 0), 0 0 20px rgb(229, 255, 0);
-}
 
 .version {
   position: absolute;
@@ -1052,10 +1031,10 @@ body {
 .Normal b {
   position: absolute;
   inset: 6px;
-  background: url(https://c4.wallpaperflare.com/wallpaper/258/501/244/pixel-art-hyper-light-drifter-video-games-wallpaper-preview.jpg);
+  background: url(https://cdnb.artstation.com/p/assets/images/images/054/336/857/large/khuevohuu-floating-island-10x-size.jpg?1664303547);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: -120px;
+  background-position: -267px;
   z-index: 2;
 }
 
@@ -1063,6 +1042,9 @@ body {
   z-index: 5;
   position: relative;
   top: 0;
+  font-size: 50px;
+  color: black;
+  -webkit-text-stroke: .1px white;
   transition: all 0.2s ease;
 }
 
@@ -1135,10 +1117,10 @@ body {
 .Moderate b {
   position: absolute;
   inset: 6px;
-  background: url(https://image.api.playstation.com/cdn/UP0322/CUSA04570_00/NVUY7cNulPACX3zr5nYfEp5Jl74y0qIn.png);
+  background: url(https://cdnb.artstation.com/p/assets/images/images/023/171/537/large/krzysztof-maziarz-1-color.jpg?1578343169);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: -400px;
+  background-size: auto;
+  background-position: -500px;
   z-index: 2;
 }
 
@@ -1146,6 +1128,9 @@ body {
   z-index: 5;
   position: relative;
   top: 0;
+  color: yellow;
+  font-size: 37px;
+
   transition: all 0.2s ease;
 }
 

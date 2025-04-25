@@ -933,6 +933,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     loginButton.addEventListener("click", async function () {
         const username = loginUsername.value.trim();
         const password = loginPassword.value.trim();
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        const profileRank = document.querySelector('.rank');
 
         if (!username || !password) {
             alert("Please fill out both username and password.");
@@ -977,6 +979,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             feedback.style.display = "block";
             note.style.display = "block"; // Ensure the note is displayed
 
+            if (user.username === loggedInUser && profileRank) {
+                profileRank.textContent = `Rank: #${index + 1}` || "Rank: N/A";
+            }
             // Update user data in localStorage
             const userData = {
                 id: user.id,
@@ -1089,7 +1094,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
-        randomText.style.display = "block"; // Ensure random text is displayed
+        feedback.style.display = "block";
+        note.style.display = "block";
     }
 
 
@@ -1140,7 +1146,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 leaderboardTable.appendChild(row);
 
                 if (user.username === loggedInUser && profileRank) {
-                    profileRank.textContent = `Rank: #${index + 1}`;
+                    profileRank.textContent = `Rank: #${index + 1}` || "Rank: N/A";
                 }
             });
         } catch (error) {
