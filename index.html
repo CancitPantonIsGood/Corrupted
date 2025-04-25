@@ -173,7 +173,7 @@
                 <a href="#" ><img src="trophy.png" width="55px" class="trophy"></a>
             </div>
             <div class="version">
-                <p>Version: 1.0 (TEST)</p>
+                <p>Version: ALPHA TEST</p>
             </div>
         </div>
 
@@ -243,6 +243,9 @@
                 <h3>Expected Output</h3>
                 <pre id="expectedOutput">Expected output will appear here...</pre>
             </div>
+            <div class="timer">
+                <p id="timer-display">Time Left: 30s</p>
+            </div>
         </div>
             
         </div>
@@ -297,7 +300,8 @@
 
         <div class="settingsMenu">
             <h2 class="titleName">Settings</h2>
-            <p>Under Development</p>
+            <input type="radio">
+            <label for="">Music</label>
         </div>
         <div class="leaderboardMenu">
             <h2 class="titleName">Leaderboard</h2>
@@ -326,7 +330,6 @@
         <div class="randomtext">
             <div class="code1">
                 <div class="text">
-                    
                 </div>
             </div>
         </div>
@@ -344,6 +347,7 @@
         </div>
         <div class="gameOverScreen" style="display: none;">
             <h2>Game Over</h2>
+            <div id="summary-container"></div> 
             <div class="gameOverButtons">
                 <button id="return-button" class="return-button">Return</button>
                 <button id="play-again-button">Play Again</button>
