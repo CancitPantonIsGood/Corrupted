@@ -156,6 +156,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 'public class Main {\n   public static void main(String[] args) {\n      int age = 17;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      char sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo +;\n      System.out.println("Total: ");\n   }\n}',
                 'public class Main {\n   public stakatistic void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam)\n   }\n}',
+                'public class Main {\n    public void print() {\n        System.ou.println(\"Hello World\");\n    }\n}',
+                'public class Main {\n    public int sum(int a, int b) {\n        return a + ;\n    }\n}',
+                'public class Main {\n    public void show() {\n        int x = 5\n        System.out.println(x);\n    }\n}',
+                'public class Main {\n    public void mult() {\n        int result = 2 * ;\n        System.out.println(result);\n    }\n}',
+                'public class Main {\n    public void output() {\n        System.out.printl(\"Done\");\n    }\n}',
+
             ],
             moderate: [
                 'public class Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n}',
@@ -242,6 +248,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
+                `public class Main {\n    public void print() {\n        System.out.println(\"Hello World\");\n    }\n}`,
+                `public class Main {\n    public int sum(int a, int b) {\n        return a + b;\n    }\n}`,
+                `public class Main {\n    public void show() {\n        int x = 5;\n        System.out.println(x);\n    }\n}`,
+                `public class Main {\n    public void mult() {\n        int result = 2 * 3;\n        System.out.println(result);\n    }\n}`,
+                `public class Main {\n    public void output() {\n        System.out.println(\"Done\");\n    }\n}`,
             ],
             moderate: [
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
@@ -1094,7 +1105,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const row = document.createElement("tr");
 
                 row.innerHTML = `
-                    <th class="top${index + 1}">
+                    <th class="top${index + 1}" style="position: sticky;" >
                         ${index === 0 ? '<div class="crown-container"><img src="top1.png" alt="Crown" "></div>' : ''}
                         ${index + 1}
                     </th>
@@ -1302,9 +1313,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         const returnButton = document.getElementById('return-button');
         const summaryContainer = document.getElementById('summary-container'); // Summary container
         gameOverScreen.style.display = 'block';
-
+    
         document.querySelector('.gameScreen').style.display = 'none';
-
+    
         function normalizeCode(code) {
             return code
                 .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
@@ -1317,37 +1328,32 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .replace(/[\r\n]+/g, '') // Remove newlines for consistent comparison
                 .trim();
         }
-
+    
         // Generate the summary of answers
         let summaryHTML = '<h3>Summary</h3><table><tr><th>Question</th><th>Correct Answer</th><th>Your Answer</th></tr>';
+        
+        // Filter only the answered questions
         questionOrder.forEach((questionIndex, i) => {
-            const correctAnswer = solutions[selectedLanguage][selectedDifficulty][questionIndex];
-            const userAnswer = userAnswers[i] || 'No Answer';
-            const isCorrect = normalizeCode(userAnswer) === normalizeCode(correctAnswer);
-            if (isCorrect) {
+            const userAnswer = userAnswers[i];
+            if (userAnswer) { // Only include answered questions
+                const correctAnswer = solutions[selectedLanguage][selectedDifficulty][questionIndex];
+                const isCorrect = normalizeCode(userAnswer) === normalizeCode(correctAnswer);
                 summaryHTML += `
-                <tr>
-                    <td>Question ${i + 1}</td>
-                    <td><pre>${correctAnswer}</pre></td>
-                    <td><pre style="background:rgb(0, 133, 66);">${userAnswer}</pre></td>
-                </tr>
-            `;
-            } else {
-                summaryHTML += `
-                <tr>
-                    <td>Question ${i + 1}</td>
-                    <td><pre>${correctAnswer}</pre></td>
-                    <td><pre style="background:rgb(133, 0, 0);">${userAnswer}</pre></td>
-                </tr>
-            `;
+                    <tr>
+                        <td>Question ${i + 1}</td>
+                        <td><pre>${correctAnswer}</pre></td>
+                        <td><pre style="background:${isCorrect ? 'rgb(0, 133, 66)' : 'rgb(133, 0, 0)'};">${userAnswer}</pre></td>
+                    </tr>
+                `;
             }
         });
+    
         summaryHTML += '</table>';
         summaryContainer.innerHTML = summaryHTML;
-
+    
         returnButton.addEventListener("click", function () {
             resetGame();
-
+    
             document.querySelector('.randomtext').style.display = 'block';
             document.querySelector('.logo').style.display = 'block';
             document.querySelector('.userMenu').style.display = 'block';
@@ -1355,7 +1361,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.querySelector('.feedback').style.display = 'block';
             note.style.display = 'block';
             gameOverScreen.style.display = 'none';
-
+    
             console.log("Game exited and reset.");
         });
     }

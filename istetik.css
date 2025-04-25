@@ -2703,8 +2703,6 @@ body {
   }
 }
 
-
-
 .creditsMenu {
   border: 1px solid Yellow;
   display: none;
@@ -2715,20 +2713,181 @@ body {
   width: 1000px;
   height: 700px;
   color: white;
-  justify-content: space-between;
+  align-items: center;
   background: #222;
   text-align: center;
   font-family: 'Press Start 2P', cursive;
+  flex-direction: column;
 }
 
 .creditsMenu h2 {
-  color: yellow;
+  position: sticky;
 }
 
-.creditsMenu p {
-  text-align: center;
-  top: 15%;
+.creditsMenu .content {
   position: absolute;
+  width: 900px;
+  height: 575px;
+  top: 13%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.creditsMenu .content::-webkit-scrollbar {
+  width: 1px;
+  background: none;
+}
+
+.creditsMenu .content .intro {
+  position: relative;
+  top: 30px;
+  margin-left: 10px;
+  background: #111;
+  height: 50%;
+  border: 1px solid yellow;
+  width: 98%;
+}
+
+.creditsMenu .content .intro h3 {
+  position: relative;
+  top: -29px;
+  font-size: 25px;
+  background: linear-gradient(#222, #111);
+  width: 50%;
+  height: 60px;
+  padding: 20px;
+  left: 25px;
+  border-left: 1px solid yellow;
+  border-radius: 20px;
+  border-right: 1px solid yellow;
+}
+
+.creditsMenu .content .intro p {
+  position: relative;
+  top: 70px;
+  text-align: left;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.creditsMenu .content .member {
+  position: relative;
+  top: 20%;
+  margin-left: 10px;
+  background: #111;
+  height: auto;
+  border: 1px solid yellow;
+  width: 98%;
+}
+
+.creditsMenu .content .member h3 {
+  position: relative;
+  top: -29px;
+  font-size: 25px;
+  background: linear-gradient(rgb(27, 27, 27), #111);
+  width: 50%;
+  height: 60px;
+  padding: 20px;
+  left: 25px;
+  border-left: 1px solid yellow;
+  border-radius: 20px;
+  border-right: 1px solid yellow;
+}
+
+.creditsMenu .content .member .members {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 80%;
+  height: 150px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  border-left: 2px solid black;
+}
+
+.creditsMenu .content .member .members:hover:nth-child(2) {
+  border-left: 2px solid cyan;
+  background: linear-gradient(#222, #111);
+}
+.creditsMenu .content .member .members:hover:nth-child(3) {
+  border-left: 2px solid yellow;
+  background: linear-gradient(#222, #111);
+}
+.creditsMenu .content .member .members:hover:nth-child(4) {
+  border-left: 2px solid green;
+  background: linear-gradient(#222, #111);
+}
+.creditsMenu .content .member .members:hover:nth-child(5) {
+  border-left: 2px solid orange;
+  background: linear-gradient(#222, #111);
+}
+.creditsMenu .content .member .members:hover:nth-child(6) {
+  border-left: 2px solid pink;
+  background: linear-gradient(#222, #111);
+}
+.creditsMenu .content .member .members:hover:nth-child(7) {
+  border-left: 2px solid red;
+  background: linear-gradient(#222, #111);
+}
+.creditsMenu .content .member .members:hover:nth-child(8) {
+  border-left: 2px solid blue;
+  background: linear-gradient(#222, #111);
+}
+
+.creditsMenu .content .member .members:hover:nth-child(2) .name {
+  color: cyan;
+}
+.creditsMenu .content .member .members:hover:nth-child(3) .name {
+  color: yellow;
+}
+.creditsMenu .content .member .members:hover:nth-child(4) .name {
+  color: green;
+}
+.creditsMenu .content .member .members:hover:nth-child(5) .name {
+  color: orange;
+}
+.creditsMenu .content .member .members:hover:nth-child(6) .name {
+  color: pink;
+}
+.creditsMenu .content .member .members:hover:nth-child(7) .name {
+  color: red;
+}
+.creditsMenu .content .member .members:hover:nth-child(8) .name {
+  color: blue;
+}
+
+
+
+.creditsMenu .content .member .members img {
+  width: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  height: 100;
+  left: 30px;
+}
+
+.creditsMenu .content .member .members .name {
+  position: absolute;
+  top: 10%;
+  text-align: left;
+  font-size: 20px;
+  width: 700px;
+  left: 250px;
+}
+
+.creditsMenu .content .member .members .part {
+  position: absolute;
+  top: 70px;
+  left: 300px;
+  font-size: 15px;
 }
 
 .settingsMenu {
@@ -2800,7 +2959,7 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 20px;
-  width: 90%; 
+  width: 90%;
   max-width: 1200px;
   height: 90%;
   border: 5px solid transparent;
@@ -2962,6 +3121,7 @@ body {
   border-top: 2px solid white;
   border-left: 2px solid white;
 }
+
 .login-container .blue .blue-9 {
   width: 25px;
   background: cyan;
@@ -3416,14 +3576,6 @@ body {
   font-size: 50px;
 }
 
-.creditsMenu p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  font-size: 50px;
-}
-
 .menu a,
 .QUIZMODE,
 .CHALLENGEMODE,
@@ -3489,7 +3641,8 @@ body {
   border-collapse: collapse;
 }
 
-#summary-container th, #summary-container td {
+#summary-container th,
+#summary-container td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
