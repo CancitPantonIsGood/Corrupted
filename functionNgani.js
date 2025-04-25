@@ -463,9 +463,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         const border2 = document.querySelector('.border2');
         const border3 = document.querySelector('.border3');
         const border4 = document.querySelector('.border4');
-    
+
         submitButton.disabled = true;
-    
+
         // Function to normalize code by removing extra spaces and formatting
         function normalizeCode(code) {
             return code
@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .replace(/\s*\/\s*/g, '/') // Ensure division signs are consistent
                 .trim(); // Trim leading and trailing spaces
         }
-    
+
         // Check if the normalized user code matches any normalized correct code
         if (correctCodes && correctCodes.some(correctCode => normalizeCode(userCode) === normalizeCode(correctCode))) {
             customNotification.style.display = 'block';
@@ -505,25 +505,25 @@ document.addEventListener("DOMContentLoaded", async function () {
             border4.style.background = 'red';
             console.log("Incorrect");
         }
-    
+
         questionsAnswered++;
         updateProgress();
-    
+
         if (questionsAnswered >= 10) {
             // All 10 questions answered, show Game Over screen
             setTimeout(async () => {
                 customNotification.style.display = 'none';
-    
+
                 const loggedInUser = localStorage.getItem('loggedInUser');
                 const userData = JSON.parse(localStorage.getItem(loggedInUser));
                 const totalPoints = (userData.points || 0) + points;
-    
+
                 try {
                     const { data, error } = await supabase
                         .from("user")
                         .update({ points: totalPoints })
                         .eq("username", loggedInUser);
-    
+
                     if (error) {
                         console.error("Error updating points:", error);
                     } else {
@@ -866,6 +866,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         const section = document.getElementById("register-section").value.trim();
         const title = document.getElementById("register-title").value.trim();
 
+        const bannedUsernames = ["nigger", "knee grow", "knee gross", "test", "banneduser"];
+        if (bannedUsernames.includes(username.toLowerCase())) {
+            alert("This username is not allowed. Please choose a different username.");
+            return;
+        }
+
         if (!username || !password || !id || !section || !title) {
             alert("Please fill out all fields.");
             return;
@@ -878,6 +884,22 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
+            const { data: existingUser, error: fetchError } = await supabase
+                .from("user")
+                .select("id")
+                .eq("id", id);
+
+            if (fetchError) {
+                console.error("Error checking ID existence:", fetchError);
+                alert("An error occurred while checking the ID. Please try again.");
+                return;
+            }
+
+            if (existingUser && existingUser.length > 0) {
+                alert("This ID is already registered. Please use a different ID.");
+                return;
+            }
+
             const hashedPassword = await bcrypt.hash(password, 10);
             const { data, error } = await supabase
                 .from("user")
@@ -942,7 +964,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 return;
             }
 
-            alert("Login successful!");
 
             const backgroundMusic = document.getElementById("backgroundMusic");
             backgroundMusic.volume = 0.5; // Set volume (optional)
@@ -977,7 +998,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.log("UI initialized properly after login.");
         } catch (error) {
             console.error("Unexpected error during login:", error);
-            alert("An unexpected error occurred. Please try again.");
         }
     });
 
@@ -1076,6 +1096,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Function to fetch registered users from Supabase and populate the leaderboard
     async function fetchAndPopulateLeaderboard() {
         const leaderboardTable = document.querySelector("#leaderboard-table tbody");
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        const profileRank = document.querySelector('.rank');
 
         try {
             // Fetch user data from Supabase
@@ -1105,7 +1127,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const row = document.createElement("tr");
 
                 row.innerHTML = `
-                    <th class="top${index + 1}" style="position: sticky;" >
+                    <th class="top${index + 1}">
                         ${index === 0 ? '<div class="crown-container"><img src="top1.png" alt="Crown" "></div>' : ''}
                         ${index + 1}
                     </th>
@@ -1116,6 +1138,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `;
 
                 leaderboardTable.appendChild(row);
+
+                if (user.username === loggedInUser && profileRank) {
+                    profileRank.textContent = `Rank: #${index + 1}`;
+                }
             });
         } catch (error) {
             console.error("Error fetching or populating leaderboard:", error);
@@ -1313,9 +1339,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         const returnButton = document.getElementById('return-button');
         const summaryContainer = document.getElementById('summary-container'); // Summary container
         gameOverScreen.style.display = 'block';
-    
+
         document.querySelector('.gameScreen').style.display = 'none';
-    
+
         function normalizeCode(code) {
             return code
                 .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
@@ -1328,10 +1354,15 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .replace(/[\r\n]+/g, '') // Remove newlines for consistent comparison
                 .trim();
         }
-    
+
         // Generate the summary of answers
-        let summaryHTML = '<h3>Summary</h3><table><tr><th>Question</th><th>Correct Answer</th><th>Your Answer</th></tr>';
-        
+        let summaryHTML = `<table>
+            <tr>
+                <th>Question</th>
+                <th>Correct Answer</th>
+                <th>Your Answer</th>
+            </tr>`;
+
         // Filter only the answered questions
         questionOrder.forEach((questionIndex, i) => {
             const userAnswer = userAnswers[i];
@@ -1347,13 +1378,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `;
             }
         });
-    
+
         summaryHTML += '</table>';
         summaryContainer.innerHTML = summaryHTML;
-    
+
         returnButton.addEventListener("click", function () {
             resetGame();
-    
+
             document.querySelector('.randomtext').style.display = 'block';
             document.querySelector('.logo').style.display = 'block';
             document.querySelector('.userMenu').style.display = 'block';
@@ -1361,8 +1392,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.querySelector('.feedback').style.display = 'block';
             note.style.display = 'block';
             gameOverScreen.style.display = 'none';
-    
+
             console.log("Game exited and reset.");
         });
     }
+
+    
 });

@@ -2329,6 +2329,7 @@ body {
   color: white;
   overflow: hidden;
   transition: all 0.3s ease;
+  display: none;
   z-index: 0;
   clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
   /* Octagonal shape */
@@ -2991,6 +2992,7 @@ body {
   color: white;
   position: absolute;
   right: 20px;
+  display: none;
   top: 2%;
   background: rgb(172, 0, 0);
   padding: 10px;
@@ -3028,7 +3030,7 @@ body {
   position: absolute;
 }
 
-.login-container .blue .blue-1 {
+ .blue .blue-1 {
   width: 77px;
   background: #0ff;
   height: 20px;
@@ -3041,7 +3043,7 @@ body {
   border-left: 2px solid white;
 }
 
-.login-container .blue .blue-2 {
+ .blue .blue-2 {
   width: 30px;
   background: #0ff;
   height: 10px;
@@ -3051,7 +3053,7 @@ body {
   color: white;
 }
 
-.login-container .blue .blue-3 {
+ .blue .blue-3 {
   width: 70px;
   background: #0ff;
   height: 13px;
@@ -3064,7 +3066,7 @@ body {
   border-right: 2px solid white;
 }
 
-.login-container .blue .blue-4 {
+ .blue .blue-4 {
   width: 50px;
   background: #0ff;
   height: 20px;
@@ -3075,7 +3077,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .blue .blue-5 {
+ .blue .blue-5 {
   width: 100px;
   background: #0ff;
   height: 20px;
@@ -3086,7 +3088,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .blue .blue-6 {
+ .blue .blue-6 {
   width: 35px;
   background: #0ff;
   height: 50px;
@@ -3097,7 +3099,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .blue .blue-7 {
+ .blue .blue-7 {
   width: 100px;
   background: #0ff;
   height: 20px;
@@ -3110,7 +3112,7 @@ body {
   border-right: 2px solid white;
 }
 
-.login-container .blue .blue-8 {
+ .blue .blue-8 {
   width: 26.5px;
   background: #0ff;
   height: 20px;
@@ -3123,7 +3125,7 @@ body {
   border-left: 2px solid white;
 }
 
-.login-container .blue .blue-9 {
+ .blue .blue-9 {
   width: 25px;
   background: cyan;
   height: 17px;
@@ -3133,11 +3135,11 @@ body {
   color: white;
 }
 
-.login-container .pink {
+ .pink {
   position: absolute;
 }
 
-.login-container .pink .pink-1 {
+ .pink .pink-1 {
   width: 100px;
   background: #ff00ff;
   height: 9px;
@@ -3150,7 +3152,7 @@ body {
   border-right: 2px solid white;
 }
 
-.login-container .pink .pink-2 {
+ .pink .pink-2 {
   width: 50px;
   background: #ff00ff;
   height: 9px;
@@ -3160,7 +3162,7 @@ body {
   color: white;
 }
 
-.login-container .pink .pink-3 {
+ .pink .pink-3 {
   width: 47px;
   background: #ff00ff;
   height: 12px;
@@ -3173,7 +3175,7 @@ body {
   border-left: 2px solid white;
 }
 
-.login-container .pink .pink-4 {
+ .pink .pink-4 {
   width: 120px;
   background: #ff00ff;
   height: 20px;
@@ -3184,7 +3186,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .pink .pink-5 {
+ .pink .pink-5 {
   width: 120px;
   background: #ff00ff;
   height: 12px;
@@ -3195,7 +3197,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .pink .pink-6 {
+ .pink .pink-6 {
   width: 60px;
   background: #ff00ff;
   height: 12px;
@@ -3206,7 +3208,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .pink .pink-7 {
+ .pink .pink-7 {
   width: 120px;
   background: #ff00ff;
   height: 30px;
@@ -3217,7 +3219,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .pink .pink-8 {
+ .pink .pink-8 {
   width: 120px;
   background: #ff00ff;
   height: 30px;
@@ -3228,7 +3230,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .pink .pink-9 {
+ .pink .pink-9 {
   width: 90px;
   background: #ff00ff;
   height: 20px;
@@ -3239,7 +3241,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .pink .pink-10 {
+ .pink .pink-10 {
   width: 90px;
   background: #ff00ff;
   height: 20px;
@@ -3250,249 +3252,7 @@ body {
   border: 2px solid white;
 }
 
-.login-container .pink .pink-11 {
-  width: 30px;
-  background: #ff00ff;
-  height: 20px;
-  position: absolute;
-  top: -200px;
-  left: -170px;
-  color: white;
-  border: 2px solid white;
-}
-
-/*                                           */
-.register-box .blue {
-  position: absolute;
-}
-
-.register-box .blue .blue-1 {
-  width: 77px;
-  background: #0ff;
-  height: 20px;
-  position: absolute;
-  top: 10px;
-  left: -150px;
-  color: white;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  border-left: 2px solid white;
-}
-
-.register-box .blue .blue-2 {
-  width: 30px;
-  background: #0ff;
-  height: 10px;
-  position: absolute;
-  top: -300px;
-  left: 400px;
-  color: white;
-}
-
-.register-box .blue .blue-3 {
-  width: 70px;
-  background: #0ff;
-  height: 13px;
-  position: absolute;
-  top: -301px;
-  left: 423px;
-  color: white;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  border-right: 2px solid white;
-}
-
-.register-box .blue .blue-4 {
-  width: 50px;
-  background: #0ff;
-  height: 20px;
-  position: absolute;
-  top: 215px;
-  left: -100px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .blue .blue-5 {
-  width: 100px;
-  background: #0ff;
-  height: 20px;
-  position: absolute;
-  top: 225px;
-  left: 50px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .blue .blue-6 {
-  width: 35px;
-  background: #0ff;
-  height: 50px;
-  position: absolute;
-  top: -525px;
-  left: 450px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .blue .blue-7 {
-  width: 100px;
-  background: #0ff;
-  height: 20px;
-  position: absolute;
-  top: -500px;
-  left: -100px;
-  color: white;
-  border-top: 2px solid white;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
-}
-
-.register-box .blue .blue-8 {
-  width: 26.5px;
-  background: #0ff;
-  height: 20px;
-  position: absolute;
-  top: -500px;
-  left: -100px;
-  color: white;
-  border-bottom: 2px solid white;
-  border-top: 2px solid white;
-  border-left: 2px solid white;
-}
-
-.register-box .blue .blue-9 {
-  width: 24px;
-  background: cyan;
-  height: 17px;
-  position: absolute;
-  top: 11px;
-  left: -73px;
-  color: white;
-}
-
-.register-box .pink {
-  position: absolute;
-}
-
-.register-box .pink .pink-1 {
-  width: 100px;
-  background: #ff00ff;
-  height: 9px;
-  position: absolute;
-  top: -129px;
-  left: 423.5px;
-  color: white;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  border-right: 2px solid white;
-}
-
-.register-box .pink .pink-2 {
-  width: 50px;
-  background: #ff00ff;
-  height: 9px;
-  position: absolute;
-  top: -295px;
-  left: -75px;
-  color: white;
-}
-
-.register-box .pink .pink-3 {
-  width: 47px;
-  background: #ff00ff;
-  height: 12px;
-  position: absolute;
-  top: -296.5px;
-  left: -120px;
-  color: white;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  border-left: 2px solid white;
-}
-
-.register-box .pink .pink-4 {
-  width: 120px;
-  background: #ff00ff;
-  height: 20px;
-  position: absolute;
-  top: -510px;
-  left: -80px;
-  color: white;
-  border-top: 2px solid white;
-  border-right: 2px solid white;
-  border-left: 2px solid white;
-}
-
-.register-box .pink .pink-5 {
-  width: 120px;
-  background: #ff00ff;
-  height: 12px;
-  position: absolute;
-  top: -501px;
-  left: 500px;
-  color: white;
-  border-bottom: 2px solid white;
-  border-right: 2px solid white;
-  border-left: 2px solid white;
-}
-
-.register-box .pink .pink-6 {
-  width: 60px;
-  background: #ff00ff;
-  height: 12px;
-  position: absolute;
-  top: -501px;
-  left: 150px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .pink .pink-7 {
-  width: 120px;
-  background: #ff00ff;
-  height: 30px;
-  position: absolute;
-  top: -550px;
-  left: 200px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .pink .pink-8 {
-  width: 120px;
-  background: #ff00ff;
-  height: 30px;
-  position: absolute;
-  top: 250px;
-  left: 120px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .pink .pink-9 {
-  width: 90px;
-  background: #ff00ff;
-  height: 20px;
-  position: absolute;
-  top: 120px;
-  left: 450px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .pink .pink-10 {
-  width: 90px;
-  background: #ff00ff;
-  height: 20px;
-  position: absolute;
-  top: -50px;
-  left: -200px;
-  color: white;
-  border: 2px solid white;
-}
-
-.register-box .pink .pink-11 {
+ .pink .pink-11 {
   width: 30px;
   background: #ff00ff;
   height: 20px;
@@ -3508,10 +3268,12 @@ body {
   top: -100px;
   left: 50px;
 }
+/*                                           */
+
 
 @media (min-width: 0px) {
   .gameScreen {
-    width: 47%;
+    width: 47%; 
     height: 98%;
   }
 
@@ -3677,4 +3439,258 @@ body {
 
 .gameOverButtons button:hover {
   background-color: #0056b3;
+}
+
+.notificationForAll {
+  font-family: 'Press Start 2P', cursive;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  width: 500px;
+  height: 200px;
+  padding: 10px;
+  border: 5px solid black;
+  display: none;
+  z-index: 1000;
+}
+
+.notificationForAll h2 {
+  text-align: center;
+  padding-top: 30px;
+  color: yellow;
+  font-size: 40px;
+  -webkit-text-stroke: 1px white;
+}
+
+.notificationForAll p {
+  font-size: 18px;
+  padding-top: 20px;
+  margin-top: 30px;
+  color: white;
+  text-align: center;
+}
+
+.pink-4 {
+  animation: pink4 2s infinite;
+}
+
+.pink-7 {
+  animation: pink7 2s infinite;
+}
+
+.pink-9 {
+  animation: pink9 4s infinite;
+}
+
+.pink-10 {
+  animation: pink10 2.5s infinite;
+}
+
+.pink-11 {
+  animation: pink11 2s infinite;
+}
+
+@keyframes pink4 {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    transform: translateX(100px);
+    padding-top: 30px;
+    background: #fff;
+  }
+  35% {
+    background: #000;
+  }
+  60% {
+    transform: translateX(100px) translateY(-50px);
+    padding-top: 10px;
+  }
+  80% {
+    transform: translateX(100px) translateY(0px);
+
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pink7 {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(50px);
+  }
+  15% {
+    transform: translateY(-50px)
+  }
+  50% {
+    transform: translateX(-200px) translateY(-50px);
+    padding-left: 200px;
+    height: 5px;
+    background: #0ff;
+  }
+  60% {
+    transform: translateY(0px);
+    background: pink;
+  }
+  
+  80% {
+    height: 40px;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pink9 {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(100px);
+  }
+  30% {
+    transform: translateX(100px) translateY(-50px);
+    padding-top: 50px;
+  }
+  80% {
+    transform: translateY(-50px);
+    width: 5px;
+  }
+  90% {
+    transform: translateX(100px) translateY(0px);
+    height: 10px;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pink10 {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(110px);
+    width: 5px;
+  }
+  40% {
+    transform: translateY(-50px)translateX(120px);
+    
+  }
+  50% {
+    width: 5px;
+    height: 100px;
+    transform: translateX(120px)translateY(-50px);
+  }
+  60% {
+    transform: translateY(0px) translateX(120px);
+    width: 5px;
+    height: 30px;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pink11 {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(50px);
+  }
+  15% {
+    transform: translateY(-50px)
+  }
+  50% {
+    transform: translateX() translateY(-50px);
+    padding-bottom: 100px;
+    width:  5px;
+    background: #0ff;
+  }
+  60% {
+    transform: translateY(0px);
+    background: pink;
+  }
+  70% {
+    height: 40px;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.blue-5 {
+  animation: blue5 3s infinite;
+}
+
+.blue-6 {
+  animation: blue6 5s infinite;
+}
+
+@keyframes blue5{
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-90px);
+  }
+  20% {
+    transform: translateY(20px) translateX(-90px);
+  }
+  25% {
+    transform: translateX(-260px) translateY(20px);
+    width: 50px;
+  }
+  40% {
+    transform: translateX(-260px) translateY(-100px);
+    width: 10px;
+  }
+  80% {
+    transform: translateX(-260px) translateY(20px);  
+  }
+  85% {
+    width: 60px;
+    transform: translateX(-90px) translateY(20px);
+  }
+  90% {
+    transform: translateX(-90px) translateY(0px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes blue6 {
+  0% {
+    transform: translateX(0);
+  }
+  5%{
+    width: 100px;
+  }
+  10% {
+    transform: translateY(150px);
+  }
+  30% {
+    transform: translateY(165px);
+    height: 5px;
+  }
+  
+  50% {
+    transform: translateY(165px);
+  }
+  
+  95% {
+    transform: translateY(165px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
