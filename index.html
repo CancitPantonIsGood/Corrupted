@@ -120,19 +120,11 @@
             </div>
             <select id="register-section">
                 <option value="FACULTY">FACULTY</option>
-                <option value="ICT-301">ICT-301</option>
+                <option value="ICT-301">ICT-201</option>
                 <option value="ICT-401">ICT-401</option>
                 <option value="ICT-402">ICT-402</option>
-                <option value="STEM-301">STEM-301</option>
-                <option value="STEM-302">STEM-302</option>
-                <option value="STEM-303">STEM-303</option>
-                <option value="STEM-304">STEM-304</option>
-                <option value="STEM-305">STEM-305</option>
-                <option value="STEM-401">STEM-401</option>
-                <option value="STEM-402">STEM-402</option>
-                <option value="STEM-403">STEM-403</option>
-                <option value="STEM-404">STEM-404</option>
-                <option value="STEM-405">STEM-405</option>
+                <option value="NON ICT">NON ICT</option>
+                
             </select>
             <button id="register-button">Register</button>
             <p>Already have an account? <a href="#" id="show-login">Login</a></p>
@@ -184,9 +176,10 @@
                 <b></b>
             </div>
             <div class="CHALLENGEMODE" id="infinite-button" data-mode="infinite">
-                <h2>LOCKED</h2>
+                <h2>REQUIREMENTS</h2>
                 <h3></h3>
-                <p>This mode is unavailable</p>
+                <p class="p">Points: 10k </p>
+                <p class="q">Completed All Levels</p>
                 <b></b>
             </div>
         </div>
@@ -348,6 +341,29 @@
                     <p class="cover"></p>
                 </div>
             </div>
+            <div class="container">
+                <div class="reward" id="complete-normal-mode">
+                    <h2 class="title">Normal Mastery</h2>
+                    <p class="reward-name">You've played all the requirements</p>
+                    <p class="multiplier">x1</p>
+                    <p class="lock">Locked</p>
+                    <p class="cover"></p>
+                </div>
+                <div class="reward" id="">
+                    <h2 class="title">None</h2>
+                    <p class="reward-name">None</p>
+                    <p class="multiplier">x1</p>
+                    <p class="lock">Locked</p>
+                    <p class="cover"></p>
+                </div>
+                <div class="reward" id="">
+                    <h2 class="title">None</h2>
+                    <p class="reward-name">None</p>
+                    <p class="multiplier">x1</p>
+                    <p class="lock">Locked</p>
+                    <p class="cover"></p>
+                </div>
+            </div>
         </div>
         <div class="total-multiplier">Multiplier: </div>
         <div class="total-completed">Completed: </div>
@@ -433,7 +449,7 @@
         <b class="wall"></b>
         <div class="textarea"></div>
         <h2>FEEDBACK</h2>
-        <Button>Submit</Button>
+        <button>Submit</button>
     </div>
     <div class="cinematic-text" id="cinematicText" style="display: none;">
         <p id="cinematicMessage" data-text="CORRUPTED PROMPT"></p>
@@ -461,8 +477,37 @@
         <h2>Highlight</h2>
         <p>'Message'</p>
     </div>
-    <script type="module" src="functionNgani.js"></script>
     </div>
+    <script src="https://cdn.emailjs.com/dist/email.min.js">
+    
+    document.querySelector('.feedback button').addEventListener('click', function () {
+        const feedbackTextarea = document.querySelector('.feedback-textarea');
+        const feedbackText = feedbackTextarea.value.trim();
+    
+        if (!feedbackText) {
+            alert('Please enter your feedback before submitting.');
+            return;
+        }
+    
+        console.log('Feedback Text:', feedbackText); // Debugging log
+    
+        // Initialize EmailJS
+        emailjs.init('PrywtQKOt65akVRnAAPYR'); // Replace with your EmailJS User ID
+    
+        // Send feedback email
+        emailjs.send('service_pwanr6h', 'template_p92u25u', {
+            feedback: feedbackText,
+            email: 'corruptedprompt@gmail.com'
+        }).then(() => {
+            console.log('Email sent successfully!'); // Debugging log
+            alert('Thank you for your feedback!');
+            feedbackTextarea.value = ''; // Clear the textarea
+        }).catch((error) => {
+            console.error('Error sending feedback:', error); // Debugging log
+            alert('Failed to send feedback. Please try again later.');
+        });
+    });</script>
+<script type="module" src="functionNgani.js"></script>
 </body>
 
 </html>

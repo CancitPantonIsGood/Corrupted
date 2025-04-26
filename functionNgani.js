@@ -1531,13 +1531,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         let totalMultiplier = 0;
         let totalCompleted = 0;
 
-        // Retrieve the logged-in user's achievements from local storage
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
             const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
             const achievements = userData.achievements || {};
 
-            // Check achievements and add their multipliers
             if (achievements.firstCorrect) {
                 totalMultiplier += 2;
                 totalCompleted++;
@@ -1555,12 +1553,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 totalCompleted++;
             }
         }
-
-        // Update the multiplier display
         totalMultiplierElement.textContent = `Multiplier: x${totalMultiplier}`;
-
-        // Update the completed achievements display
         totalCompletedElement.textContent = `Completed: ${totalCompleted}`;
     }
+
 
 });
