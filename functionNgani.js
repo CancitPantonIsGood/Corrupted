@@ -501,6 +501,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 firstAchievement.querySelector('.lock').style.color = 'green';
                 firstAchievement.style.border = '2px solid rgb(0, 190, 0)';
                 firstAchievement.querySelector('.cover').style.display = 'none';
+                updateTotalMultiplier();
 
                 // Save achievement to local storage
                 const loggedInUser = localStorage.getItem('loggedInUser');
@@ -509,7 +510,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 userData.achievements.firstCorrect = true;
                 localStorage.setItem(loggedInUser, JSON.stringify(userData));
 
-                
 
                 // Multiply points earning by 2x for the first achievement
                 points += 2; // Double the default point for the first achievement
@@ -535,6 +535,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         questionsAnswered++;
         updateProgress();
 
+
         if (questionsAnswered >= 10) {
             const isPerfectScore = userAnswers.every((answer, index) => {
                 const correctAnswer = solutions['java']['easy'][questionOrder[index]];
@@ -558,8 +559,48 @@ document.addEventListener("DOMContentLoaded", async function () {
                     secondAchievement.style.border = '2px solid rgb(0, 190, 0)';
 
                     console.log("Second achievement unlocked: Perfect score in Java easy mode!");
+                    updateTotalMultiplier();
                 }
             }
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+            const totalPoints = (userData.points || 0) + points;
+
+            // Check if the user has reached 100 points
+            if (totalPoints >= 35 && !userData.achievements?.['100Points']) {
+                userData.achievements = userData.achievements || {};
+                userData.achievements['100Points'] = true;
+                localStorage.setItem(loggedInUser, JSON.stringify(userData));
+
+                // Update the UI for the "100 Points" achievement
+                const hundredPointsAchievement = document.getElementById('100-points');
+                hundredPointsAchievement.querySelector('.lock').textContent = 'Completed';
+                hundredPointsAchievement.querySelector('.lock').style.color = 'green';
+                hundredPointsAchievement.querySelector('.cover').style.background = 'transparent';
+                hundredPointsAchievement.style.border = '2px solid rgb(0, 190, 0)';
+
+                console.log("Achievement unlocked: 100 Points!");
+                updateTotalMultiplier();
+            }
+
+            // Update points in local storage and database
+            try {
+                const { data, error } = await supabase
+                    .from("user")
+                    .update({ points: totalPoints })
+                    .eq("username", loggedInUser);
+
+                if (error) {
+                    console.error("Error updating points:", error);
+                } else {
+                    console.log("Points updated successfully in database:", data);
+                    userData.points = totalPoints; // Update local storage
+                    localStorage.setItem(loggedInUser, JSON.stringify(userData));
+                }
+            } catch (error) {
+                console.error("Error updating points:", error);
+            }
+
             // All 10 questions answered, show Game Over screen
             setTimeout(async () => {
                 customNotification.style.display = 'none';
@@ -794,7 +835,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
     // Attach event listener to the infinite button
-    document.getElementById('infinite-button').addEventListener('click', startInfiniteMode);
+    //document.getElementById('infinite-button').addEventListener('click', startInfiniteMode);
+    updateTotalMultiplier();
 
     // Event listeners for language selection
     document.querySelectorAll('.languageMenu div').forEach(option => {
@@ -1162,6 +1204,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             secondAchievement.style.border = '2px solid rgb(0, 190, 0)';
         }
 
+        if (achievements['100Points']) {
+            const hundredPointsAchievement = document.getElementById('100-points');
+            hundredPointsAchievement.querySelector('.lock').textContent = 'Completed';
+            hundredPointsAchievement.querySelector('.lock').style.color = 'green';
+            hundredPointsAchievement.querySelector('.cover').style.background = 'transparent';
+            hundredPointsAchievement.style.border = '2px solid rgb(0, 190, 0)';
+        }
+
         /* ACHIEVEMENTS */
 
         authContainer.style.display = "none";
@@ -1477,25 +1527,40 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     function updateTotalMultiplier() {
         const totalMultiplierElement = document.querySelector('.total-multiplier');
+        const totalCompletedElement = document.querySelector('.total-completed');
         let totalMultiplier = 0;
+        let totalCompleted = 0;
 
-        // Check achievements and add their multipliers
-        const firstCorrect = document.getElementById('first-correct');
-        const perfectJavaEasy = document.getElementById('perfect-java-easy');
-        const godOfJava = document.getElementById('god-of-java');
+        // Retrieve the logged-in user's achievements from local storage
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+            const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+            const achievements = userData.achievements || {};
 
-        if (firstCorrect.querySelector('.lock').textContent === 'Completed') {
-            totalMultiplier += 1; // x1 multiplier
-        }
-        if (perfectJavaEasy.querySelector('.lock').textContent === 'Completed') {
-            totalMultiplier += 2; // x2 multiplier
-        }
-        if (godOfJava.querySelector('.lock').textContent === 'Completed') {
-            totalMultiplier += 10; // x10 multiplier
+            // Check achievements and add their multipliers
+            if (achievements.firstCorrect) {
+                totalMultiplier += 2;
+                totalCompleted++;
+            }
+            if (achievements.perfectJavaEasy) {
+                totalMultiplier += 2;
+                totalCompleted++;
+            }
+            if (achievements.godOfJava) {
+                totalMultiplier += 10;
+                totalCompleted++;
+            }
+            if (achievements['100Points']) {
+                totalMultiplier += 2;
+                totalCompleted++;
+            }
         }
 
         // Update the multiplier display
         totalMultiplierElement.textContent = `Multiplier: x${totalMultiplier}`;
+
+        // Update the completed achievements display
+        totalCompletedElement.textContent = `Completed: ${totalCompleted}`;
     }
 
 });

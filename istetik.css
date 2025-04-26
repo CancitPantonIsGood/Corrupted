@@ -2920,9 +2920,22 @@ body {
 .settingsMenu .total-multiplier {
   position: absolute;
   top: 95%;
-  left: 15%;
+  left: 17%;
+  text-align: left;
+  width: 300px;
   transform: translateX(-50%);
-  font-size: 25px;
+  font-size: 20px;
+  color: white;
+}
+
+.settingsMenu .total-completed {
+  position: absolute;
+  top: 95%;
+  left: 80%;
+  width: 300px;
+  text-align: left;
+  transform: translateX(-50%);
+  font-size: 20px;
   color: white;
 }
 
@@ -2944,9 +2957,12 @@ body {
   border: 2px solid red;
 }
 
-.settingsMenu .container .reward .title{
- position: absolute;
- top: 10%;
+.settingsMenu .container .reward .title {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  position: absolute;
+  top: 10%;
 }
 
 .settingsMenu .container .reward .reward-name {
@@ -3796,18 +3812,19 @@ body {
 
 @keyframes slide-in {
   from {
-      opacity: 0;
-      transform: translateX(100%);
+    opacity: 0;
+    transform: translateX(100%);
   }
+
   to {
-      opacity: 1;
-      transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 @keyframes fade-out {
   to {
-      opacity: 0;
-      transform: translateX(100%);
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
