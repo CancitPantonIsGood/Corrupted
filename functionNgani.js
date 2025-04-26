@@ -433,6 +433,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     let questionOrder = [];
     let questionsAnswered = 0;
+    let firstRewardGiven = false;
 
     function startGame(language, difficulty, questionIndex = 0, isFirstGame = true) {
         if (isFirstGame) {
@@ -490,7 +491,32 @@ document.addEventListener("DOMContentLoaded", async function () {
             border2.style.background = '#00ff80';
             border3.style.background = '#00ff80';
             border4.style.background = '#00ff80';
-            points++;
+
+            if (!firstRewardGiven) {
+                firstRewardGiven = true;
+
+                // Update the first achievement status
+                const firstAchievement = document.getElementById('first-correct');
+                firstAchievement.querySelector('.lock').textContent = 'Completed';
+                firstAchievement.querySelector('.lock').style.color = 'green';
+                firstAchievement.style.border = '2px solid rgb(0, 190, 0)';
+                firstAchievement.querySelector('.cover').style.display = 'none';
+
+                // Save achievement to local storage
+                const loggedInUser = localStorage.getItem('loggedInUser');
+                const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+                userData.achievements = userData.achievements || {};
+                userData.achievements.firstCorrect = true;
+                localStorage.setItem(loggedInUser, JSON.stringify(userData));
+
+                
+
+                // Multiply points earning by 2x for the first achievement
+                points += 2; // Double the default point for the first achievement
+            } else {
+                points++; // Normal point increment
+            }
+
             console.log("Correct");
         } else {
             customNotification.style.display = 'block';
@@ -510,6 +536,30 @@ document.addEventListener("DOMContentLoaded", async function () {
         updateProgress();
 
         if (questionsAnswered >= 10) {
+            const isPerfectScore = userAnswers.every((answer, index) => {
+                const correctAnswer = solutions['java']['easy'][questionOrder[index]];
+                return normalizeCode(answer) === normalizeCode(correctAnswer);
+            });
+
+            if (isPerfectScore && selectedLanguage === 'java' && selectedDifficulty === 'easy') {
+                const loggedInUser = localStorage.getItem('loggedInUser');
+                const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+                userData.achievements = userData.achievements || {};
+
+                if (!userData.achievements.perfectJavaEasy) {
+                    userData.achievements.perfectJavaEasy = true;
+                    localStorage.setItem(loggedInUser, JSON.stringify(userData));
+
+                    // Update the UI for the second achievement
+                    const secondAchievement = document.getElementById('perfect-java-easy');
+                    secondAchievement.querySelector('.lock').textContent = 'Completed';
+                    secondAchievement.querySelector('.lock').style.color = 'green';
+                    secondAchievement.querySelector('.cover').style.background = 'transparent';
+                    secondAchievement.style.border = '2px solid rgb(0, 190, 0)';
+
+                    console.log("Second achievement unlocked: Perfect score in Java easy mode!");
+                }
+            }
             // All 10 questions answered, show Game Over screen
             setTimeout(async () => {
                 customNotification.style.display = 'none';
@@ -1066,6 +1116,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     const loggedInUser = localStorage.getItem("loggedInUser");
     if (loggedInUser) {
         const userData = JSON.parse(localStorage.getItem(loggedInUser));
+        const achievements = userData.achievements || {};
+
         profileName.textContent = loggedInUser;
         profileID.textContent = `ID: ${userData.id}`;
         profileTitle.textContent = `Status: ${userData.title}`;
@@ -1091,6 +1143,26 @@ document.addEventListener("DOMContentLoaded", async function () {
         backgroundMusic.addEventListener("pause", () => {
             localStorage.setItem("isMusicPlaying", "false");
         });
+
+        /* ACHIEVEMENTS */
+
+        if (achievements.firstCorrect) {
+            const firstAchievement = document.getElementById('first-correct');
+            firstAchievement.querySelector('.lock').textContent = 'Completed';
+            firstAchievement.querySelector('.lock').style.color = 'green';
+            firstAchievement.querySelector('.cover').style.background = 'transparent';
+            firstAchievement.style.border = '2px solid rgb(0, 190, 0)';
+        }
+
+        if (achievements.perfectJavaEasy) {
+            const secondAchievement = document.getElementById('perfect-java-easy');
+            secondAchievement.querySelector('.lock').textContent = 'Completed';
+            secondAchievement.querySelector('.lock').style.color = 'green';
+            secondAchievement.querySelector('.cover').style.background = 'transparent';
+            secondAchievement.style.border = '2px solid rgb(0, 190, 0)';
+        }
+
+        /* ACHIEVEMENTS */
 
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
@@ -1403,5 +1475,27 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    
+    function updateTotalMultiplier() {
+        const totalMultiplierElement = document.querySelector('.total-multiplier');
+        let totalMultiplier = 0;
+
+        // Check achievements and add their multipliers
+        const firstCorrect = document.getElementById('first-correct');
+        const perfectJavaEasy = document.getElementById('perfect-java-easy');
+        const godOfJava = document.getElementById('god-of-java');
+
+        if (firstCorrect.querySelector('.lock').textContent === 'Completed') {
+            totalMultiplier += 1; // x1 multiplier
+        }
+        if (perfectJavaEasy.querySelector('.lock').textContent === 'Completed') {
+            totalMultiplier += 2; // x2 multiplier
+        }
+        if (godOfJava.querySelector('.lock').textContent === 'Completed') {
+            totalMultiplier += 10; // x10 multiplier
+        }
+
+        // Update the multiplier display
+        totalMultiplierElement.textContent = `Multiplier: x${totalMultiplier}`;
+    }
+
 });
