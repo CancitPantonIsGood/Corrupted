@@ -440,6 +440,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return array;
     }
 
+    let totalMultiplier = 0;
     let questionOrder = [];
     let questionsAnswered = 0;
     let firstRewardGiven = false;
@@ -503,8 +504,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (!firstRewardGiven) {
                 firstRewardGiven = true;
-
-                // Update the first achievement status
                 const firstAchievement = document.getElementById('first-correct');
                 firstAchievement.querySelector('.lock').textContent = 'Completed';
                 firstAchievement.querySelector('.lock').style.color = 'green';
@@ -513,19 +512,15 @@ document.addEventListener("DOMContentLoaded", async function () {
                 updateTotalMultiplier();
                 markAchievementCompleted('firstCorrect');
 
-                // Save achievement to local storage
                 const loggedInUser = localStorage.getItem('loggedInUser');
-                let userData = JSON.parse(localStorage.getItem(loggedInUser)) || {}; // Parse the string into an object
-                userData.achievements = userData.achievements || {}; // Ensure achievements is an object
-                userData.achievements.firstCorrect = true; // Mark the achievement as completed
-                localStorage.setItem(loggedInUser, JSON.stringify(userData)); // Save back to localStorage
-
-
-                // Multiply points earning by 2x for the first achievement
-                points += 2; // Double the default point for the first achievement
-            } else {
-                points++; // Normal point increment
-            }
+                let userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+                userData.achievements = userData.achievements || {};
+                userData.achievements.firstCorrect = true;
+                localStorage.setItem(loggedInUser, JSON.stringify(userData));
+            } 
+            console.log(`Before increment: points = ${points}, totalMultiplier = ${totalMultiplier}`);
+            points += totalMultiplier;
+            console.log(`After increment: points = ${points}`);
 
             console.log("Correct");
         } else {
@@ -576,9 +571,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             const loggedInUser = localStorage.getItem('loggedInUser');
             const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
             const totalPoints = (userData.points || 0) + points;
+            userData.points = totalPoints + points;
 
             // Check if the user has reached 100 points
-            if (totalPoints >= 80 && !userData.achievements?.['100Points']) {
+            if (totalPoints >= 100 && !userData.achievements?.['100Points']) {
                 userData.achievements = userData.achievements || {};
                 userData.achievements['100Points'] = true;
                 localStorage.setItem(loggedInUser, JSON.stringify(userData));
@@ -1602,9 +1598,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         achievementElement.querySelector('.lock').style.color = 'green';
                         achievementElement.querySelector('.cover').style.background = 'transparent';
                         achievementElement.style.border = '2px solid rgb(0, 190, 0)';
-                    } else {
-                        console.warn(`Achievement element with ID "${achievementId}" not found in the DOM.`);
-                    }
+                    } 
                 }
             });
         }
@@ -1618,13 +1612,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     function updateTotalMultiplier() {
         const totalMultiplierElement = document.querySelector('.total-multiplier');
         const totalCompletedElement = document.querySelector('.total-completed');
-        let totalMultiplier = 0;
         let totalCompleted = 0;
-
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
             const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
             const achievements = userData.achievements || {};
+
+            totalMultiplier = 0;
 
             if (achievements.firstCorrect) {
                 totalMultiplier += 1;
@@ -1643,9 +1637,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 totalCompleted++;
             }
         }
-        totalMultiplierElement.textContent = `Multiplier: x${totalMultiplier}`;
+        totalMultiplierElement.textContent = `Multiplier: x${totalMultiplier }`;
         totalCompletedElement.textContent = `Completed: ${totalCompleted}`;
     }
-
-
 });
