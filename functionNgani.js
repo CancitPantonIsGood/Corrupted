@@ -443,7 +443,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     let totalMultiplier = 0;
     let questionOrder = [];
     let questionsAnswered = 0;
+
     let firstRewardGiven = false;
+    let hundredPointsGiven = false;
 
     function startGame(language, difficulty, questionIndex = 0, isFirstGame = true) {
         if (isFirstGame) {
@@ -517,11 +519,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 userData.achievements = userData.achievements || {};
                 userData.achievements.firstCorrect = true;
                 localStorage.setItem(loggedInUser, JSON.stringify(userData));
-            } 
-            console.log(`Before increment: points = ${points}, totalMultiplier = ${totalMultiplier}`);
+            }
             points += totalMultiplier;
-            console.log(`After increment: points = ${points}`);
-
             console.log("Correct");
         } else {
             customNotification.style.display = 'block';
@@ -574,21 +573,24 @@ document.addEventListener("DOMContentLoaded", async function () {
             userData.points = totalPoints + points;
 
             // Check if the user has reached 100 points
-            if (totalPoints >= 100 && !userData.achievements?.['100Points']) {
-                userData.achievements = userData.achievements || {};
-                userData.achievements['100Points'] = true;
-                localStorage.setItem(loggedInUser, JSON.stringify(userData));
+            if (totalPoints >= 100) {
+                if (!hundredPointsGiven) {
+                    hundredPointsGiven = true;
+                    const hundredPointsAchievement = document.getElementById('100-points');
+                    hundredPointsAchievement.querySelector('.lock').textContent = 'Completed';
+                    hundredPointsAchievement.querySelector('.lock').style.color = 'green';
+                    hundredPointsAchievement.querySelector('.cover').style.background = 'transparent';
+                    hundredPointsAchievement.style.border = '2px solid rgb(0, 190, 0)';
+                
+                    userData.achievements = userData.achievements || {};
+                    userData.achievements.hundredPoints = true;
+                    localStorage.setItem(loggedInUser, JSON.stringify(userData));
+                    updateTotalMultiplier();
+                    markAchievementCompleted('hundredPoints');
+                }
 
                 // Update the UI for the "100 Points" achievement
-                const hundredPointsAchievement = document.getElementById('100-points');
-                hundredPointsAchievement.querySelector('.lock').textContent = 'Completed';
-                hundredPointsAchievement.querySelector('.lock').style.color = 'green';
-                hundredPointsAchievement.querySelector('.cover').style.background = 'transparent';
-                hundredPointsAchievement.style.border = '2px solid rgb(0, 190, 0)';
-
                 console.log("Achievement unlocked: 100 Points!");
-                updateTotalMultiplier();
-                markAchievementCompleted('hundredPoints');
             }
 
             // Update points in local storage and database
@@ -1199,31 +1201,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             localStorage.setItem("isMusicPlaying", "false");
         });
 
-        /* ACHIEVEMENTS */
 
-        if (achievements.firstCorrect) {
-            const firstAchievement = document.getElementById('first-correct');
-            firstAchievement.querySelector('.lock').textContent = 'Completed';
-            firstAchievement.querySelector('.lock').style.color = 'green';
-            firstAchievement.querySelector('.cover').style.background = 'transparent';
-            firstAchievement.style.border = '2px solid rgb(0, 190, 0)';
-        }
-
-        if (achievements.perfectJavaEasy) {
-            const secondAchievement = document.getElementById('perfect-java-easy');
-            secondAchievement.querySelector('.lock').textContent = 'Completed';
-            secondAchievement.querySelector('.lock').style.color = 'green';
-            secondAchievement.querySelector('.cover').style.background = 'transparent';
-            secondAchievement.style.border = '2px solid rgb(0, 190, 0)';
-        }
-
-        if (achievements['100Points']) {
-            const hundredPointsAchievement = document.getElementById('100-points');
-            hundredPointsAchievement.querySelector('.lock').textContent = 'Completed';
-            hundredPointsAchievement.querySelector('.lock').style.color = 'green';
-            hundredPointsAchievement.querySelector('.cover').style.background = 'transparent';
-            hundredPointsAchievement.style.border = '2px solid rgb(0, 190, 0)';
-        }
         updateTotalMultiplier();
         loadAchievements();
         /* ACHIEVEMENTS */
@@ -1598,7 +1576,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         achievementElement.querySelector('.lock').style.color = 'green';
                         achievementElement.querySelector('.cover').style.background = 'transparent';
                         achievementElement.style.border = '2px solid rgb(0, 190, 0)';
-                    } 
+                    }
                 }
             });
         }
@@ -1632,12 +1610,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 totalMultiplier += 10;
                 totalCompleted++;
             }
-            if (achievements['100Points']) {
+            if (achievements.hundredPoints) {
                 totalMultiplier += 2;
                 totalCompleted++;
             }
         }
-        totalMultiplierElement.textContent = `Multiplier: x${totalMultiplier }`;
+        totalMultiplierElement.textContent = `Multiplier: x${totalMultiplier + 1}`;
         totalCompletedElement.textContent = `Completed: ${totalCompleted}`;
     }
 });
