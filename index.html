@@ -182,6 +182,28 @@
                 <p class="q">Completed All Levels</p>
                 <b></b>
             </div>
+            <a class="layers1">
+                <div class="shape1"></div>
+                <div class="shape2"></div>
+                <div class="shape3">
+                    <p></p>
+                </div>
+                <div class="shape4">
+                    <p></p>
+                </div>
+            </a>
+            <a class="layers2">
+                <div class="shape1"></div>
+                <div class="shape2"></div>
+                <div class="shape3">
+                    <p></p>
+                </div>
+                <div class="shape4">
+                    <p></p>
+                </div>
+            </a>
+            <a class="layers3"></a>
+            <a class="layers4"></a>
         </div>
 
         <div class="languageMenu">
@@ -310,8 +332,8 @@
                     <p class="lock">Locked</p>
                     <p class="cover"></p>
                 </div>
-                <div class="reward">
-                    <h2 class="title" id="god-of-java">God of Java</h2>
+                <div class="reward" id="god-of-java">
+                    <h2 class="title">God of Java</h2>
                     <p class="reward-name">You've perfect all java mode difficulties</p>
                     <p class="multiplier">x10</p>
                     <p class="lock">Locked</p>
@@ -374,10 +396,10 @@
             <table id="leaderboard-table" class="leaderboard-table">
                 <thead>
                     <tr>
-                        <th style="border-right: 1px solid white">#</th>
-                        <th style="border-right: 1px solid white">NAME</th>
-                        <th style="border-right: 1px solid white">SECTION</th>
-                        <th style="border-right: 1px solid white">ID</th>
+                        <th>#</th>
+                        <th>NAME</th>
+                        <th>SECTION</th>
+                        <th>ID</th>
                         <th>POINTS</th>
                     </tr>
                 </thead>
@@ -478,36 +500,8 @@
         <p>'Message'</p>
     </div>
     </div>
-    <script src="https://cdn.emailjs.com/dist/email.min.js">
-    
-    document.querySelector('.feedback button').addEventListener('click', function () {
-        const feedbackTextarea = document.querySelector('.feedback-textarea');
-        const feedbackText = feedbackTextarea.value.trim();
-    
-        if (!feedbackText) {
-            alert('Please enter your feedback before submitting.');
-            return;
-        }
-    
-        console.log('Feedback Text:', feedbackText); // Debugging log
-    
-        // Initialize EmailJS
-        emailjs.init('PrywtQKOt65akVRnAAPYR'); // Replace with your EmailJS User ID
-    
-        // Send feedback email
-        emailjs.send('service_pwanr6h', 'template_p92u25u', {
-            feedback: feedbackText,
-            email: 'corruptedprompt@gmail.com'
-        }).then(() => {
-            console.log('Email sent successfully!'); // Debugging log
-            alert('Thank you for your feedback!');
-            feedbackTextarea.value = ''; // Clear the textarea
-        }).catch((error) => {
-            console.error('Error sending feedback:', error); // Debugging log
-            alert('Failed to send feedback. Please try again later.');
-        });
-    });</script>
-<script type="module" src="functionNgani.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="module" src="functionNgani.js"></script>
 </body>
 
 </html>

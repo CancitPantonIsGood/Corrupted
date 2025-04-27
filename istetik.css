@@ -369,7 +369,7 @@ body {
   transform: scale(3);
   padding: 30px;
   top: 50px;
-  left: 175px;
+  left: 150px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -1562,7 +1562,7 @@ body {
 }
 
 /* play Menu */
-.playMenu div {
+.playMenu .QUIZMODE, .playMenu .CHALLENGEMODE {
   top: 150px;
 }
 
@@ -1949,7 +1949,7 @@ body {
 
 /* Table Header Styles */
 .leaderboard-table thead th {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: black;
   color: white;
   padding: 10px;
   text-transform: uppercase;
@@ -1966,7 +1966,7 @@ body {
 }
 
 .leaderboard-table tbody tr {
-  background-color: #494949;
+  background-color: black;
   color: white;
   border-left: 5px solid white;
   border-right: 5px solid white;
@@ -3835,4 +3835,183 @@ body {
     opacity: 0;
     transform: translateX(100%);
   }
+}
+
+
+.layers1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.layers1 .shape1 {
+  position: absolute;
+  top: -5px;
+  left: -25px;
+  width: 25px;
+  height: 300px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-left: 5px solid red;
+  z-index: 1;
+
+}
+
+.layers1 .shape2 {
+  position: absolute;
+  top: -10px;
+  left: -120px;
+  width: 100px;
+  height: 225px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-left: 5px solid red;
+  z-index: 2;
+}
+
+.layers1 .shape3 {
+  position: absolute;
+  top: -35px;
+  left: -195px;
+  width: 80px;
+  height: 75px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-left: 5px solid red;
+  z-index: 3;
+}
+
+.layers1 .shape3 p {
+  position: absolute;
+  background: red;
+  width: 5px;
+  right: -5px;
+  height: 20px;
+}
+
+.layers1 .shape4 {
+  position: absolute;
+  top: -135px;
+  left: -230px;
+  width: 40px;
+  height: 150px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-left: 5px solid red;
+  z-index: 4;
+}
+
+.layers1 .shape4 p {
+  position: absolute;
+  background: red;
+  width: 5px;
+  right: -5px;
+  height: 95px;
+}
+
+.layers2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.layers2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.layers2 .shape1 {
+  position: absolute;
+  top: -5px;
+  right: -25px;
+  width: 25px;
+  height: 300px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-right: 5px solid red;
+  z-index: 1;
+
+}
+
+.layers2 .shape2 {
+  position: absolute;
+  top: -10px;
+  right: -120px;
+  width: 100px;
+  height: 225px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-right: 5px solid red;
+  z-index: 2;
+}
+
+.layers2 .shape3 {
+  position: absolute;
+  top: -35px;
+  right: -195px;
+  width: 80px;
+  height: 75px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-right: 5px solid red;
+  z-index: 3;
+}
+
+.layers2 .shape3 p {
+  position: absolute;
+  background: red;
+  width: 5px;
+  left: -5px;
+  height: 20px;
+}
+
+.layers2 .shape4 {
+  position: absolute;
+  top: -135px;
+  right: -230px;
+  width: 40px;
+  height: 150px;
+  background: #222;
+  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+  border-right: 5px solid red;
+  z-index: 4;
+}
+
+.layers2 .shape4 p {
+  position: absolute;
+  background: red;
+  width: 5px;
+  left: -5px;
+  height: 95px;
+}
+
+.layers3 {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 120px;
+  background: #222;
+  border: 5px solid red;
+}
+
+.layers4 {
+  position: absolute;
+  top: 710px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 50px;
+  background: #222;
+  border: 5px solid red;
 }
