@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     hundredPointsAchievement.querySelector('.lock').style.color = 'green';
                     hundredPointsAchievement.querySelector('.cover').style.background = 'transparent';
                     hundredPointsAchievement.style.border = '2px solid rgb(0, 190, 0)';
-                
+
                     userData.achievements = userData.achievements || {};
                     userData.achievements.hundredPoints = true;
                     localStorage.setItem(loggedInUser, JSON.stringify(userData));
@@ -954,7 +954,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     });
 
-    // Event listener for "Login" hyperlink
     showLogin.addEventListener("click", function (event) {
         event.preventDefault();
         registerBox.style.display = "none";
@@ -1031,6 +1030,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
+    
+
     // Login button logic
     loginButton.addEventListener("click", async function () {
         const username = loginUsername.value.trim();
@@ -1070,21 +1071,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
             const backgroundMusic = document.getElementById("backgroundMusic");
-            backgroundMusic.volume = 0.5; // Set volume (optional)
+            backgroundMusic.volume = 0.5;
             backgroundMusic.play();
             localStorage.setItem("isMusicPlaying", "true");
 
-            // Update UI after login
             authContainer.style.display = "none";
             mainContainer.style.display = "block";
-            randomText.style.display = "block"; // Ensure random text is displayed
+            randomText.style.display = "block";
             feedback.style.display = "block";
-            note.style.display = "block"; // Ensure the note is displayed
-
+            note.style.display = "block";
             if (user.username === loggedInUser && profileRank) {
                 profileRank.textContent = `Rank: #${index + 1}` || "Rank: N/A";
             }
-            // Update user data in localStorage
+
             const userData = {
                 id: user.id,
                 title: user.title,
@@ -1096,14 +1095,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             localStorage.setItem("loggedInUser", username);
             localStorage.setItem(username, JSON.stringify(userData));
 
-            // Update profile information
             profileName.textContent = username;
             profileID.textContent = `ID: ${user.id}`;
             profileTitle.textContent = `Status: ${user.title}`;
             profileSection.textContent = user.section;
             profilePicture.src = userData.profilePicture || "noprofile.jpg";
             profilePoints.textContent = `Total Points: ${user.points || 0}`;
-            console.log("UI initialized properly after login.");
 
             loadAchievements();
             updateTotalMultiplier();
@@ -1133,7 +1130,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // logout for my 
     logoutButton.addEventListener("click", function () {
         localStorage.removeItem("loggedInUser");
-        localStorage.setItem("isMusicPlaying", "false"); // Stop music on logout
+        localStorage.setItem("isMusicPlaying", "false");
         const backgroundMusic = document.getElementById("backgroundMusic");
         backgroundMusic.pause();
 
@@ -1143,22 +1140,80 @@ document.addEventListener("DOMContentLoaded", async function () {
         randomText.style.display = "none";
         feedback.style.display = "none";
         note.style.display = 'none';
+
+        const achievementElements = document.querySelectorAll(".reward");
+        achievementElements.forEach(element => {
+            element.querySelector(".lock").textContent = "Locked";
+            element.querySelector(".lock").style.color = "red";
+            element.querySelector(".cover").style.background = "rgba(0, 0, 0, 0.5)";
+            element.style.border = "2px solid red";
+        });
+    });
+
+    loginUsername.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            if (!loginButton.disabled) {
+                loginButton.click();
+            }
+        }
+    });
+    
+    loginPassword.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            if (!loginButton.disabled) {
+                loginButton.click();
+            }
+        }
+    });
+
+    registerUsername.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            registerButton.click();
+        }
+    });
+    
+    registerPassword.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            registerButton.click();
+        }
+    });
+    
+    registerID.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            registerButton.click();
+        }
+    });
+    
+    registerTitle.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            registerButton.click();
+        }
+    });
+    
+    registerSection.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            registerButton.click();
+        }
     });
 
     // Wait for user interaction to play background music
     document.addEventListener("click", function enableMusicPlayback() {
         const backgroundMusic = document.getElementById("backgroundMusic");
-        backgroundMusic.volume = 0; // Set volume (optional)
+        backgroundMusic.volume = 0;
 
-        // Check if music was playing before
         const isMusicPlaying = localStorage.getItem("isMusicPlaying");
         if (isMusicPlaying === "true") {
             backgroundMusic.play().catch((error) => {
                 console.error("Error playing background music:", error);
             });
         }
-
-        // Remove this event listener after the first interaction
         document.removeEventListener("click", enableMusicPlayback);
     });
 
@@ -1175,17 +1230,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         profilePicture.src = userData.profilePicture || "noprofile.jpg";
         profilePoints.textContent = `Total Points: ${userData.points || 0}`;
 
-        // Play background music
         const backgroundMusic = document.getElementById("backgroundMusic");
-        backgroundMusic.volume = 0; // Set volume (optional)
+        backgroundMusic.volume = 0;
 
-        // Check if music was playing before
         const isMusicPlaying = localStorage.getItem("isMusicPlaying");
         if (isMusicPlaying === "true") {
             backgroundMusic.play();
         }
 
-        // Ensure the music continues playing
         backgroundMusic.addEventListener("play", () => {
             localStorage.setItem("isMusicPlaying", "true");
         });
@@ -1194,15 +1246,13 @@ document.addEventListener("DOMContentLoaded", async function () {
             localStorage.setItem("isMusicPlaying", "false");
         });
 
-
-        updateTotalMultiplier();
-        loadAchievements();
-        /* ACHIEVEMENTS */
-
         authContainer.style.display = "none";
         mainContainer.style.display = "block";
         feedback.style.display = "block";
         note.style.display = "block";
+
+        updateTotalMultiplier();
+        loadAchievements();
     }
 
 
@@ -1213,9 +1263,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         const profileRank = document.querySelector('.rank');
 
         try {
-            // Fetch user data from Supabase
             const { data: user, error } = await supabase
-                .from('user') // Replace 'user' with your actual table name
+                .from('user')
                 .select('username, section, id, points');
 
             if (error) {
@@ -1228,14 +1277,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 leaderboardTable.innerHTML = "<tr><td colspan='5'>No data available</td></tr>";
                 return;
             }
-
-            // Sort users by points in descending order
             const sortedUsers = user.sort((a, b) => b.points - a.points);
 
-            // Clear existing rows
             leaderboardTable.innerHTML = "";
-
-            // Add sorted user data to the table
             sortedUsers.forEach((user, index) => {
                 const row = document.createElement("tr");
 
@@ -1261,35 +1305,29 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
     }
-
-    // Call the function to fetch and populate the leaderboard
     setInterval(fetchAndPopulateLeaderboard, 100);
 
     await fetchAndPopulateLeaderboard();
 
     // Function to reset the game state
     function resetGame() {
-        // Reset the editor content
         if (window.editor) {
-            window.editor.setValue(''); // Clear the editor
-            window.editor.dispose(); // Dispose of the editor instance
-            window.editor = null; // Reset the editor reference
+            window.editor.setValue('');
+            window.editor.dispose(); 
+            window.editor = null;
         }
 
-        // Reset game-related variables
-        questionsAnswered = 0; // Reset progress
-        questionOrder = []; // Clear the question order
+        questionsAnswered = 0; 
+        questionOrder = []; 
         selectedLanguage = "";
         selectedDifficulty = "";
 
-        // Reset game UI elements
         document.querySelector('.gameTitle').textContent = '';
         document.querySelector('.unfixedCode').innerHTML = '';
         document.querySelector('.guide-text').innerHTML = '';
-        document.querySelector('#editor-container').innerHTML = ''; // Clear the editor container
-        document.querySelector('.progress .p1').textContent = `Progress: 0/10`; // Reset progress text
+        document.querySelector('#editor-container').innerHTML = '';
+        document.querySelector('.progress .p1').textContent = `Progress: 0/10`; 
 
-        // Hide game screen and show main menu
         document.querySelector('.gameScreen').style.display = 'none';
         document.querySelector('.languageMenu').style.display = 'none';
         document.querySelector('.difficultiesMenu').style.display = 'none';
@@ -1457,7 +1495,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .trim();
         }
 
-        // Generate the summary of answers
         let summaryHTML = `<table>
             <tr>
                 <th>Question</th>
@@ -1465,10 +1502,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <th>Your Answer</th>
             </tr>`;
 
-        // Filter only the answered questions
         questionOrder.forEach((questionIndex, i) => {
             const userAnswer = userAnswers[i];
-            if (userAnswer) { // Only include answered questions
+            if (userAnswer) {
                 const correctAnswer = solutions[selectedLanguage][selectedDifficulty][questionIndex];
                 const isCorrect = normalizeCode(userAnswer) === normalizeCode(correctAnswer);
                 summaryHTML += `
@@ -1499,68 +1535,79 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    // Function to mark an achievement as completed
     async function markAchievementCompleted(achievementKey) {
         const achievementId = achievementIds[achievementKey];
         if (!achievementId) {
             console.error("Invalid achievementKey:", achievementKey);
-            return; // Exit the function if achievementKey is invalid
+            return;
         }
-
-        const loggedInUser = localStorage.getItem('loggedInUser');
-        const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
-        userData.achievements = userData.achievements || {};
-
-        // Mark the achievement as completed
-        userData.achievements[achievementKey] = true;
-        localStorage.setItem(loggedInUser, JSON.stringify(userData));
-
-        // Update the UI
-        const achievementElement = document.getElementById(achievementId);
-        if (achievementElement) {
-            achievementElement.querySelector('.lock').textContent = 'Completed';
-            achievementElement.querySelector('.lock').style.color = 'green';
-            achievementElement.querySelector('.cover').style.background = 'transparent';
-            achievementElement.style.border = '2px solid rgb(0, 190, 0)';
-        }
-
-        // Save the updated achievements to Supabase
-        try {
-            const { error } = await supabase
-                .from('user')
-                .update({ achievements: userData.achievements })
-                .eq('username', loggedInUser);
-
-            if (error) {
-                console.error('Error saving achievements to Supabase:', error);
-            } else {
-                console.log('Achievements successfully saved to Supabase.');
+    
+        const loggedInUser = localStorage.getItem("loggedInUser");
+        if (loggedInUser) {
+            try {
+                const { data: user, error } = await supabase
+                    .from("user")
+                    .select("achievements")
+                    .eq("username", loggedInUser)
+                    .single();
+    
+                if (error) {
+                    console.error("Error fetching achievements:", error);
+                    return;
+                }
+    
+                const achievements = user.achievements || {};
+                achievements[achievementKey] = true;
+    
+                const { error: updateError } = await supabase
+                    .from("user")
+                    .update({ achievements })
+                    .eq("username", loggedInUser);
+    
+                if (updateError) {
+                    console.error("Error updating achievements:", updateError);
+                    return;
+                }
+    
+                // Update UI
+                loadAchievements();
+            } catch (error) {
+                console.error("Unexpected error while marking achievement:", error);
             }
-        } catch (error) {
-            console.error('Unexpected error while saving achievements to Supabase:', error);
         }
     }
 
-    // Function to load achievements and update the UI
-    function loadAchievements() {
+    async function loadAchievements() {
         const loggedInUser = localStorage.getItem("loggedInUser");
         if (loggedInUser) {
-            const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
-            const achievements = userData.achievements || {};
-
-            // Iterate through all achievements and update the UI
-            Object.keys(achievements).forEach(achievementKey => {
-                if (achievements[achievementKey]) {
-                    const achievementId = achievementIds[achievementKey];
-                    const achievementElement = document.getElementById(achievementId);
-                    if (achievementElement) {
-                        achievementElement.querySelector('.lock').textContent = 'Completed';
-                        achievementElement.querySelector('.lock').style.color = 'green';
-                        achievementElement.querySelector('.cover').style.background = 'transparent';
-                        achievementElement.style.border = '2px solid rgb(0, 190, 0)';
-                    }
+            try {
+                const { data: user, error } = await supabase
+                    .from("user")
+                    .select("achievements")
+                    .eq("username", loggedInUser)
+                    .single();
+    
+                if (error) {
+                    console.error("Error fetching achievements:", error);
+                    return;
                 }
-            });
+    
+                const achievements = user.achievements || {};
+                Object.keys(achievements).forEach(achievementKey => {
+                    if (achievements[achievementKey]) {
+                        const achievementId = achievementIds[achievementKey];
+                        const achievementElement = document.getElementById(achievementId);
+                        if (achievementElement) {
+                            achievementElement.querySelector(".lock").textContent = "Completed";
+                            achievementElement.querySelector(".lock").style.color = "green";
+                            achievementElement.querySelector(".cover").style.background = "transparent";
+                            achievementElement.style.border = "2px solid rgb(0, 190, 0)";
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error("Unexpected error while loading achievements:", error);
+            }
         }
     }
 
