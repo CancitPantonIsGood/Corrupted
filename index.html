@@ -124,7 +124,7 @@
                 <option value="ICT-401">ICT-401</option>
                 <option value="ICT-402">ICT-402</option>
                 <option value="NON ICT">NON ICT</option>
-                
+
             </select>
             <button id="register-button">Register</button>
             <p>Already have an account? <a href="#" id="show-login">Login</a></p>
@@ -262,243 +262,242 @@
                 <p id="timer-display">Time Left: 30s</p>
             </div>
         </div>
-
-    </div>
-    <div class="customNotification" id="customNotification" style="display:none;">
-        <p>You fixed it!</p>
-    </div>
-
-    <div class="difficultiesMenu">
-        <h2 class="selects">Choose Difficulty</h2>
-        <div class="Normal" data-difficulty="easy">
-            <h2>EASY</h2>
-            <p>Basic Fundamental</p>
-            <h3></h3>
-            <b></b>
+        <div class="customNotification" id="customNotification" style="display:none;">
+            <p>You fixed it!</p>
         </div>
-        <div class="Moderate" data-difficulty="moderate">
-            <h2>MEDIUM</h2>
-            <p>Advance Fundamental</p>
-            <h3></h3>
-            <b></b>
-        </div>
-        <div class="Hardcore" data-difficulty="hardcore">
-            <h2>HARD</h2>
-            <p>Defy your limits</p>
-            <h3></h3>
-            <b></b>
-        </div>
-    </div>
 
-
-    <!-- PROFILE MENU -->
-    <div class="profileMenu">
-        <h2 class="titleName">Profile</h2>
-        <div class="container">
-            <div class="profileLayout">
-                <img src="noprofile.jpg" id="profile-picture">
-                <label for="input-file">Upload Image</label>
-                <p class="name-text">NAME</p>
-                <p class="profile-name"></p>
-                <p class="sec-text">SECTION</p>
-                <p class="profile-section"></p>
-                <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
-                <button id="logout-button">Logout</button>
+        <div class="difficultiesMenu">
+            <h2 class="selects">Choose Difficulty</h2>
+            <div class="Normal" data-difficulty="easy">
+                <h2>EASY</h2>
+                <p>Basic Fundamental</p>
+                <h3></h3>
+                <b></b>
             </div>
-            <div class="stats">
-                <p class="profile-id">ID: </p>
-                <p class="profile-title">Status: </p>
-                <p class="points">Total Points: </p>
-                <p class="rank">Rank: #</p>
+            <div class="Moderate" data-difficulty="moderate">
+                <h2>MEDIUM</h2>
+                <p>Advance Fundamental</p>
+                <h3></h3>
+                <b></b>
+            </div>
+            <div class="Hardcore" data-difficulty="hardcore">
+                <h2>HARD</h2>
+                <p>Defy your limits</p>
+                <h3></h3>
+                <b></b>
             </div>
         </div>
-    </div>
 
-    <div class="settingsMenu">
-        <h2 class="titleName">ACHIEVEMENT</h2>
-        <div class="cards">
+
+        <!-- PROFILE MENU -->
+        <div class="profileMenu">
+            <h2 class="titleName">Profile</h2>
             <div class="container">
-                <div class="reward" id="first-correct">
-                    <h2 class="title">First Correct</h2>
-                    <p class="reward-name">You made your first correct answer</p>
-                    <p class="multiplier">x1</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
+                <div class="profileLayout">
+                    <img src="noprofile.jpg" id="profile-picture">
+                    <label for="input-file">Upload Image</label>
+                    <p class="name-text">NAME</p>
+                    <p class="profile-name"></p>
+                    <p class="sec-text">SECTION</p>
+                    <p class="profile-section"></p>
+                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
+                    <button id="logout-button">Logout</button>
                 </div>
-                <div class="reward" id="perfect-java-easy">
-                    <h2 class="title">Perfect: Java Easy</h2>
-                    <p class="reward-name">You got perfect score on java - easy</p>
-                    <p class="multiplier">x2</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
-                </div>
-                <div class="reward" id="god-of-java">
-                    <h2 class="title">God of Java</h2>
-                    <p class="reward-name">You've perfect all java mode difficulties</p>
-                    <p class="multiplier">x10</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="reward" id="100-points">
-                    <h2 class="title">100 Points</h2>
-                    <p class="reward-name">You're getting good, keep it up</p>
-                    <p class="multiplier">x2</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
-                </div>
-                <div class="reward" id="">
-                    <h2 class="title">None</h2>
-                    <p class="reward-name">None</p>
-                    <p class="multiplier">x1</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
-                </div>
-                <div class="reward" id="">
-                    <h2 class="title">None</h2>
-                    <p class="reward-name">None</p>
-                    <p class="multiplier">x1</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="reward" id="complete-normal-mode">
-                    <h2 class="title">Normal Mastery</h2>
-                    <p class="reward-name">You've played all the requirements</p>
-                    <p class="multiplier">x1</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
-                </div>
-                <div class="reward" id="">
-                    <h2 class="title">None</h2>
-                    <p class="reward-name">None</p>
-                    <p class="multiplier">x1</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
-                </div>
-                <div class="reward" id="">
-                    <h2 class="title">None</h2>
-                    <p class="reward-name">None</p>
-                    <p class="multiplier">x1</p>
-                    <p class="lock">Locked</p>
-                    <p class="cover"></p>
+                <div class="stats">
+                    <p class="profile-id">ID: </p>
+                    <p class="profile-title">Status: </p>
+                    <p class="points">Total Points: </p>
+                    <p class="rank">Rank: #</p>
                 </div>
             </div>
         </div>
-        <div class="total-multiplier">Multiplier: </div>
-        <div class="total-completed">Completed: </div>
-    </div>
-    <div class="leaderboardMenu">
-        <h2 class="titleName">Leaderboard</h2>
-        <div class="table-container">
-            <table id="leaderboard-table" class="leaderboard-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>NAME</th>
-                        <th>SECTION</th>
-                        <th>ID</th>
-                        <th>POINTS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+
+        <div class="settingsMenu">
+            <h2 class="titleName">ACHIEVEMENT</h2>
+            <div class="cards">
+                <div class="container">
+                    <div class="reward" id="first-correct">
+                        <h2 class="title">First Correct</h2>
+                        <p class="reward-name">You made your first correct answer</p>
+                        <p class="multiplier">x1</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                    <div class="reward" id="perfect-java-easy">
+                        <h2 class="title">Perfect: Java Easy</h2>
+                        <p class="reward-name">You got perfect score on java - easy</p>
+                        <p class="multiplier">x2</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                    <div class="reward" id="god-of-java">
+                        <h2 class="title">God of Java</h2>
+                        <p class="reward-name">You've perfect all java mode difficulties</p>
+                        <p class="multiplier">x10</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="reward" id="100-points">
+                        <h2 class="title">100 Points</h2>
+                        <p class="reward-name">You're getting good, keep it up</p>
+                        <p class="multiplier">x2</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                    <div class="reward" id="">
+                        <h2 class="title">None</h2>
+                        <p class="reward-name">None</p>
+                        <p class="multiplier">x1</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                    <div class="reward" id="">
+                        <h2 class="title">None</h2>
+                        <p class="reward-name">None</p>
+                        <p class="multiplier">x1</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="reward" id="complete-normal-mode">
+                        <h2 class="title">Normal Mastery</h2>
+                        <p class="reward-name">You've played all the requirements</p>
+                        <p class="multiplier">x1</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                    <div class="reward" id="">
+                        <h2 class="title">None</h2>
+                        <p class="reward-name">None</p>
+                        <p class="multiplier">x1</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                    <div class="reward" id="">
+                        <h2 class="title">None</h2>
+                        <p class="reward-name">None</p>
+                        <p class="multiplier">x1</p>
+                        <p class="lock">Locked</p>
+                        <p class="cover"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="total-multiplier">Multiplier: </div>
+            <div class="total-completed">Completed: </div>
         </div>
-    </div>
-    <div class="creditsMenu">
-        <h2 class="titleName">ABOUT US</h2>
-        <div class="content">
-            <div class="intro">
-                <h3>Introduction</h3>
-                <p>Lagyan nyo nalang introduction about sa product natin.. HAHHAHAHA</p>
+        <div class="leaderboardMenu">
+            <h2 class="titleName">Leaderboard</h2>
+            <div class="table-container">
+                <table id="leaderboard-table" class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>NAME</th>
+                            <th>SECTION</th>
+                            <th>ID</th>
+                            <th>POINTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-            <div class="member">
-                <h3>Members</h3>
-                <div class="members">
-                    <img src="noprofile.jpg" id="member1-picture">
-                    <p class="name">Mark Joshua</p>
-                    <p class="part">Head Developer</p>
+        </div>
+        <div class="creditsMenu">
+            <h2 class="titleName">ABOUT US</h2>
+            <div class="content">
+                <div class="intro">
+                    <h3>Introduction</h3>
+                    <p>Lagyan nyo nalang introduction about sa product natin.. HAHHAHAHA</p>
                 </div>
-                <div class="members">
-                    <img src="noprofile.jpg" id="member1-picture">
-                    <p class="name">Angela Grace</p>
-                    <p class="part">Group Leader</p>
+                <div class="member">
+                    <h3>Members</h3>
+                    <div class="members">
+                        <img src="noprofile.jpg" id="member1-picture">
+                        <p class="name">Mark Joshua</p>
+                        <p class="part">Head Developer</p>
+                    </div>
+                    <div class="members">
+                        <img src="noprofile.jpg" id="member1-picture">
+                        <p class="name">Angela Grace</p>
+                        <p class="part">Group Leader</p>
+                    </div>
+                    <div class="members">
+                        <img src="noprofile.jpg" id="member1-picture">
+                        <p class="name">Aaron Joshua</p>
+                        <p class="part">Ewan ko </p>
+                    </div>
+                    <div class="members">
+                        <img src="noprofile.jpg" id="member1-picture">
+                        <p class="name">Aivan Del Carmen</p>
+                        <p class="part">Diko alam</p>
+                    </div>
+                    <div class="members">
+                        <img src="noprofile.jpg" id="member1-picture">
+                        <p class="name">James Noynay</p>
+                        <p class="part">Wala akong alam haha</p>
+                    </div>
+                    <div class="members">
+                        <img src="noprofile.jpg" id="member1-picture">
+                        <p class="name">Mark Justine Lucero</p>
+                        <p class="part">IDk ano ilalagay</p>
+                    </div>
+                    <div class="members">
+                        <img src="noprofile.jpg" id="member1-picture">
+                        <p class="name">Shaun Tiria</p>
+                        <p class="part">ayoko na mag code</p>
+                    </div>
                 </div>
-                <div class="members">
-                    <img src="noprofile.jpg" id="member1-picture">
-                    <p class="name">Aaron Joshua</p>
-                    <p class="part">Ewan ko </p>
-                </div>
-                <div class="members">
-                    <img src="noprofile.jpg" id="member1-picture">
-                    <p class="name">Aivan Del Carmen</p>
-                    <p class="part">Diko alam</p>
-                </div>
-                <div class="members">
-                    <img src="noprofile.jpg" id="member1-picture">
-                    <p class="name">James Noynay</p>
-                    <p class="part">Wala akong alam haha</p>
-                </div>
-                <div class="members">
-                    <img src="noprofile.jpg" id="member1-picture">
-                    <p class="name">Mark Justine Lucero</p>
-                    <p class="part">IDk ano ilalagay</p>
-                </div>
-                <div class="members">
-                    <img src="noprofile.jpg" id="member1-picture">
-                    <p class="name">Shaun Tiria</p>
-                    <p class="part">ayoko na mag code</p>
-                </div>
-            </div>
 
 
-        </div>
-    </div>
-    <div class="randomtext">
-        <div class="code1">
-            <div class="text">
             </div>
         </div>
-    </div>
-    <div class="feedback">
-        <c class="close">-</c>
-        <p class="text">We value your opinion! Please take a moment to share your thoughts with us. For encountering any
-            issues, please don't forget to tell us!</p>
-        <textarea class="feedback-textarea" placeholder="Type your feedback here..."></textarea>
-        <b class="wall"></b>
-        <div class="textarea"></div>
-        <h2>FEEDBACK</h2>
-        <button>Submit</button>
-    </div>
-    <div class="cinematic-text" id="cinematicText" style="display: none;">
-        <p id="cinematicMessage" data-text="CORRUPTED PROMPT"></p>
-    </div>
-    <div class="gameOverScreen" style="display: none;">
-        <h2>Game Over</h2>
-        <div id="summary-container"></div>
-        <div class="gameOverButtons">
-            <button id="return-button" class="return-button">Return</button>
-            <button id="play-again-button">Play Again</button>
+        <div class="randomtext">
+            <div class="code1">
+                <div class="text">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="note">
-        <h1>!</h1>
-        <div class="context">
-            <h1>! NOTE !</h1>
-            <p>This website is still under development. You may encounter any issues on the page, but we are doing and
-                fixing it ASAP. Remember that this website is still on TESTING which means there are prototypes on the
-                page.</p>
+
+        <div class="feedback">
+            <p class="text">We value your opinion! Please take a moment to share your thoughts with us. For encountering any issues, please don't forget to tell us!</p>
+            <textarea class="feedback-textarea" placeholder="Type your feedback here..."></textarea>
+            <b class="wall"></b>
+            <div class="textarea"></div>
+            <h2>FEEDBACK</h2>
+            <button>Submit</button>
         </div>
-    </div>
-    <div class="notificationForAll">
-        <div class="leftwing"></div>
-        <div class="rightwing"></div>
-        <h2>Highlight</h2>
-        <p>'Message'</p>
-    </div>
+        <div class="cinematic-text" id="cinematicText" style="display: none;">
+            <p id="cinematicMessage" data-text="CORRUPTED PROMPT"></p>
+        </div>
+        <div class="gameOverScreen" style="display: none;">
+            <h2>Game Over</h2>
+            <div id="summary-container"></div>
+            <div class="gameOverButtons">
+                <button id="return-button" class="return-button">Return</button>
+                <button id="play-again-button">Play Again</button>
+            </div>
+        </div>
+        <div class="note">
+            <h1>!</h1>
+            <div class="context">
+                <h1>! NOTE !</h1>
+                <p>This website is still under development. You may encounter any issues on the page, but we are doing
+                    and
+                    fixing it ASAP. Remember that this website is still on TESTING which means there are prototypes on
+                    the
+                    page.</p>
+            </div>
+        </div>
+        <div class="notificationForAll">
+            <div class="leftwing"></div>
+            <div class="rightwing"></div>
+            <h2>Highlight</h2>
+            <p>'Message'</p>
+        </div>
     </div>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="module" src="functionNgani.js"></script>

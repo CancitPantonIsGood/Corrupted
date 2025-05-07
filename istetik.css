@@ -10,6 +10,7 @@
 body {
   overflow: hidden;
   min-height: 100vh;
+  width: 100%;
 }
 
 .backgrounds {
@@ -595,10 +596,9 @@ body {
   border-bottom: 2px solid white;
   font-family: 'Press Start 2P', cursive;
   z-index: 0;
-  height: 450px;
-}
-
-.menu a {
+  height: auto;
+  padding-bottom: 10px;
+}.menu a {
   position: relative;
   background-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
@@ -613,12 +613,7 @@ body {
   width: 350px;
 }
 
-.menu a:hover {
-  padding-left: 75px;
-  width: 400px;
-  box-shadow: 5px 0 5px 0 white;
-  background: url();
-}
+
 
 .menu .play {
   position: relative;
@@ -632,6 +627,8 @@ body {
   transition: all 0.2s ease;
   width: 350px;
 }
+
+
 
 .menu a:nth-child(1) {
   border-top: 1px solid rgb(255, 0, 128);
@@ -1924,22 +1921,14 @@ body {
   position: relative;
   top: 100px;
   max-height: 570px;
-  /* Set the maximum height for the table */
   overflow-y: auto;
-  /* Enable vertical scrolling */
   border: 1px solid #ddd;
-  /* Optional: Add a border around the container */
   margin: 0 auto;
-  /* Center the container */
   width: 95%;
-  /* Adjust the width as needed */
   background-color: rgba(0, 0, 0, 0.2);
-  /* Optional: Background color for the container */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Optional: Add a shadow for better visuals */
 }
 
-/* Leaderboard Table Styles */
 .leaderboard-table {
   width: 100%;
   border-collapse: collapse;
@@ -1947,7 +1936,6 @@ body {
   color: #333;
 }
 
-/* Table Header Styles */
 .leaderboard-table thead th {
   background-color: black;
   color: white;
@@ -1958,7 +1946,6 @@ body {
   z-index: 1;
 }
 
-/* Table Body Styles */
 .leaderboard-table tbody td {
   padding: 10px;
   border: 1px solid #ddd;
@@ -1981,15 +1968,12 @@ body {
   border: 5px solid yellow;
 }
 
-/* Crown container to position the crown */
 .crown-container {
   position: absolute;
   width: 50px;
   height: 50px;
   top: 38px;
 }
-
-/* Crown image styling */
 
 .leaderboard-table tbody tr .top1 {
   font-size: 50px;
@@ -2007,7 +1991,6 @@ body {
   background-color: #CE8946;
 }
 
-/* Scrollbar Customization */
 .table-container::-webkit-scrollbar {
   width: 1px;
 }
@@ -2028,7 +2011,6 @@ body {
 /*game*/
 .highlight {
   background-color: #ffd700;
-  /* Gold color */
   font-weight: bold;
 }
 
@@ -2311,10 +2293,11 @@ body {
 }
 
 /*FEEDBACK*/
+
 .feedback {
   position: absolute;
-  top: 475px;
-  right: -470px;
+  top: 500px;
+  left: 1870px;
   background: linear-gradient(135deg, #1a1a1a, #000);
   border: 2px solid #0ff;
   border-radius: 15px;
@@ -2323,12 +2306,16 @@ body {
   color: white;
   overflow: hidden;
   transition: all 0.3s ease;
-  display: none;
   z-index: 0;
+  max-width: 600px;
+  max-height: 418px;
   clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
   /* Octagonal shape */
 }
 
+.feedback:hover {
+  left: 1401px;
+}
 .feedback h2 {
   color: #0ff;
   font-size: 30px;
@@ -2338,9 +2325,8 @@ body {
   left: -120px;
   top: 41%;
   transform: rotate(90deg);
-  -webkit-text-stroke: 0.2px white;
+  -webkit-text-stroke: 1px white;
   letter-spacing: 5px;
-  cursor: pointer;
   user-select: none;
 }
 
@@ -2355,14 +2341,13 @@ body {
 
 .feedback .text {
   position: absolute;
-  top: 25px;
-  left: 60px;
-  width: 425px;
+  top: 10%;
+  left: 80px;
+  max-width: 425px;
+  max-height: 110px;
   -webkit-text-stroke: 0.5px white;
   text-shadow: 0 0 10px #0ff, 0 0 20px #00f;
   color: #0ff;
-  padding: 20px;
-  clip-path: polygon(5% 0%, 95% 0%, 100% 10%, 100% 95%, 95% 100%, 5% 100%, 0% 90%, 0% 10%);
 }
 
 .feedback .wall {
@@ -2394,7 +2379,7 @@ body {
   border-bottom: 0px solid white;
 }
 
-.feedback Button {
+.feedback button {
   position: absolute;
   top: 350px;
   left: 55%;
@@ -2408,7 +2393,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.feedback Button:hover {
+.feedback button:hover {
   background: #007bff;
   color: white;
   width: 140px;
@@ -2422,6 +2407,17 @@ body {
   top: 345px;
 }
 
+/* Hidden checkbox to toggle feedback */
+#feedback-toggle {
+  display: none;
+}
+
+/* When the checkbox is checked, move the feedback */
+#feedback-toggle:checked ~ .feedback {
+  left: 1400px;
+}
+
+
 /*randomtext*/
 .randomtext {
   position: absolute;
@@ -2430,228 +2426,6 @@ body {
   max-width: 500px;
   max-height: 30px;
 }
-
-
-/* General Responsive Adjustments */
-@media (max-width: 1024px) {
-
-  .login-container,
-  .register-box {
-    width: 90%;
-    height: auto;
-  }
-
-  .login-box,
-  .register-box {
-    width: 100%;
-    height: auto;
-    padding: 20px;
-  }
-
-  .login-box input,
-  .register-box input {
-    font-size: 14px;
-    padding: 15px;
-  }
-
-  .login-box button,
-  .register-box button {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-
-}
-
-/* Tablet View */
-@media (max-width: 768px) {
-  .menu {
-    width: 50%;
-    height: 30%;
-  }
-
-  .menu a {
-    font-size: 20px;
-    width: 95%;
-  }
-
-  .menu a:hover {
-    width: 105%;
-  }
-
-  .menu .play {
-    width: 95%;
-    height: 15%;
-    font-size: 25px;
-    padding-top: 10px;
-  }
-
-  .playMenu,
-  .settingsMenu,
-  .creditsMenu,
-  .profileMenu,
-  .leaderboardMenu {
-    width: 95%;
-  }
-
-
-
-  .playMenu .QUIZMODE,
-  .playMenu .CHALLENGEMODE {
-    width: 30%;
-    height: 60%;
-  }
-
-  .playMenu .QUIZMODE h3,
-  .playMenu .CHALLENGEMODE h3 {
-    width: 90%;
-    height: 97%;
-  }
-
-  .playMenu .QUIZMODE h2,
-  .playMenu .CHALLENGEMODE h2 {
-    width: 90%;
-    font-size: 15px;
-  }
-
-  .playMenu .QUIZMODE p,
-  .playMenu .CHALLENGEMODE p {
-    width: 90%;
-    font-size: 7px;
-  }
-
-  .difficultiesMenu,
-  .languageMenu {
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-  }
-
-  .difficultiesMenu div,
-  .languageMenu div {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-/* Mobile View */
-@media (max-width: 480px) {
-
-  .login-container,
-  .register-box {
-    width: 100%;
-    height: auto;
-  }
-
-  .login-box input,
-  .register-box input {
-    font-size: 12px;
-    padding: 10px;
-  }
-
-  .login-box button,
-  .register-box button {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .menu {
-    width: 100%;
-    height: auto;
-  }
-
-  .menu a {
-    font-size: 16px;
-    padding: 8px;
-  }
-
-  .playMenu .QUIZMODE,
-  .playMenu .CHALLENGEMODE {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-
-  .difficultiesMenu,
-  .languageMenu {
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-  }
-
-  .difficultiesMenu div,
-  .languageMenu div {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-  .logo .text {
-    font-size: 2.5rem;
-  }
-
-  .logo .text2 {
-    font-size: 1.8rem;
-  }
-
-  .userMenu .menu a {
-    font-size: 1.2rem;
-    padding: 8px 15px;
-  }
-
-  .userMenu .sources img {
-    width: 35px;
-    height: 35px;
-  }
-}
-
-@media (max-width: 768px) {
-  .logo .text {
-    font-size: 2rem;
-  }
-
-  .logo .text2 {
-    font-size: 1.5rem;
-  }
-
-  .userMenu .menu {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .userMenu .menu a {
-    font-size: 1rem;
-    padding: 6px 10px;
-  }
-
-  .userMenu .sources img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo .text {
-    font-size: 1.5rem;
-  }
-
-  .logo .text2 {
-    font-size: 1.2rem;
-  }
-
-  .userMenu .menu a {
-    font-size: 0.9rem;
-    padding: 5px 8px;
-  }
-
-  .userMenu .sources img {
-    width: 25px;
-    height: 25px;
-  }
-}
-
 
 
 .menu.show {
@@ -3352,9 +3126,6 @@ body {
   left: 50px;
 }
 
-/*                                           */
-
-
 @media (min-width: 0px) {
   .gameScreen {
     width: 47%;
@@ -3412,6 +3183,12 @@ body {
   .feedback {
     width: 27%;
     height: 43%;
+  }
+
+  .feedback p {
+    font-size: 15px;
+    height: 90%;
+    width: 90%;
   }
 }
 
@@ -4014,4 +3791,110 @@ body {
   height: 50px;
   background: #222;
   border: 5px solid red;
+}
+@media (max-width: 1280px) {
+  .menu {
+    width: 310px;
+    height: 300px;
+  }
+  
+  .menu a{
+    width: 300px;
+    height: 45px;
+    font-size: 25px;
+    padding-top: 10px;
+  }
+
+  .menu .play {
+    width: 300px;
+    height: 70px;
+    font-size: 50px;
+  }
+
+  .menu a:hover {
+    width: 350px;
+  }
+
+  .corruptedprompt .text {
+  font-size: 30px;
+  left: 10%;
+  }
+
+  .corruptedprompt .text2 {
+    font-size: 30px;
+    top: 130px;
+    left: 10%;
+  }
+
+  .feedback {
+    width: 500px;
+    height: 318px;
+    top: 600px;
+  }
+
+  .feedback h2 {
+    font-size: 25px;
+    left: -95px;
+  }
+
+  .feedback .close{
+    top: 15px;
+    right: 40px;
+    font-size: 25px;
+  }
+
+  .feedback .text {
+    left: 80px;
+    top: 30px;
+    font-size: 15px;
+    height: 90px;
+    width: 400px;
+  }
+
+  .feedback .wall {
+    height: 175px;
+  }
+
+  .feedback .feedback-textarea {
+    top: 135px;
+    height: 100px;
+  }
+  .feedback Button {
+    top: 260px;
+    left: 55%;
+  }
+}
+
+@media (max-width: 800px) {
+  .menu {
+    width: 150px;
+    height: 190px;
+  }
+  
+  .menu a{
+    width: 140px;
+    height: 5px;
+    font-size: 10px;
+  }
+
+  .menu .play {
+    width: 140px;
+    height: 15px;
+    font-size: 15px;
+  }
+
+  .menu a:hover {
+    width: 160px;
+  }
+
+  .corruptedprompt .text {
+  font-size: 15px;
+  left: 10%;
+  }
+
+  .corruptedprompt .text2 {
+    font-size: 15px;
+    top: 90px;
+    left: 10%;
+  }
 }

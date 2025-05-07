@@ -1145,13 +1145,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         note.style.display = 'none';
     });
 
-    document.querySelector('.feedback h2').addEventListener('click', function () {
-        document.querySelector('.feedback').style.right = '0%';
-    });
-    document.querySelector('.feedback .close').addEventListener('click', function () {
-        document.querySelector('.feedback').style.right = '-25%';
-    });
-
     // Wait for user interaction to play background music
     document.addEventListener("click", function enableMusicPlayback() {
         const backgroundMusic = document.getElementById("backgroundMusic");
@@ -1336,13 +1329,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         const guideTextDiv = document.querySelector('.guide-text');
         const submitButton = document.getElementById('submit-button');
 
-        // Function to load a random question
         function loadNextQuestion() {
             const languages = Object.keys(infiniteBuggyCodeTemplates);
             const randomLanguage = languages[Math.floor(Math.random() * languages.length)];
             const buggyCode = generateBuggyCode(randomLanguage);
 
-            // Escape HTML characters in the buggy code
             const escapedCode = buggyCode.replace(/</g, '&lt;').replace(/>/g, '&gt;');
             const unfixedCodeDiv = document.querySelector('.unfixedCode');
             const guideTextDiv = document.querySelector('.guide-text');
@@ -1351,7 +1342,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             unfixedCodeDiv.innerHTML = `<pre>${escapedCode}</pre>`;
             guideTextDiv.innerHTML = `<p>Fix the code in ${randomLanguage.toUpperCase()}!</p>`;
 
-            // Update the editor with the new question
             require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
             require(['vs/editor/editor.main'], function () {
                 if (window.editor) {
@@ -1367,20 +1357,17 @@ document.addEventListener("DOMContentLoaded", async function () {
                 });
             });
 
-            // Attach submit button logic
             submitButton.replaceWith(submitButton.cloneNode(true));
             const newSubmitButton = document.getElementById('submit-button');
             newSubmitButton.addEventListener('click', function () {
                 handleSubmit(randomLanguage, buggyCode, loadRandomQuestion);
             });
         }
-
-        // Load the first random question
         loadNextQuestion();
     }
 
 
-    // Define the infiniteSolutions object
+
     const infiniteSolutions = {
         java: [
             'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}',
@@ -1398,12 +1385,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             '#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}'
         ]
     };
-    // Function to detect if the user is on a mobile or tablet device
+
     function isMobileOrTablet() {
         return /Mobi|Android|iPad|iPhone|Tablet/i.test(navigator.userAgent);
     }
 
-    // Restrict access for mobile or tablet devices
     if (isMobileOrTablet()) {
         document.body.innerHTML = `
     <body background="black"; color:white;>
@@ -1425,21 +1411,17 @@ document.addEventListener("DOMContentLoaded", async function () {
             "THINK BEFORE YOU CODE",
             "GET READY TO SOLVE"
         ];
-
-        // Randomize the message
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-        // Display the cinematic text
         const cinematicText = document.getElementById('cinematicText');
         const cinematicMessage = document.getElementById('cinematicMessage');
         cinematicMessage.setAttribute('data-text', randomMessage);
         cinematicMessage.textContent = randomMessage;
         cinematicText.style.display = 'block';
 
-        // Hide the cinematic text after 6 seconds and start the game
         setTimeout(() => {
             cinematicText.style.display = 'none';
-            if (callback) callback(); // Call the callback function to start the game
+            if (callback) callback();
         }, 2000);
     }
 
@@ -1457,7 +1439,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     function showGameOverScreen() {
         const gameOverScreen = document.querySelector('.gameOverScreen');
         const returnButton = document.getElementById('return-button');
-        const summaryContainer = document.getElementById('summary-container'); // Summary container
+        const summaryContainer = document.getElementById('summary-container');
         gameOverScreen.style.display = 'block';
 
         document.querySelector('.gameScreen').style.display = 'none';
