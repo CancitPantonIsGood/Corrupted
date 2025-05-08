@@ -1329,7 +1329,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelector('.feedback').style.display = 'block';
 
         clearInterval(timerInterval);
-
+        updateTotalMultiplier();
+        loadAchievements();
         console.log("Game state has been reset. Ready to start again.");
     }
 
