@@ -3215,7 +3215,12 @@ body {
 .timer #timer-display {
   position: absolute;
   top: 47%;
-  left: 35%;
+  left: 100.5%;
+  width: 300px;
+  font-size: 20px;
+  background: #222;
+  border: 2px solid #0ff;
+  padding: 20px 0px 20px 0px;
 }
 
 /* Glitchy Scrollbar */
