@@ -2296,8 +2296,8 @@ body {
 
 .feedback {
   position: absolute;
-  top: 500px;
-  left: 1870px;
+  top: 45%;
+  left: 97.5%;
   background: linear-gradient(135deg, #1a1a1a, #000);
   border: 2px solid #0ff;
   border-radius: 15px;
@@ -2314,7 +2314,7 @@ body {
 }
 
 .feedback:hover {
-  left: 1401px;
+  left: 72.8%;
 }
 .feedback h2 {
   color: #0ff;
