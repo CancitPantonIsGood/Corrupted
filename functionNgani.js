@@ -156,11 +156,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 'public class Main {\n   public static void main(String[] args) {\n      int age = 17;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      char sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo +;\n      System.out.println("Total: ");\n   }\n}',
                 'public class Main {\n   public stakatistic void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam)\n   }\n}',
-                'public class Main {\n    public void print() {\n        System.ou.println(\"Hello World\");\n    }\n}',
-                'public class Main {\n    public int sum(int a, int b) {\n        return a + ;\n    }\n}',
-                'public class Main {\n    public void show() {\n        int x = 5\n        System.out.println(x);\n    }\n}',
-                'public class Main {\n    public void mult() {\n        int result = 2 * ;\n        System.out.println(result);\n    }\n}',
-                'public class Main {\n    public void output() {\n        System.out.printl(\"Done\");\n    }\n}',
 
             ],
             moderate: [
@@ -248,11 +243,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
-                `public class Main {\n    public void print() {\n        System.out.println(\"Hello World\");\n    }\n}`,
-                `public class Main {\n    public int sum(int a, int b) {\n        return a + b;\n    }\n}`,
-                `public class Main {\n    public void show() {\n        int x = 5;\n        System.out.println(x);\n    }\n}`,
-                `public class Main {\n    public void mult() {\n        int result = 2 * 3;\n        System.out.println(result);\n    }\n}`,
-                `public class Main {\n    public void output() {\n        System.out.println(\"Done\");\n    }\n}`,
+                'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
             ],
             moderate: [
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
@@ -1030,7 +1021,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-    
+
 
     // Login button logic
     loginButton.addEventListener("click", async function () {
@@ -1158,7 +1149,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         }
     });
-    
+
     loginPassword.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -1174,28 +1165,28 @@ document.addEventListener("DOMContentLoaded", async function () {
             registerButton.click();
         }
     });
-    
+
     registerPassword.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             registerButton.click();
         }
     });
-    
+
     registerID.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             registerButton.click();
         }
     });
-    
+
     registerTitle.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             registerButton.click();
         }
     });
-    
+
     registerSection.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -1313,12 +1304,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     function resetGame() {
         if (window.editor) {
             window.editor.setValue('');
-            window.editor.dispose(); 
+            window.editor.dispose();
             window.editor = null;
         }
 
-        questionsAnswered = 0; 
-        questionOrder = []; 
+        questionsAnswered = 0;
+        questionOrder = [];
         selectedLanguage = "";
         selectedDifficulty = "";
 
@@ -1326,7 +1317,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelector('.unfixedCode').innerHTML = '';
         document.querySelector('.guide-text').innerHTML = '';
         document.querySelector('#editor-container').innerHTML = '';
-        document.querySelector('.progress .p1').textContent = `Progress: 0/10`; 
+        document.querySelector('.progress .p1').textContent = `Progress: 0/10`;
 
         document.querySelector('.gameScreen').style.display = 'none';
         document.querySelector('.languageMenu').style.display = 'none';
@@ -1541,7 +1532,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error("Invalid achievementKey:", achievementKey);
             return;
         }
-    
+
         const loggedInUser = localStorage.getItem("loggedInUser");
         if (loggedInUser) {
             try {
@@ -1550,25 +1541,25 @@ document.addEventListener("DOMContentLoaded", async function () {
                     .select("achievements")
                     .eq("username", loggedInUser)
                     .single();
-    
+
                 if (error) {
                     console.error("Error fetching achievements:", error);
                     return;
                 }
-    
+
                 const achievements = user.achievements || {};
                 achievements[achievementKey] = true;
-    
+
                 const { error: updateError } = await supabase
                     .from("user")
                     .update({ achievements })
                     .eq("username", loggedInUser);
-    
+
                 if (updateError) {
                     console.error("Error updating achievements:", updateError);
                     return;
                 }
-    
+
                 // Update UI
                 loadAchievements();
             } catch (error) {
@@ -1586,12 +1577,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                     .select("achievements")
                     .eq("username", loggedInUser)
                     .single();
-    
+
                 if (error) {
                     console.error("Error fetching achievements:", error);
                     return;
                 }
-    
+
                 const achievements = user.achievements || {};
                 Object.keys(achievements).forEach(achievementKey => {
                     if (achievements[achievementKey]) {
