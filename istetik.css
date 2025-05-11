@@ -2432,12 +2432,6 @@ body {
   display: block;
 }
 
-.gameScreen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 .cinematic-text {
   position: absolute;
@@ -3151,7 +3145,6 @@ body {
 
   .gameScreen .expected-output {
     width: 77.9%;
-    height: 25%;
   }
 
   .gameScreen .expected-output pre {
@@ -3214,8 +3207,8 @@ body {
 
 .timer #timer-display {
   position: absolute;
-  top: 47%;
-  left: 100.5%;
+  top: 44%;
+  left: 35%;
   width: 300px;
   font-size: 20px;
   background: #222;

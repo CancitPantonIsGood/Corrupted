@@ -1,3 +1,5 @@
+
+
 // Select all menu hyperlinks
 const menuLinks = document.querySelectorAll('.userMenu .menu a, .userMenu .sources a');
 const hoverSound = document.getElementById('selectingSound');
@@ -147,33 +149,33 @@ document.addEventListener("DOMContentLoaded", async function () {
     const buggyCodeSamples = {
         java: {
             easy: [
-                'public class Main {\n   public static void main(String[] args) {\n      System.our.print("Hello World")\n   }\n}', //wrong spelling
-                'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n   }\n}', //print the name
-                'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total;\n      System.out.println("Total: ");\n   }\n}', //declare the total's value
-                'public class Main {\n   public static void main(String[] args) {\n      String apple = 5;\n      String orange = 10;\n      System.out.println("Apple: $");\n      System.out.println("Orage: $");\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      int shirt = ;\n      int pants = 10;\n      Sting total;\n      System.out.println(shirt);\n      System.out.println(pants);\n      System.out.println("Cost: " + total);\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      boolean light = false;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      int age = 17;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      char sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo +;\n      System.out.println("Total: ");\n   }\n}',
-                'public class Main {\n   public stakatistic void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam)\n   }\n}',
+                `public class Main {\n   public static void main(String[] args) {\n      System.our.print("Hello World")\n   }\n}`, //wrong spelling
+                `public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n   }\n}`, //print the name
+                `public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total;\n      System.out.println("Total: ");\n   }\n}`, //declare the total`s value
+                `public class Main {\n   public static void main(String[] args) {\n      String apple = 5;\n      String orange = 10;\n      System.out.println("Apple: $");\n      System.out.println("Orage: $");\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      int shirt = ;\n      int pants = 10;\n      Sting total;\n      System.out.println(shirt);\n      System.out.println(pants);\n      System.out.println("Cost: " + total);\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      boolean light = false;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      int age = 17;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      char sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo +;\n      System.out.println("Total: ");\n   }\n}`,
+                `public class Main {\n   public stakatistic void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam)\n   }\n}`,
 
             ],
             moderate: [
-                'public class Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n}',
-                'public class Calculator {\n    public int subtract(int a, int b) {\n        return a - b;\n    }\n}',
-                'public class Calculator {\n    public int multiply(int a, int b) {\n        return a * b;\n    }\n}',
-                'public class Calculator {\n    public int divide(int a, int b) {\n        return a / b;\n    }\n}',
-                'public class Calculator {\n    public int modulus(int a, int b) {\n        return a % b;\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5) System.out.println("Greater");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5) System.out.println("Smaller");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Equal");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x != 10) System.out.println("Not Equal");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x >= 10) System.out.println("Greater or Equal");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x <= 10) System.out.println("Smaller or Equal");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5 && x < 15) System.out.println("Between");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5 || x > 15) System.out.println("Outside");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (!(x > 5)) System.out.println("Not Greater");\n    }\n}',
-                'public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Perfect Match");\n    }\n}'
+                `public class Main {\n    public static void main(String[] args) {\n        String student = "Student 1";\n    }\n}`,
+                `public class Main {\n    public int subtract(int a, int b) {\n        return a - b;\n    }\n}`,
+                `public class Main {\n    public int multiply(int a, int b) {\n        return a * b;\n    }\n}`,
+                `public class Main {\n    public int divide(int a, int b) {\n        return a / b;\n    }\n}`,
+                `public class Main {\n    public int modulus(int a, int b) {\n        return a % b;\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5) System.out.println("Greater");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5) System.out.println("Smaller");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Equal");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x != 10) System.out.println("Not Equal");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x >= 10) System.out.println("Greater or Equal");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x <= 10) System.out.println("Smaller or Equal");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5 && x < 15) System.out.println("Between");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5 || x > 15) System.out.println("Outside");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (!(x > 5)) System.out.println("Not Greater");\n    }\n}`,
+                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Perfect Match");\n    }\n}`
             ],
             hardcore: [
                 'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
@@ -186,10 +188,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         html: {
             easy: [
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample Page</title>\n</head>\n<body>\n    <h1>Sample Header</h1>\n    <p>Sample paragraph.</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Test Page</title>\n</head>\n<body>\n    <h1>Test Header</h1>\n    <p>Test paragraph.</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Example Page</title>\n</head>\n<body>\n    <h1>Example Header</h1>\n    <p>Example paragraph.</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo Page</title>\n</head>\n<body>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</body>\n</html>`
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n    <p>HELLO!</p>\n</body>\n</html>`,
             ],
             moderate: [
                 `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
@@ -263,10 +262,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         html: {
             easy: [
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample Page</title>\n</head>\n<body>\n    <h1>Sample Header</h1>\n    <p>Sample paragraph.</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Test Page</title>\n</head>\n<body>\n    <h1>Test Header</h1>\n    <p>Test paragraph.</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Example Page</title>\n</head>\n<body>\n    <h1>Example Header</h1>\n    <p>Example paragraph.</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo Page</title>\n</head>\n<body>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</body>\n</html>`
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n    <p>SHEEESH!</p>\n</body>\n</html>`,
             ],
             moderate: [
                 `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
@@ -288,8 +284,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `body {\n    background-color: yellow;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
                 `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
                 `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
-                `.container {\n    width: 80%;\n    margin: 0 auto;\n    padding: 20px;\n}`,
-                `.button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}`
+                `container {\n    width: 80%;\n    margin: 0 auto;\n    padding: 20px;\n}`,
+                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}`
             ],
             moderate: [
                 `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
@@ -308,33 +304,33 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     };
 
+
     const expectedOutputs = {
         java: {
             easy: [
-                " Hello World",
-                " Name: Jhon",
-                " Total: 45",
-                " Apple: $5\n Orange: $10",
-                " Shirt: $15\n Pants: $10\n Cost: $25",
-                " The light is on",
-                " Sasha is legal",
-                " Total: 45",
-                " Marry got an A on the exam",
-                " Hello, World!"
+                "Hello World",
+                "Name: Jhon",
+                "Total: 45",
+                "Apple: $5\nOrange: $10",
+                "Shirt: $15\nPants: $10\nCost: $25",
+                "The light is on",
+                "Sasha is legal",
+                "Total: 45",
+                "Marry got an A on the exam"
             ],
             moderate: [
-                "",
-                "",
-                "",
-                "",
-                ""
+                "Addition: 15",
+                "Subtraction: 5",
+                "Multiplication: 50",
+                "Division: 2",
+                "Modulus: 1"
             ],
             hardcore: [
-                "",
-                "",
-                "",
-                "",
-                ""
+                "Data added successfully",
+                "Data retrieved successfully",
+                "Data updated successfully",
+                "Data deleted successfully",
+                "DataManager operations completed"
             ]
         },
         html: {
@@ -353,11 +349,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "Footer content"
             ],
             hardcore: [
-                "",
-                "",
-                "Article Title\nArticle content goes here.",
-                "Sidebar\nSidebar content goes here.",
-                "Header Title\nHeader description."
+                "Form submitted successfully",
+                "Email submitted successfully",
+                "Article content displayed",
+                "Sidebar content displayed",
+                "Header content displayed"
             ]
         },
         css: {
@@ -392,24 +388,72 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `Create a the printing method and set the name 'Jhon'.`,
                 `The "total" data type has no value. Set the value of the data type to be the sum of the list.`,
                 `The program only prints the product  name. The program should also print the value of the product.`,
-                `SADAS`,
+                `Correct the missing value in the 'shirt' variable`,
                 `Make sure the light is on. Check the value of the data and `,
                 `There is a wrong value that prevents Sasha from being of legal age.`,
                 `Create data that sums the given list. Always double-check the program to ensure the right answer`,
                 `The code is corrupted because of the wrong statement. Make sure to check the statement\nproperly.`,
             ],
-            moderate: ["What’s missing in this Java class definition?",],
-            hardcore: ["How can you fix the data management in this Java code?"]
+            moderate: [
+                "Implement the addition method.",
+                "Implement the subtraction method.",
+                "Implement the multiplication method.",
+                "Implement the division method.",
+                "Implement the modulus method."
+            ],
+            hardcore: [
+                "Fix the method to add data to the list.",
+                "Fix the method to retrieve data from the list.",
+                "Fix the method to update data in the list.",
+                "Fix the method to delete data from the list.",
+                "Fix the DataManager class to handle all operations."
+            ]
         },
         html: {
-            easy: "Why isn’t this HTML structure rendering properly?",
-            moderate: "What’s wrong with this HTML layout?",
-            hardcore: "How can you make this HTML form work as intended?"
+            easy: [
+                "Fix the missing closing tag in the HTML structure.",
+                "Add a paragraph element to the HTML structure.",
+                "Fix the missing title in the HTML structure.",
+                "Add a header element to the HTML structure.",
+                "Fix the missing body tag in the HTML structure."
+            ],
+            moderate: [
+                "Fix the missing class attribute in the HTML structure.",
+                "Add a navigation bar to the HTML structure.",
+                "Fix the missing section element in the HTML structure.",
+                "Add a footer element to the HTML structure.",
+                "Fix the missing list items in the HTML structure."
+            ],
+            hardcore: [
+                "Fix the form action attribute to submit data.",
+                "Add a required attribute to the email input field.",
+                "Fix the missing article element in the HTML structure.",
+                "Add a sidebar element to the HTML structure.",
+                "Fix the missing header element in the HTML structure."
+            ]
         },
         css: {
-            easy: "There is hidden element that prevent the background to have color",
-            moderate: "The button contains ID instead of CLASS",
-            hardcore: "Why isn’t this flexbox layout working correctly?"
+            easy: [
+                "Fix the missing background-color property.",
+                "Add a text-align property to center the header.",
+                "Fix the missing line-height property in the paragraph.",
+                "Add a padding property to the container.",
+                "Fix the missing border-radius property in the button."
+            ],
+            moderate: [
+                "Fix the missing background-color property in the header.",
+                "Add a padding property to the footer.",
+                "Fix the missing display property in the navigation bar.",
+                "Add a box-shadow property to the card.",
+                "Fix the missing grid-template-columns property in the grid."
+            ],
+            hardcore: [
+                "Fix the missing justify-content property in the container.",
+                "Add a transform property to center the modal.",
+                "Fix the missing visibility property in the tooltip.",
+                "Add a hover effect to display the tooltip text.",
+                "Fix the missing z-index property in the tooltip."
+            ]
         }
     };
 
@@ -472,6 +516,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Function to normalize code by removing extra spaces and formatting
         function normalizeCode(code) {
+            if (!code) return ""; // Return an empty string if the code is undefined or null
             return code
                 .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
                 .replace(/\s*=\s*/g, '=') // Ensure equal signs are consistent
@@ -481,8 +526,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .replace(/\s*\/\s*/g, '/') // Ensure division signs are consistent
                 .trim(); // Trim leading and trailing spaces
         }
-
-        // Check if the normalized user code matches any normalized correct code
         if (correctCodes && correctCodes.some(correctCode => normalizeCode(userCode) === normalizeCode(correctCode))) {
             customNotification.style.display = 'block';
             customNotification.innerHTML = '<p>YOU FIXED IT!</p>';
@@ -649,6 +692,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     let timerInterval;
 
+
+    function generatePreviewElement(cssCode) {
+    if (!cssCode) return '<div>Preview</div>';
+    const normalizedCode = cssCode.replace(/\s+/g, ' ').trim();
+
+    if (normalizedCode.includes('h1')) {
+        return '<h1>Header</h1>';
+    } else if (normalizedCode.includes('p')) {
+        return '<p>Paragraph</p>';
+    } else if (normalizedCode.includes('div')) {
+        return '<div>Div Element</div>';
+    } else if (normalizedCode.includes('button')) {
+        return '<button class="button">Button</button>';
+    } else {
+        return '<div>Preview</div>';
+    }
+}
+
     function initializeGame(language, difficulty, questionIndex) {
         console.log("Game is starting...");
 
@@ -679,6 +740,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const code = buggyCodeSamples[language][difficulty][questionIndex];
         const guide = guideQuestions[language]?.[difficulty]?.[questionIndex];
+        const solution = solutions[language]?.[difficulty][questionIndex];
         const expectedOutput = expectedOutputs[language]?.[difficulty][questionIndex];
 
         const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -686,12 +748,50 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         guideTextDiv.innerHTML = guide ? `<pre>${guide}</pre>` : '<p>No guide available for this selection</p>';
 
-        // Populate the expected output
-        expectedOutputDiv.textContent = expectedOutput ? expectedOutput : "No expected output available.";
+        if (language === 'java') {
+            expectedOutputDiv.innerHTML = `${expectedOutput}`;
+        } else if (language === 'css') {
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '150px';
+            iframe.style.border = 'none';
+            iframe.style.background = 'white';
+
+            iframe.onload = function () {
+                const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                iframeDocument.open();
+                iframeDocument.writeln(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        ${solution || ''}
+                    </style>
+                </head>
+                <body>
+                    ${generatePreviewElement(solution)}
+                </body>
+                </html>
+            `);
+                iframeDocument.close();
+            };
+
+            expectedOutputDiv.innerHTML = '';
+            expectedOutputDiv.appendChild(iframe);
+        } else if (language === 'html') {
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = 'auto';
+            iframe.style.padding = '0';
+            iframe.style.background = 'white';
+            iframe.srcdoc = solution || '';
+            expectedOutputDiv.innerHTML = '';
+            expectedOutputDiv.appendChild(iframe);
+        } else {
+            expectedOutputDiv.innerHTML = `<pre>${solution || "No expected output available."}</pre>`;
+        }
 
         document.querySelector('.gameTitle').textContent = `${language.toUpperCase()} - ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}`;
-
-        // Show the game screen
         document.querySelector('.gameScreen').style.display = 'block';
         document.querySelector('.languageMenu').style.display = 'none';
         document.querySelector('.difficultiesMenu').style.display = 'none';
