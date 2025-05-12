@@ -725,7 +725,7 @@ body {
   border: 5px solid white;
   display: none;
   position: absolute;
-  top: 55%;
+  top: 54.7%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 1000px;
@@ -739,17 +739,16 @@ body {
 .profileMenu .container {
   position: absolute;
   background: #1a1a1a;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 980px;
+  width: 950px;
   height: 600px;
-  margin-top: 40px;
   border-radius: 20px;
   border-bottom: 2px rgb(82, 82, 82) solid;
 }
 
-.container img {
+.profileMenu .container img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -759,7 +758,7 @@ body {
   position: absolute;
 }
 
-.container label {
+.profileMenu .container label {
   display: block;
   width: 225px;
   color: white;
@@ -774,7 +773,7 @@ body {
   transform: translateX(-50%);
 }
 
-.container input {
+.profileMenu .container input {
   display: none;
 }
 
@@ -934,7 +933,7 @@ body {
   border: 5px solid purple;
   display: flex;
   position: absolute;
-  top: 55%;
+  top: 54.7%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 1250px;
@@ -1242,12 +1241,13 @@ body {
   opacity: 1;
 }
 
+
 /* Language Menu */
 .languageMenu {
   border: 5px solid purple;
   display: flex;
   position: absolute;
-  top: 55%;
+  top: 54.7%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 1250px;
@@ -1779,7 +1779,7 @@ body {
   border-radius: 30px;
   top: 10px;
   z-index: 1;
-  left: 30px;
+  left: 10px;
   border: 1px solid white;
   position: absolute;
   text-align: center;
@@ -1830,11 +1830,11 @@ body {
 
 .stats {
   position: absolute;
-  width: 675px;
+  width: 665px;
   height: 575px;
   border-radius: 30px;
   top: 10px;
-  left: 30%;
+  left: 275px;
   background: url(ProfilePage.png);
   border: 1px solid white;
 }
@@ -1895,7 +1895,7 @@ body {
   display: none;
   position: absolute;
   z-index: 1;
-  top: 55%;
+  top: 54.7%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 1000px;
@@ -2473,7 +2473,7 @@ body {
   border: 5px solid Yellow;
   display: none;
   position: absolute;
-  top: 55%;
+  top: 54.7%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 1000px;
@@ -2671,7 +2671,7 @@ body {
   border: 5px solid rgb(0, 128, 0);
   display: none;
   position: absolute;
-  top: 55%;
+  top: 54.7%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 1000px;
@@ -3860,6 +3860,39 @@ body {
   .feedback Button {
     top: 260px;
     left: 55%;
+  }
+
+  .creditsMenu, .profileMenu, .settingsMenu, .leaderboardMenu {
+    width: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .profileMenu .container {
+    width: 95%;
+    height: 85%;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .profileMenu .profileLayout {
+    width: 250px;
+    left: 10px;
+    height: 560px;
+  }
+
+  .profileMenu .stats {
+    left: 270px;
+    height: 560px;
+    width: 470px;
+  }
+
+  .profileMenu .stats p {
+    width: 450px;
+    left: 10px;
+    font-size: 25px;
   }
 }
 

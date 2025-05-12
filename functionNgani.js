@@ -189,6 +189,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             easy: [
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n    <p>HELLO!</p>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>\n    <button></button>\n</body>\n</html>`,
+
             ],
             moderate: [
                 `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
@@ -210,8 +212,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `body {\n    background-color: yellow;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
                 `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
                 `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
-                `.container {\n    width: 80%;\n    margin: 0 auto;\n    padding: 20px;\n}`,
-                `.button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}`
+                `div {\n    background-color: black;\n    width: 80px;\n    height: 30px;\n    padding: 20px;\n}`,
+                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n    width: 50px;\n    height: 40px;\n}`
             ],
             moderate: [
                 `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
@@ -263,6 +265,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             easy: [
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n    <p>SHEEESH!</p>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <button class="button">Button</button>\n</body>\n</html>`,
+
             ],
             moderate: [
                 `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
@@ -284,8 +288,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `body {\n    background-color: yellow;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
                 `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
                 `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
-                `container {\n    width: 80%;\n    margin: 0 auto;\n    padding: 20px;\n}`,
-                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n}`
+                `div {\n    background: black;\n    width: 80px;\n    height: 30px;\n    padding: 20px;\n}`,
+                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n    width: 50px;\n    height: 40px;\n}`
             ],
             moderate: [
                 `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
@@ -466,7 +470,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         completeNormalMode: 'complete-normal-mode'
     };
 
-    // Function to shuffle an array
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -693,20 +696,34 @@ document.addEventListener("DOMContentLoaded", async function () {
     let timerInterval;
 
 
-    function generatePreviewElement(cssCode) {
+   /**
+ * Generate a preview element based on the CSS solution.
+ * @param {string} cssCode - The CSS code to analyze.
+ * @returns {string} - The HTML element to preview.
+ */
+function generatePreviewElement(cssCode) {
     if (!cssCode) return '<div>Preview</div>';
+
     const normalizedCode = cssCode.replace(/\s+/g, ' ').trim();
 
-    if (normalizedCode.includes('h1')) {
-        return '<h1>Header</h1>';
-    } else if (normalizedCode.includes('p')) {
-        return '<p>Paragraph</p>';
-    } else if (normalizedCode.includes('div')) {
-        return '<div>Div Element</div>';
-    } else if (normalizedCode.includes('button')) {
+    // Extract the selector from the CSS code
+    const selectorMatch = normalizedCode.match(/^[.#]?[a-zA-Z0-9_-]+/);
+    const selector = selectorMatch ? selectorMatch[0] : 'div';
+
+    if (selector.startsWith('.')) {
+        return `<div class="${selector.slice(1)}">Div Element</div>`;
+    } else if (selector.startsWith('#')) {
+        return `<div id="${selector.slice(1)}">Div Element</div>`;
+    } else if (selector === 'button') {
         return '<button class="button">Button</button>';
+    } else if (selector === 'h1') {
+        return '<h1>Header</h1>';
+    } else if (selector === 'p') {
+        return '<p>Paragraph</p>';
+    } else if (selector === 'div') {
+        return '<div>Div Element</div>';
     } else {
-        return '<div>Preview</div>';
+        return `<${selector}>Preview</${selector}>`; 
     }
 }
 
