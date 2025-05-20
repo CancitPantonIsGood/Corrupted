@@ -30,7 +30,21 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 
 document.addEventListener("DOMContentLoaded", async function () {
+    function formatPoints(points) {
+        if (points >= 1_000_000_000_000) {
+            return (points / 1_000_000_000_000).toLocaleString(undefined, { maximumFractionDigits: 3 }) + 'T';
+        } else if (points >= 1_000_000_000) {
+            return (points / 1_000_000_000).toLocaleString(undefined, { maximumFractionDigits: 3 }) + 'B';
+        } else if (points >= 1_000_000) {
+            return (points / 1_000_000).toLocaleString(undefined, { maximumFractionDigits: 3 }) + 'M';
+        } else if (points >= 1_000) {
+            return (points / 1_000).toLocaleString(undefined, { maximumFractionDigits: 3 }) + 'K';
+        }
+        return points.toString();
+    }
+    
     // Login
+    
     const authContainer = document.querySelector(".login-container");
     const mainContainer = document.querySelector(".main-container");
 
@@ -148,7 +162,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const buggyCodeSamples = {
         java: {
-            easy: [
+           easy: [
                 `public class Main {\n   public static void main(String[] args) {\n      System.our.print("Hello World")\n   }\n}`, //wrong spelling
                 `public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n   }\n}`, //print the name
                 `public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total;\n      System.out.println("Total: ");\n   }\n}`, //declare the total`s value
@@ -158,6 +172,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `public class Main {\n   public static void main(String[] args) {\n      int age = 17;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}`,
                 `public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      char sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo +;\n      System.out.println("Total: ");\n   }\n}`,
                 `public class Main {\n   public stakatistic void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam)\n   }\n}`,
+                `public class Addition {\n   public static void main(String[] args) {\n      int x = 16;\n      int y = 32;\n      int total = x - y;\n   }\n}`,
+                `public class Subtruction {\n   public static void main(String[] args) {\n      int x = 50;\n      int y = 30;\n      int total = x + y;\n   }\n}`,
+                `public class Multiplication {\n   public static void main(String[] args) {\n      int x = 13;\n      int y = 10;\n      int total = x / y;\n   }\n}`,
+                `public class Division {\n   public static void main(String[] args) {\n      int x = 150;\n      int y = 150;\n      int total = x * y;\n   }\n}`,
+                `import java.util.Scanner;\npublic class Main {\n   public static void main(String[] args) {\n      Scanner Scammer = new Scanner(System.in);\n      System.out.print("Enter your name ");\n      String name = scanner.nextLine();\n      System.out.println("Your name is " + name);\n   }\n}`,
 
             ],
             moderate: [
@@ -234,18 +253,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const solutions = {
         java: {
-            easy: [
-                'public class Main {\n   public static void main(String[] args) {\n      System.out.print("Hello World");\n   }\n}', // done
-                'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n      System.out.print("Name: " + name);\n   }\n}', //done
-                'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total = a + b + c;\n      System.out.println("Total: " + total);\n   }\n}',//done
-                'public class Main {\n   public static void main(String[] args) {\n      int apple = 5;\n      int orange = 10;\n      System.out.println("Apple: $" + apple);\n      System.out.println("Orange: $" + orange);\n   }\n}',//done
-                'public class Main {\n   public static void main(String[] args) {\n      int shirt = 15;\n      int pants = 10;\n      int total = shirt + pants;\n      System.out.println("Shirt: $" + shirt);\n      System.out.println("Pants: $" + pants);\n      System.out.println("Cost: $" + total);\n   }\n}',//done
-                'public class Main {\n   public static void main(String[] args) {\n      boolean light = true;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
-            ],
+           easy: [
+                    'public class Main {\n   public static void main(String[] args) {\n      System.out.print("Hello World");\n   }\n}', // done
+                    'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n      System.out.print("Name: " + name);\n   }\n}', //done
+                    'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total = a + b + c;\n      System.out.println("Total: " + total);\n   }\n}',//done
+                    'public class Main {\n   public static void main(String[] args) {\n      int apple = 5;\n      int orange = 10;\n      System.out.println("Apple: $" + apple);\n      System.out.println("Orange: $" + orange);\n   }\n}',//done
+                    'public class Main {\n   public static void main(String[] args) {\n      int shirt = 15;\n      int pants = 10;\n      int total = shirt + pants;\n      System.out.println("Shirt: $" + shirt);\n      System.out.println("Pants: $" + pants);\n      System.out.println("Cost: $" + total);\n   }\n}',//done
+                    'public class Main {\n   public static void main(String[] args) {\n      boolean light = true;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
+                    'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
+                    'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
+                    'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
+                    'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
+                    `public class Addition {\n   public static void main(String[] args) {\n      int x = 16;\n      int y = 32;\n      int total = x + y;\n      System.out.print(total);\n   }\n}`,
+                    `public class Subtruction {\n   public static void main(String[] args) {\n      int x = 50;\n      int y = 30;\n      int total = x - y;\n      System.out.print(total);\n   }\n}`,
+                    `public class Multiplication {\n   public static void main(String[] args) {\n      int x = 13;\n      int y = 19;\n      int total = x * y;\n      System.out.print(total);\n   }\n}`,
+                    `public class Division {\n   public static void main(String[] args) {\n      int x = 150;\n      int y = 150;\n      int total = x / y;\n      System.out.print(total);\n   }\n}`,
+                    `import java.util.Scanner;\npublic class Main {\n   public static void main(String[] args) {\n      Scanner scanner = new Scanner(System.in);\n      System.out.print("Enter your name ");\n      String name = scanner.nextLine();\n      System.out.println("Your name is " + name);\n   }\n}`,
+            
+                ],
             moderate: [
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
                 'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
@@ -320,7 +345,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "The light is on",
                 "Sasha is legal",
                 "Total: 45",
-                "Marry got an A on the exam"
+                "Marry got an A on the exam",
+                "48",
+                "20",
+                "130",
+                "1",
+                "Enter your name //Sample Name\nYour name is //Sample Name"
             ],
             moderate: [
                 "Addition: 15",
@@ -397,6 +427,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `There is a wrong value that prevents Sasha from being of legal age.`,
                 `Create data that sums the given list. Always double-check the program to ensure the right answer`,
                 `The code is corrupted because of the wrong statement. Make sure to check the statement\nproperly.`,
+                `The operation used to sum the total is wrong.`,
+                `The operation used to minus the total is wrong.`,
+                `The operation used to multiply the total is wrong.`,
+                `The operation used to divide the total is wrong.`,
+                `The Scanner is not called because of the incorrect data name. Do not copy the comments, it is only for direction.`,
             ],
             moderate: [
                 "Implement the addition method.",
@@ -841,33 +876,36 @@ function generatePreviewElement(cssCode) {
         newSubmitButton.addEventListener('click', () => handleSubmit(language, difficulty));
 
         if (difficulty === 'easy') {
-            startTimer(30, () => {
-                questionsAnswered++;
-                updateProgress();
-                if (questionsAnswered >= 10) {
-                    showGameOverScreen();
-                } else {
-                    initializeGame(language, difficulty, questionsAnswered);
-                }
-            });
-        } else if (difficulty === 'moderate') {
             startTimer(45, () => {
                 questionsAnswered++;
                 updateProgress();
                 if (questionsAnswered >= 10) {
                     showGameOverScreen();
                 } else {
-                    initializeGame(language, difficulty, questionsAnswered);
+                    const nextQuestionIndex = questionsAnswered;
+                    startGame(language, difficulty, nextQuestionIndex, false);
                 }
             });
-        } else if (difficulty === 'hardcore') {
+        } else if (difficulty === 'moderate') {
             startTimer(60, () => {
                 questionsAnswered++;
                 updateProgress();
                 if (questionsAnswered >= 10) {
                     showGameOverScreen();
                 } else {
-                    initializeGame(language, difficulty, questionsAnswered);
+                    const nextQuestionIndex = questionsAnswered;
+                    startGame(language, difficulty, nextQuestionIndex, false);
+                }
+            });
+        } else if (difficulty === 'hardcore') {
+            startTimer(75, () => {
+                questionsAnswered++;
+                updateProgress();
+                if (questionsAnswered >= 10) {
+                    showGameOverScreen();
+                } else {
+                    const nextQuestionIndex = questionsAnswered;
+                    startGame(language, difficulty, nextQuestionIndex, false);
                 }
             });
         }
@@ -1399,7 +1437,7 @@ function generatePreviewElement(cssCode) {
                     <th>${user.username}</th>
                     <th>${user.section}</th>
                     <th>${user.id}</th>
-                    <th>${user.points}</th>
+                    <th>${formatPoints(user.points)}</th>
                 `;
 
                 leaderboardTable.appendChild(row);
