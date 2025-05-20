@@ -180,21 +180,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             ],
             moderate: [
-                `public class Main {\n    public static void main(String[] args) {\n        String student = "Student 1";\n    }\n}`,
-                `public class Main {\n    public int subtract(int a, int b) {\n        return a - b;\n    }\n}`,
-                `public class Main {\n    public int multiply(int a, int b) {\n        return a * b;\n    }\n}`,
-                `public class Main {\n    public int divide(int a, int b) {\n        return a / b;\n    }\n}`,
-                `public class Main {\n    public int modulus(int a, int b) {\n        return a % b;\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5) System.out.println("Greater");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5) System.out.println("Smaller");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Equal");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x != 10) System.out.println("Not Equal");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x >= 10) System.out.println("Greater or Equal");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x <= 10) System.out.println("Smaller or Equal");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x > 5 && x < 15) System.out.println("Between");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x < 5 || x > 15) System.out.println("Outside");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (!(x > 5)) System.out.println("Not Greater");\n    }\n}`,
-                `public class Main {\n    public static void main(String[] args) {\n        int x = 10;\n        if (x == 10) System.out.println("Perfect Match");\n    }\n}`
+                `public class Loop {\n   public static void main(String[] args) {\n      for(int i = 0; i < 5; i++) {\n         System.out.println(i);\n      }\n   }\n}`,
+                `public class Loop {\n   public static void main(String[] args) {\n      int i = 0;\n      do {\n         System.out.println(i)\n         i++;\n      }\n      while (i < 5);\n   }\n}`,
+                `public class Days {\n   public static void main(String[] args) {\n      int day = null\n      switch (day) {\n         case 1:\n            System.out.println("Sunday");\n            break;\n         case 2:\n            System.out.println("Monday");\n            break;\n         case 3:\n            System.out.println("Tuesday");\n            break;\n         case 4:\n            System.out.println("Wednesday");\n            break;\n         case 5:\n            System.out.println("Thursday");\n            break;\n         case 6:\n            System.out.println("Friday");\n            break;\n         case 7:\n            System.out.println("Saturday");\n            break;\n         default;\n      }\n   }\n}`
+                
             ],
             hardcore: [
                 'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
@@ -1246,7 +1235,7 @@ function generatePreviewElement(cssCode) {
             profileTitle.textContent = `Status: ${user.title}`;
             profileSection.textContent = user.section;
             profilePicture.src = userData.profilePicture || "noprofile.jpg";
-            profilePoints.textContent = `Total Points: ${user.points || 0}`;
+            profilePoints.textContent = `Total Points: ${formatPoints(user.points || 0)}`;
 
             loadAchievements();
             updateTotalMultiplier();
@@ -1374,7 +1363,7 @@ function generatePreviewElement(cssCode) {
         profileTitle.textContent = `Status: ${userData.title}`;
         profileSection.textContent = userData.section;
         profilePicture.src = userData.profilePicture || "noprofile.jpg";
-        profilePoints.textContent = `Total Points: ${userData.points || 0}`;
+        profilePoints.textContent = `Total Points: ${formatPoints(userData.points || 0)}`;
 
         const backgroundMusic = document.getElementById("backgroundMusic");
         backgroundMusic.volume = 0;
