@@ -2778,6 +2778,12 @@ body {
   background: rgba(0, 0, 0, 0.9);
 }
 
+.settingsMenu .info h2{
+  position: relative;
+  top: 70px;
+  padding-bottom: 50px;
+}
+
 #cinematicMessage {
   font-size: 200px;
 }
@@ -3165,7 +3171,7 @@ body {
   }
 
   .gameScreen .submit {
-    width: 26%;
+    width: 77.8%;
     height: 10%;
     font-size: 25px;
   }

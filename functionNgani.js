@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         return points.toString();
     }
-    
+
     // Login
-    
+
     const authContainer = document.querySelector(".login-container");
     const mainContainer = document.querySelector(".main-container");
 
@@ -162,13 +162,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const buggyCodeSamples = {
         java: {
-           easy: [
+            easy: [
                 `public class Main {\n   public static void main(String[] args) {\n      System.our.print("Hello World")\n   }\n}`, //wrong spelling
                 `public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n   }\n}`, //print the name
                 `public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total;\n      System.out.println("Total: ");\n   }\n}`, //declare the total`s value
                 `public class Main {\n   public static void main(String[] args) {\n      String apple = 5;\n      String orange = 10;\n      System.out.println("Apple: $");\n      System.out.println("Orage: $");\n   }\n}`,
                 `public class Main {\n   public static void main(String[] args) {\n      int shirt = ;\n      int pants = 10;\n      Sting total;\n      System.out.println(shirt);\n      System.out.println(pants);\n      System.out.println("Cost: " + total);\n   }\n}`,
-                `public class Main {\n   public static void main(String[] args) {\n      boolean light = false;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      boolean light = false;\n      if (light == true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}`,
                 `public class Main {\n   public static void main(String[] args) {\n      int age = 17;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}`,
                 `public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      char sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo +;\n      System.out.println("Total: ");\n   }\n}`,
                 `public class Main {\n   public stakatistic void main(String[] args) {\n      char ave = "A"\n      System.out.print("Marry got an " + ave + " on the exam)\n   }\n}`,
@@ -177,124 +177,338 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `public class Multiplication {\n   public static void main(String[] args) {\n      int x = 13;\n      int y = 10;\n      int total = x / y;\n   }\n}`,
                 `public class Division {\n   public static void main(String[] args) {\n      int x = 150;\n      int y = 150;\n      int total = x * y;\n   }\n}`,
                 `import java.util.Scanner;\npublic class Main {\n   public static void main(String[] args) {\n      Scanner Scammer = new Scanner(System.in);\n      System.out.print("Enter your name ");\n      String name = scanner.nextLine();\n      System.out.println("Your name is " + name);\n   }\n}`,
-
+                `public class Main {\n   public static void main(String[] args) {\n      print("Hello Neighbor")\n   }\n}`,
             ],
             moderate: [
-                `public class Loop {\n   public static void main(String[] args) {\n      for(int i = 0; i < 5; i++) {\n         System.out.println(i);\n      }\n   }\n}`,
-                `public class Loop {\n   public static void main(String[] args) {\n      int i = 0;\n      do {\n         System.out.println(i)\n         i++;\n      }\n      while (i < 5);\n   }\n}`,
-                `public class Days {\n   public static void main(String[] args) {\n      int day = null\n      switch (day) {\n         case 1:\n            System.out.println("Sunday");\n            break;\n         case 2:\n            System.out.println("Monday");\n            break;\n         case 3:\n            System.out.println("Tuesday");\n            break;\n         case 4:\n            System.out.println("Wednesday");\n            break;\n         case 5:\n            System.out.println("Thursday");\n            break;\n         case 6:\n            System.out.println("Friday");\n            break;\n         case 7:\n            System.out.println("Saturday");\n            break;\n         default;\n      }\n   }\n}`
-                
+                `public class Loop {\n   public static void main(String[] args) {\n      four(int i = 0; i < 5; i++) {\n         System.out.printing(i);\n      }\n   }\n}`,
+                `public class Loop {\n   public static void main(String[] args) {\n      int i = 0;\n      do {\n         System.out.println(i)\n         i++;\n      }\n      while (i > 5);\n   }\n}`,
+                `public class Days {\n   public static void main(String[] args) {\n      int day = null\n      switch (day) {\n         case 1:\n            System.out.println("Sunday");\n            break;\n         case 2:\n            System.out.println("Monday");\n            break;\n         case 3:\n            System.out.println("Tuesday");\n            break;\n         case 4:\n            System.out.println("Wednesday");\n            break;\n         case 5:\n            System.out.println("Thursday");\n            break;\n         case 6:\n            System.out.println("Friday");\n            break;\n         case 7:\n            System.out.println("Saturday");\n            break;\n         default;\n      }\n   }\n}`,
+                `public class Days {\n   public static void main(String[] args) {\n      int day = 0;\n      switch (day) {\n         case 1:\n            System.out.println("Sunday");\n            break;\n         case 2:\n            System.out.println("Monday");\n            break;\n         case 3:\n            System.out.println("Tuesday");\n            break;\n         case 4:\n            System.out.println("Wednesday");\n            break;\n         case 5:\n            System.out.println("Thursday");\n            break;\n         case 6:\n            System.out.println("Friday");\n            break;\n         case 7:\n            System.out.println("Saturday");\n            break;\n         default:\n      }\n   }\n}`,
+                `public class Response {\n   public static void main(String[] args) {\n      int response = 0;\n      switch (response) {\n         case 1:\n            System.out.println("Yes");\n            break;\n         case 2:\n            System.out.println("No");\n            break;\n         default:\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      try {\n         int[] numbers = {1,3,5};\n         System.out.println(numbers[3]);\n      } catch (Exception e) {\n         System.out.println("Something went wrong");\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      int number = 5;\n      float decimal = f;\n      boolean bool = yes;\n      System.out.println("Number: " + number);\n      System.out.println("Decimals: " + decimal);\n      System.out.println("Boolean: " + boolean);\n   }\n}`,
+                `public class Loop {\n   public static void main(String[] args) {\n      int i = 0;\n      whille (i < 5) {\n         System.out.println(i);\n         i++;\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      String[] names = {"Jhon", "Christoper", "Micheal");\n      System.out.println(names[3]);\n   }\n}`, //wrong spelling
+                `public class Main {\n   int x;\n   public Main() {\n      x = x;\n   }\n   public static void main(String[] args) {\n      Main obj = new Mains();\n      System.out.println(obj.x);\n   }\n}`,
+                `class Animal {\n   public void animalSound() {\n      System.out.println("The animal makes a sound");\n   }\n}\n\nClass Pig extends Animal {\n   public void animalSound() {\n      System.out.println("The pig says: wee wee");\n   }\n}\n\npublic class Main {\n   public static void main(String[] args) {\n      Animal myAnimal = NEW Pig();\n      myAnimal.animalSound());\n   }\n}`,
+
             ],
             hardcore: [
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}'
+                // 1. Reverse string (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      String originalStr = "Hello";\n      String reversedStr = "";\n      System.out.println("Original string: " + originalStr);\n      for (int i = 0; i <= originalStr.length(); i++) {\n         reversedStr += originalStr.charAt(i);\n      }\n      System.out.println("Reversed string: " + reversedStr);\n   }\n}`,
+                // 2. Find lowest age (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int ages[] = {20, 22, 18, 35, 48, 26, 87, 70};\n      int lowestAge = 0;\n      for (int age : ages) {\n         if (lowestAge > age) {\n            lowestAge = age;\n         }\n      }\n      System.out.println("The lowest age in the array is: " + lowestAge);\n   }\n}`,
+                // 3. Average age (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int ages[] = {20, 22, 18, 35, 48, 26, 87, 70};\n      float avg, sum = 0;\n      int length = ages.length;\n      for (int age : ages) {\n         sum += age;\n      }\n      avg = sum / length;\n      System.out.println("The average age is: " + avg);\n   }\n}`,
+                // 4. Array sum (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] myArray = {1, 5, 10, 25};\n      int sum;\n      for (int i = 0; i < myArray.length; i++) {\n         sum += myArray[i];\n      }\n      System.out.println("The sum is: " + sum);\n   }\n}`,
+                // 5. ArrayList print (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      ArrayList<String> cars = new ArrayList<String>();\n      cars.add("Volvo");\n      cars.add("BMW");\n      cars.add("Ford");\n      cars.add("Mazda");\n      for (String i : cars) {\n         System.out.println(i);\n      }\n   }\n}`,
+                // 6. Sort names (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      String[] names = {"Lee", "Riven", "Jhon", "Christoper", "Deezna", "Sakamoto", "Aimie"};\n      Arrays.sort(names);\n      for (String i : names) {\n         System.out.println(i);\n      }\n   }\n}`,
+                // 7. Find max value (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] nums = {3, 7, 2, 9, 4};\n      int max = 0;\n      for (int n : nums) {\n         if (n > max) {\n            max = n;\n         }\n      }\n      System.out.println("Max value: " + max);\n   }\n}`,
+                // 8. Count even numbers (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] nums = {2, 3, 4, 5, 6};\n      int count = 0;\n      for (int n : nums) {\n         if (n % 2 == 1) {\n            count++;\n         }\n      }\n      System.out.println("Even count: " + count);\n   }\n}`,
+                // 9. Print 2D array (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int[][] arr = {{1,2},{3,4}};\n      for (int i = 0; i < arr.length; i++) {\n         for (int j = 0; j < arr.length; j++) {\n            System.out.print(arr[i][j] + " ");\n         }\n         System.out.println();\n      }\n   }\n}`,
+                // 10. String concatenation (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      String a = "Java";\n      String b = "Hardcore";\n      String c = a - b;\n      System.out.println(c);\n   }\n}`,
+                // 11. Factorial (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int n = 5;\n      int fact = 1;\n      for (int i = 1; i <= n; i++) {\n         fact = fact + i;\n      }\n      System.out.println("Factorial: " + fact);\n   }\n}`,
+                // 12. Fibonacci (buggy)
+                `public classes Main {\n   public static void main(String[] args) {\n      int n1 = 0, n2 = 1, n3, i, count = 5;\n      System.out.print(n1 + " " + n2);\n      for (i = 2; i < count; ++i) {\n         n3 = n1 + n2;\n         System.out.print(" " + n3);\n         n1 = n2;\n         n2 = n3;\n      }\n   }\n}`,
+                // 13. Palindrome check (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      String str = "madam";\n      String rev = "";\n      for (int i = str.length(); i >= 0; i--) {\n         rev += str.charAt(i);\n      }\n      if (str == rev) {\n         System.out.println("Palindrome");\n      } else {\n         System.out.println("Not Palindrome");\n      }\n   }\n}`,
+                // 14. Sum of digits (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int num = 1234;\n      int sum = 0;\n      while (num > 0) {\n         sum = num % 10;\n         num = num / 10;\n      }\n      System.out.println("Sum: " + sum);\n   }\n}`,
+                // 15. Array copy (buggy)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] a = {1,2,3};\n      int[] b = a;\n      b[0] = 99;\n      System.out.println(a[0]);\n   }\n}`,
+
             ]
         },
         html: {
             easy: [
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n    <p>HELLO!</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>\n    <button></button>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <h1>Pindutin para pumogi</h1>\n    <button></button>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <a href="https://example.com">Example Page</a>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <table>\n      <tr>\n        <th>Name</th>\n        <th>Age</age>\n        <th>Birthday</th>\n      </tr>\n    </table>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <ol>\n      <li>Coffee</li>\n      <li>Milk</li>\n      <li>Milo</li>\n      <li>Alaksan FR</li>\n    </ol>\n</body>\n</html>`,
+                // 7. Missing closing </h1> tag
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample</title>\n</head>\n<body>\n    <h1>Sample Header\n    <p>Sample paragraph.</p>\n</body>\n</html>`,
+                // 8. No <title> in <head>
+                `<!DOCTYPE html>\n<html>\n<head>\n</head>\n<body>\n    <h1>Test Header</h1>\n    <p>Test paragraph.</p>\n</body>\n</html>`,
+                // 9. <p> tag not closed
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Example</title>\n</head>\n<body>\n    <h1>Example Header</h1>\n    <p>Example paragraph.\n</body>\n</html>`,
+                // 10. <body> tag missing
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo</title>\n</head>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</html>`,
+                // 11. <ul> list missing <li>
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <ul>\n    </ul>\n</body>\n</html>`,
+                // 12. <img> tag missing src
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img alt="Sample Image">\n</body>\n</html>`,
+                // 13. <a> tag missing href
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a>Click here</a>\n</body>\n</html>`,
+                // 14. <form> missing action
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="name">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                // 15. <input> missing type
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Example</title>\n</head>\n<body>\n    <input name="username">\n</body>\n</html>`,
+
 
             ],
             moderate: [
-                `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
-                `<div class="content">\n    <h1>Welcome</h1>\n    <p>This is a sample content block.</p>\n</div>`,
-                `<div class="header">\n    <h1>Header</h1>\n    <nav>\n        <ul>\n            <li>Home</li>\n            <li>About</li>\n            <li>Contact</li>\n        </ul>\n    </nav>\n</div>`,
-                `<section>\n    <h2>Section Title</h2>\n    <p>Section content goes here.</p>\n</section>`,
-                `<footer>\n    <p>Footer content</p>\n</footer>`
+                // 1
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Game Modes</title>\n</head>\n<body>\n    <div>\n        <h2>Game Modes</h2>\n        <ul>\n            <li>Normal Mode</li>\n            <li>Moderate Mode</li>\n            <li>Hard Mode</li>\n        </ul>\n    </div>\n</body>\n</html>`,
+                // 2
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Content Block</title>\n</head>\n<body>\n    <div class="content">\n        <p>This is a sample content block.</p>\n    </div>\n</body>\n</html>`,
+                // 3
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Header</title>\n</head>\n<body>\n    <div class="header">\n        <h1>Header</h1>\n        <nav>\n        </nav>\n    </div>\n</body>\n</html>`,
+                // 4
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Section</title>\n</head>\n<body>\n    <section>\n        <p>Section content goes here.</p>\n    </section>\n</body>\n</html>`,
+                // 5
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Footer</title>\n</head>\n<body>\n    <footer>\n    </footer>\n</body>\n</html>`,
+                // 6
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Example</title>\n</head>\n<body>\n    <table>\n      <tr>\n        <th>Name</th>\n        <th>Age</th>\n      </tr>\n      <tr>\n        <td>John</td>\n        <td>25</td>\n      </tr>\n    </table>\n</body>\n</html>`,
+                // 7
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <li>Item 1</li>\n    <li>Item 2</li>\n</body>\n</html>`,
+                // 8
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img src="cat.jpg">\n</body>\n</html>`,
+                // 9
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="username">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                // 10
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Button Example</title>\n</head>\n<body>\n    <button>Click me</button>\n</body>\n</html>`,
+                // 11
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Example</title>\n</head>\n<body>\n    <table>\n      <tr><td>Apple</td><td>10</td></tr>\n      <tr><td>Banana</td><td>5</td></tr>\n</body>\n</html>`,
+                // 12
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Example</title>\n</head>\n<body>\n    <input type="text" name="email">\n</body>\n</html>`,
+                // 13
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a href="https://google.com">Google\n</body>\n</html>`,
+                // 14
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Logo Example</title>\n</head>\n<body>\n    <img alt="Logo">\n</body>\n</html>`,
+                // 15
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="user">\n    </form>\n</body>\n</html>`
             ],
             hardcore: [
-                `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username">\n    <input type="submit" value="Submit">\n</form>`,
-                `<form>\n    <label for="email">Email:</label>\n    <input type="email" id="email" name="email">\n    <button type="submit">Submit</button>\n</form>`,
-                `<article>\n    <h1>Article Title</h1>\n    <p>Article content goes here.</p>\n</article>`,
-                `<aside>\n    <h2>Sidebar</h2>\n    <p>Sidebar content goes here.</p>\n</aside>`,
-                `<header>\n    <h1>Header Title</h1>\n    <p>Header description.</p>\n</header>`
+                // 1
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Hardcore</title>\n</head>\n<body>\n    <form action="submit.php">\n        <label>Username</label>\n        <input type="text" id="username">\n        <input type="submit" value="Submit">\n    </form>\n</body>\n</html>`,
+                // 2
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Email Hardcore</title>\n</head>\n<body>\n    <form>\n        <label for="email">Email:</label>\n        <input id="email" name="email">\n    </form>\n    <button>Submit</button>\n</body>\n</html>`,
+                // 3
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Article Hardcore</title>\n</head>\n<body>\n    <article>\n        <p class="main" open>Article content goes here.\n    </article>\n</body>\n</html>`,
+                // 4
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Aside Hardcore</title>\n</head>\n<body>\n    <aside>\n        <h3>Sidebar</h3>\n        <p>Sidebar content goes here.\n    </aside>\n</body>\n</html>`,
+                // 5
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Header Hardcore</title>\n</head>\n<body>\n    <header>\n        <h1 Header Title\n        <pHeader description.</header>\n</body>\n</html>`,
+                // 6
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Hardcore</title>\n</head>\n<body>\n    <table>\n      <thead>\n        <tr><thh>Name</thh><thh>Score</thh></tr>\n      </thead>\n      <tr><td>Alice<td>90</tr>\n    </table>\n</body>\n</html>`,
+                // 7
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Hardcore</title>\n</head>\n<body>\n    <ul>\n      <li class="item">Apple\n      <li>Banana\n</body>\n</html>`,
+                // 8
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Hardcore</title>\n</head>\n<body>\n    <form>\n      <label>Email</label>\n      <input>\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                // 9
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Hardcore</title>\n</head>\n<body>\n    <img srcc="dog.jpg" altDog"\n</body>\n</html>`,
+                // 10
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Anchor Hardcore</title>\n</head>\n<body>\n    <a target="_blank"></a>\n</body>\n</html>`,
+                // 11
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Hardcore</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="username">\n    </form>\n</body>\n</html>`,
+                // 12
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Hardcore</title>\n</head>\n<body>\n    <table>\n      <tr><tds>Item<td>Price</tr>\n      <tr><td>Pen<td>5</tr>\n    </table>\n</body>\n</html>`,
+                // 13
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Checkbox Hardcore</title>\n</head>\n<body>\n    <form>\n      <input type="checkbox" cheked>\n    </form>\n</body>\n</html>`,
+                // 14
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Logo Hardcore</title>\n</head>\n<body>\n    <img width="100">\n</body>\n</html>`,
+                // 15
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Button Hardcore</title>\n</head>\n<body>\n    <button>\n</body>\n</html>`
             ]
         },
         css: {
             easy: [
-                `body {\n    background-color: yellow;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
-                `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
-                `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
-                `div {\n    background-color: black;\n    width: 80px;\n    height: 30px;\n    padding: 20px;\n}`,
-                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n    width: 50px;\n    height: 40px;\n}`
+                `body {\n    background-color: yellow;\n}`,
+                `h1 {\n    color: blue;\n}`,
+                `p {\n    color: green;\n}`,
+                `div {\n    background: black;\n}`,
+                `button {\n    background-color: red;\n}`,
+                `.container {\n    width: 100px;\n}`,
+                `#main {\n    color: purple;\n}`,
+                `ul {\n    list-style: none;\n}`,
+                `li {\n    color: orange;\n}`,
+                `.box {\n    border: 1px solid #000;\n}`,
+                `#header {\n    background-color: #eee;\n}`,
+                `a {\n    color: red;\n}`,
+                `.footer {\n    text-align: center;\n}`,
+                `input {\n    border-radius: 5px;\n}`,
+                `.title {\n    font-size: 24px;\n}`
             ],
             moderate: [
-                `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
-                `.footer {\n    background-color: #222;\n    color: #ccc;\n    padding: 20px;\n    text-align: center;\n}`,
-                `.nav {\n    display: flex;\n    justify-content: space-around;\n    background-color: #444;\n    padding: 10px;\n}`,
-                `.card {\n    border: 1px solid #ccc;\n    padding: 15px;\n    border-radius: 10px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n}`,
-                `.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 20px;\n}`
+                `.header {\n    background-color: #333;\n    color: white;\n}`,
+                `.footer {\n    background-color: #222;\n    color: #ccc;\n}`,
+                `.nav {\n    display: flex;\n    justify-content: space-around;\n}`,
+                `.card {\n    border: 1px solid #ccc;\n    border-radius: 10px;\n}`,
+                `.grid {\n    display: grid;\n    gap: 20px;\n}`,
+                `#main {\n    padding: 20px;\n    background-color: #fafafa;\n}`,
+                `.sidebar {\n    width: 200px;\n    background: #f0f0f0;\n}`,
+                `button {\n    color: white;\n    border-radius: 5px;\n}`,
+                `.alert {\n    color: white;\n    background: red;\n}`,
+                `#profile {\n    border: 2px solid #333;\n    padding: 10px;\n}`,
+                `.menu {\n    display: flex;\n    gap: 10px;\n}`,
+                `.avatar {\n    width: 50px;\n    height: 50px;\n}`,
+                `input[type="text"] {\n    border: 1px solid #ccc;\n    padding: 5px;\n}`,
+                `.highlight {\n    background: yellow;\n    color: black;\n}`,
+                `#logo {\n    width: 100px;\n    height: 100px;\n}`
             ],
             hardcore: [
-                `#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}`,
-                `.modal {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background-color: white;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n}`,
-                `.tooltip {\n    position: relative;\n    display: inline-block;\n    cursor: pointer;\n}`,
-                `.tooltip .tooltip-text {\n    visibility: hidden;\n    width: 120px;\n    background-color: black;\n    color: #fff;\n    text-align: center;\n    padding: 5px;\n    border-radius: 5px;\n    position: absolute;\n    z-index: 1;\n}`,
-                `.tooltip:hover .tooltip-text {\n    visibility: visible;\n}`
+                `#container {\n    display: flex;\n    align-items: center;\n    height: 100vh;\n}`,
+                `.modal {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    background-color: white;\n    padding: 20px;\n}`,
+                `.tooltip {\n    position: relative;\n    display: inline-block;\n}`,
+                `.tooltip .tooltip-text {\n    width: 120px;\n    background-color: black;\n    color: #fff;\n    text-align: center;\n    padding: 5px;\n    border-radius: 5px;\n    position: absolute;\n}`,
+                `.tooltip:hover .tooltip-text {\n    color: red;\n}`,
+                `#main-content {\n    margin: 0 auto;\n    width: 80%;\n}`,
+                `.dropdown {\n    background: #fff;\n    border: 1px solid #ccc;\n}`,
+                `.dropdown-content {\n    display: none;\n    position: absolute;\n    background: #f9f9f9;\n    min-width: 160px;\n}`,
+                `.dropdown:hover .dropdown-content {\n    display: block;\n}`,
+                `.overlay {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n}`,
+                `#sidebar {\n    position: absolute;\n    left: 0;\n    width: 250px;\n    background: #222;\n}`,
+                `.progress-bar {\n    width: 0;\n    height: 20px;\n    background: green;\n}`,
+                `.progress-bar.active {\n    width: 100%;\n}`,
+                `.tab {\n    display: inline-block;\n    padding: 10px;\n    border: 1px solid #ccc;\n}`,
+                `.tab.active {\n    background: #333;\n    color: #fff;\n}`
             ]
         }
     };
 
     const solutions = {
         java: {
-           easy: [
-                    'public class Main {\n   public static void main(String[] args) {\n      System.out.print("Hello World");\n   }\n}', // done
-                    'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n      System.out.print("Name: " + name);\n   }\n}', //done
-                    'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total = a + b + c;\n      System.out.println("Total: " + total);\n   }\n}',//done
-                    'public class Main {\n   public static void main(String[] args) {\n      int apple = 5;\n      int orange = 10;\n      System.out.println("Apple: $" + apple);\n      System.out.println("Orange: $" + orange);\n   }\n}',//done
-                    'public class Main {\n   public static void main(String[] args) {\n      int shirt = 15;\n      int pants = 10;\n      int total = shirt + pants;\n      System.out.println("Shirt: $" + shirt);\n      System.out.println("Pants: $" + pants);\n      System.out.println("Cost: $" + total);\n   }\n}',//done
-                    'public class Main {\n   public static void main(String[] args) {\n      boolean light = true;\n      if (light = true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
-                    'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
-                    'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
-                    'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
-                    'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
-                    `public class Addition {\n   public static void main(String[] args) {\n      int x = 16;\n      int y = 32;\n      int total = x + y;\n      System.out.print(total);\n   }\n}`,
-                    `public class Subtruction {\n   public static void main(String[] args) {\n      int x = 50;\n      int y = 30;\n      int total = x - y;\n      System.out.print(total);\n   }\n}`,
-                    `public class Multiplication {\n   public static void main(String[] args) {\n      int x = 13;\n      int y = 19;\n      int total = x * y;\n      System.out.print(total);\n   }\n}`,
-                    `public class Division {\n   public static void main(String[] args) {\n      int x = 150;\n      int y = 150;\n      int total = x / y;\n      System.out.print(total);\n   }\n}`,
-                    `import java.util.Scanner;\npublic class Main {\n   public static void main(String[] args) {\n      Scanner scanner = new Scanner(System.in);\n      System.out.print("Enter your name ");\n      String name = scanner.nextLine();\n      System.out.println("Your name is " + name);\n   }\n}`,
-            
-                ],
+            easy: [
+                'public class Main {\n   public static void main(String[] args) {\n      System.out.print("Hello World");\n   }\n}', // done
+                'public class Main {\n   public static void main(String[] args) {\n      String name = "Jhon";\n      System.out.print("Name: " + name);\n   }\n}', //done
+                'public class Main {\n   public static void main(String[] args) {\n      int a = 5;\n      int b = 15;\n      int c = 25;\n      int total = a + b + c;\n      System.out.println("Total: " + total);\n   }\n}',//done
+                'public class Main {\n   public static void main(String[] args) {\n      int apple = 5;\n      int orange = 10;\n      System.out.println("Apple: $" + apple);\n      System.out.println("Orange: $" + orange);\n   }\n}',//done
+                'public class Main {\n   public static void main(String[] args) {\n      int shirt = 15;\n      int pants = 10;\n      int total = shirt + pants;\n      System.out.println("Shirt: $" + shirt);\n      System.out.println("Pants: $" + pants);\n      System.out.println("Cost: $" + total);\n   }\n}',//done
+                'public class Main {\n   public static void main(String[] args) {\n      boolean light = true;\n      if (light == true) {\n            System.out.println("The light is on");\n      } else if (light = false) {\n            System.out.println("The light is off");\n      }\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
+                'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
+                `public class Addition {\n   public static void main(String[] args) {\n      int x = 16;\n      int y = 32;\n      int total = x + y;\n      System.out.print(total);\n   }\n}`,
+                `public class Subtruction {\n   public static void main(String[] args) {\n      int x = 50;\n      int y = 30;\n      int total = x - y;\n      System.out.print(total);\n   }\n}`,
+                `public class Multiplication {\n   public static void main(String[] args) {\n      int x = 13;\n      int y = 19;\n      int total = x * y;\n      System.out.print(total);\n   }\n}`,
+                `public class Division {\n   public static void main(String[] args) {\n      int x = 150;\n      int y = 150;\n      int total = x / y;\n      System.out.print(total);\n   }\n}`,
+                `import java.util.Scanner;\npublic class Main {\n   public static void main(String[] args) {\n      Scanner scanner = new Scanner(System.in);\n      System.out.print("Enter your name ");\n      String name = scanner.nextLine();\n      System.out.println("Your name is " + name);\n   }\n}`,
+
+            ],
             moderate: [
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}',
-                'public class Calculator {\n  public int add(int a, int b) {\n      return a + b;\n}\n \n  public int subtract(int a, int b) {\n      return a - b;\n   }\n}'
+                `public class Loop {\n   public static void main(String[] args) {\n      for(int i = 0; i < 5; i++) {\n         System.out.println(i);\n      }\n   }\n}`,
+                `public class Loop {\n   public static void main(String[] args) {\n      int i = 0;\n      do {\n         System.out.println(i)\n         i++;\n      }\n      while (i < 5);\n   }\n}`,
+                `public class Days {\n   public static void main(String[] args) {\n      int day = 4;\n      switch (day) {\n         case 1:\n            System.out.println("Sunday");\n            break;\n         case 2:\n            System.out.println("Monday");\n            break;\n         case 3:\n            System.out.println("Tuesday");\n            break;\n         case 4:\n            System.out.println("Wednesday");\n            break;\n         case 5:\n            System.out.println("Thursday");\n            break;\n         case 6:\n            System.out.println("Friday");\n            break;\n         case 7:\n            System.out.println("Saturday");\n            break;\n         default;\n      }\n   }\n}`,
+                `public class Days {\n   public static void main(String[] args) {\n      int day = 1;\n      switch (day) {\n         case 1:\n            System.out.println("Sunday");\n            break;\n         case 2:\n            System.out.println("Monday");\n            break;\n         case 3:\n            System.out.println("Tuesday");\n            break;\n         case 4:\n            System.out.println("Wednesday");\n            break;\n         case 5:\n            System.out.println("Thursday");\n            break;\n         case 6:\n            System.out.println("Friday");\n            break;\n         case 7:\n            System.out.println("Saturday");\n            break;\n         default:\n      }\n   }\n}`,
+                `public class Response {\n   public static void main(String[] args) {\n      int response = 1;\n      switch (response) {\n         case 1:\n            System.out.println("Yes");\n            break;\n         case 2:\n            System.out.println("No");\n            break;\n         default:\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      try {\n         int[] numbers = {1,3,5};\n         System.out.println(numbers[2]);\n      } catch (Exception e) {\n         System.out.println("Something went wrong");\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      int number = 5;\n      float decimal = 4.99f;\n      boolean bool = true;\n      System.out.println("Number: " + number);\n      System.out.println("Decimals: " + decimal);\n      System.out.println("Boolean: " + bool);\n   }\n}`,
+                `public class Loop {\n   public static void main(String[] args) {\n      int i = 0;\n      while (i < 5) {\n         System.out.println(i);\n         i++;\n      }\n   }\n}`,
+                `public class Main {\n   public static void main(String[] args) {\n      String[] names = {"Jhon", "Christoper", "Micheal");\n      System.out.println(names[0]);\n   }\n}`,
+                `public class Main {\n   int x;\n   public Main() {\n      x = 5;\n   }\n   public static void main(String[] args) {\n      Main obj = new Main();\n      System.out.println(obj.x);\n   }\n}`,
+                `class Animal {\n   public void animalSound() {\n      System.out.println("The animal makes a sound");\n   }\n}\n\nClass Pig extends Animal {\n   public void animalSound() {\n      System.out.println("The pig says: wee wee");\n   }\n}\n\npublic class Main {\n   public static void main(String[] args) {\n      Animal myAnimal = new Pig();\n      myAnimal.animalSound();\n   }\n}`,
+
             ],
             hardcore: [
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}',
-                'import java.util.ArrayList;\n    import java.util.List;\n    public class DataManager {\n    List<String> data = new ArrayList<>();\n    \n    public void addData(String item) {\n    data.add(item);\n   }\n}'
+                // 1. Reverse string (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      String originalStr = "Hello";\n      String reversedStr = "";\n      System.out.println("Original string: " + originalStr);\n      for (int i = 0; i < originalStr.length(); i++) {\n         reversedStr = originalStr.charAt(i) + reversedStr;\n      }\n      System.out.println("Reversed string: " + reversedStr);\n   }\n}`,
+                // 2. Find lowest age (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int ages[] = {20, 22, 18, 35, 48, 26, 87, 70};\n      int lowestAge = ages[0];\n      for (int age : ages) {\n         if (lowestAge > age) {\n            lowestAge = age;\n         }\n      }\n      System.out.println("The lowest age in the array is: " + lowestAge);\n   }\n}`,
+                // 3. Average age (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int ages[] = {20, 22, 18, 35, 48, 26, 87, 70};\n      float avg, sum = 0;\n      int length = ages.length;\n      for (int age : ages) {\n         sum += age;\n      }\n      avg = sum / length;\n      System.out.println("The average age is: " + avg);\n   }\n}`,
+                // 4. Array sum (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] myArray = {1, 5, 10, 25};\n      int sum = 0;\n      for (int i = 0; i < myArray.length; i++) {\n         sum += myArray[i];\n      }\n      System.out.println("The sum is: " + sum);\n   }\n}`,
+                // 5. ArrayList print (correct, with import)
+                `import java.util.ArrayList;\npublic class Main {\n   public static void main(String[] args) {\n      ArrayList<String> cars = new ArrayList<String>();\n      cars.add("Volvo");\n      cars.add("BMW");\n      cars.add("Ford");\n      cars.add("Mazda");\n      for (String i : cars) {\n         System.out.println(i);\n      }\n   }\n}`,
+                // 6. Sort names (correct, with import)
+                `import java.util.Arrays;\npublic class Main {\n   public static void main(String[] args) {\n      String[] names = {"Lee", "Riven", "Jhon", "Christoper", "Deezna", "Sakamoto", "Aimie"};\n      Arrays.sort(names);\n      for (String i : names) {\n         System.out.println(i);\n      }\n   }\n}`,
+                // 7. Find max value (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] nums = {3, 7, 2, 9, 4};\n      int max = nums[0];\n      for (int n : nums) {\n         if (n > max) {\n            max = n;\n         }\n      }\n      System.out.println("Max value: " + max);\n   }\n}`,
+                // 8. Count even numbers (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] nums = {2, 3, 4, 5, 6};\n      int count = 0;\n      for (int n : nums) {\n         if (n % 2 == 0) {\n            count++;\n         }\n      }\n      System.out.println("Even count: " + count);\n   }\n}`,
+                // 9. Print 2D array (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int[][] arr = {{1,2},{3,4}};\n      for (int i = 0; i < arr.length; i++) {\n         for (int j = 0; j < arr[i].length; j++) {\n            System.out.print(arr[i][j] + " ");\n         }\n         System.out.println();\n      }\n   }\n}`,
+                // 10. String concatenation (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      String a = "Java";\n      String b = "Hardcore";\n      String c = a + b;\n      System.out.println(c);\n   }\n}`,
+                // 11. Factorial (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int n = 5;\n      int fact = 1;\n      for (int i = 1; i <= n; i++) {\n         fact = fact * i;\n      }\n      System.out.println("Factorial: " + fact);\n   }\n}`,
+                // 12. Fibonacci (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int n1 = 0, n2 = 1, n3, i, count = 5;\n      System.out.print(n1 + " " + n2);\n      for (i = 2; i < count; ++i) {\n         n3 = n1 + n2;\n         System.out.print(" " + n3);\n         n1 = n2;\n         n2 = n3;\n      }\n   }\n}`,
+                // 13. Palindrome check (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      String str = "madam";\n      String rev = "";\n      for (int i = str.length() - 1; i >= 0; i--) {\n         rev += str.charAt(i);\n      }\n      if (str.equals(rev)) {\n         System.out.println("Palindrome");\n      } else {\n         System.out.println("Not Palindrome");\n      }\n   }\n}`,
+                // 14. Sum of digits (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int num = 1234;\n      int sum = 0;\n      while (num > 0) {\n         sum += num % 10;\n         num = num / 10;\n      }\n      System.out.println("Sum: " + sum);\n   }\n}`,
+                // 15. Array copy (correct)
+                `public class Main {\n   public static void main(String[] args) {\n      int[] a = {1,2,3};\n      int[] b = a.clone();\n      b[0] = 99;\n      System.out.println(a[0]);\n   }\n}`,
             ]
         },
         html: {
             easy: [
+                // 1
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n    <p>SHEEESH!</p>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <button class="button">Button</button>\n</body>\n</html>`,
-
+                // 2
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Welcome Page</title>\n</head>\n<body>\n    <h1>Welcome to Corrupted Prompt</h1>\n    <p>Enjoy the game!</p>\n    <p>HELLO!</p>\n</body>\n</html>`,
+                // 3
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <h1>Pindutin para pumogi</h1>\n    <button>Pogi</button>\n</body>\n</html>`,
+                // 4
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <a href="https://example.com">Example Page</a>\n</body>\n</html>`,
+                // 5
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <table>\n      <tr>\n        <th>Name</th>\n        <th>Age</th>\n        <th>Birthday</th>\n      </tr>\n    </table>\n</body>\n</html>`,
+                // 6
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <ol>\n      <li>Coffee</li>\n      <li>Milk</li>\n      <li>Milo</li>\n      <li>Alaksan FR</li>\n    </ol>\n</body>\n</html>`,
+                // 7
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample</title>\n</head>\n<body>\n    <h1>Sample Header</h1>\n    <p>Sample paragraph.</p>\n</body>\n</html>`,
+                // 8
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Test Page</title>\n</head>\n<body>\n    <h1>Test Header</h1>\n    <p>Test paragraph.</p>\n</body>\n</html>`,
+                // 9
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Example</title>\n</head>\n<body>\n    <h1>Example Header</h1>\n    <p>Example paragraph.</p>\n</body>\n</html>`,
+                // 10
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo</title>\n</head>\n<body>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</body>\n</html>`,
+                // 11
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <ul>\n      <li>Item 1</li>\n      <li>Item 2</li>\n    </ul>\n</body>\n</html>`,
+                // 12
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img src="sample.jpg" alt="Sample Image">\n</body>\n</html>`,
+                // 13
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a href="https://example.com">Click here</a>\n</body>\n</html>`,
+                // 14
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form action="/submit">\n      <input type="text" name="name">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                // 15
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Example</title>\n</head>\n<body>\n    <input type="text" name="username">\n</body>\n</html>`,
             ],
             moderate: [
-                `<div class="container">\n    <h2>Game Modes</h2>\n    <ul>\n        <li>Normal Mode</li>\n        <li>Moderate Mode</li>\n        <li>Hard Mode</li>\n    </ul>\n</div>`,
-                `<div class="content">\n    <h1>Welcome</h1>\n    <p>This is a sample content block.</p>\n</div>`,
-                `<div class="header">\n    <h1>Header</h1>\n    <nav>\n        <ul>\n            <li>Home</li>\n            <li>About</li>\n            <li>Contact</li>\n        </ul>\n    </nav>\n</div>`,
-                `<section>\n    <h2>Section Title</h2>\n    <p>Section content goes here.</p>\n</section>`,
-                `<footer>\n    <p>Footer content</p>\n</footer>`
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Game Modes</title>\n</head>\n<body>\n    <div class="container">\n        <h2>Game Modes</h2>\n        <ul>\n            <li>Normal Mode</li>\n            <li>Moderate Mode</li>\n            <li>Hard Mode</li>\n        </ul>\n    </div>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Content Block</title>\n</head>\n<body>\n    <div class="content">\n        <h1>Welcome</h1>\n        <p>This is a sample content block.</p>\n    </div>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Header</title>\n</head>\n<body>\n    <div class="header">\n        <h1>Header</h1>\n        <nav>\n            <ul>\n                <li>Home</li>\n                <li>About</li>\n                <li>Contact</li>\n            </ul>\n        </nav>\n    </div>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Section</title>\n</head>\n<body>\n    <section>\n        <h2>Section Title</h2>\n        <p>Section content goes here.</p>\n    </section>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Footer</title>\n</head>\n<body>\n    <footer>\n        <p>Footer content</p>\n    </footer>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Example</title>\n</head>\n<body>\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Age</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>John</td>\n          <td>25</td>\n        </tr>\n      </tbody>\n    </table>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <ul>\n      <li>Item 1</li>\n      <li>Item 2</li>\n    </ul>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img src="cat.jpg" alt="Cat">\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <label for="username">Username:</label>\n      <input type="text" name="username" id="username">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Button Example</title>\n</head>\n<body>\n    <button type="button">Click me</button>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Example</title>\n</head>\n<body>\n    <table>\n      <tr><td>Apple</td><td>10</td></tr>\n      <tr><td>Banana</td><td>5</td></tr>\n    </table>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Example</title>\n</head>\n<body>\n    <input type="text" name="email" placeholder="Enter your email">\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a href="https://google.com">Google</a>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Logo Example</title>\n</head>\n<body>\n    <img src="logo.png" alt="Logo">\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="user">\n      <input type="submit" value="Submit">\n    </form>\n</body>\n</html>`
             ],
             hardcore: [
-                `<form action="submit.php" method="post">\n    <label for="username">Username:</label>\n    <input type="text" id="username" name="username" required>\n    <input type="submit" value="Submit">\n</form>`,
-                `<form>\n    <label for="email">Email:</label>\n    <input type="email" id="email" name="email" required>\n    <button type="submit">Submit</button>\n</form>`,
-                `<article>\n    <h1>Article Title</h1>\n    <p>Article content goes here.</p>\n</article>`,
-                `<aside>\n    <h2>Sidebar</h2>\n    <p>Sidebar content goes here.</p>\n</aside>`,
-                `<header>\n    <h1>Header Title</h1>\n    <p>Header description.</p>\n</header>`
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Hardcore</title>\n</head>\n<body>\n    <form action="submit.php" method="post">\n        <label for="username">Username</label>\n        <input type="text" id="username" name="username" required>\n        <input type="submit" value="Submit">\n    </form>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Email Hardcore</title>\n</head>\n<body>\n    <form>\n        <label for="email">Email:</label>\n        <input type="email" id="email" name="email" required>\n        <button type="submit">Submit</button>\n    </form>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Article Hardcore</title>\n</head>\n<body>\n    <article>\n        <h1>Article Title</h1>\n        <p class="main">Article content goes here.</p>\n    </article>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Aside Hardcore</title>\n</head>\n<body>\n    <aside>\n        <h2>Sidebar</h2>\n        <p>Sidebar content goes here.</p>\n    </aside>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Header Hardcore</title>\n</head>\n<body>\n    <header>\n        <h1>Header Title</h1>\n        <p>Header description.</p>\n    </header>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Hardcore</title>\n</head>\n<body>\n    <table>\n      <thead>\n        <tr><th>Name</th><th>Score</th></tr>\n      </thead>\n      <tbody>\n        <tr><td>Alice</td><td>90</td></tr>\n      </tbody>\n    </table>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Hardcore</title>\n</head>\n<body>\n    <ul>\n      <li class="item">Apple</li>\n      <li>Banana</li>\n    </ul>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Hardcore</title>\n</head>\n<body>\n    <form>\n      <label for="email">Email</label>\n      <input type="email" id="email" name="email">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Hardcore</title>\n</head>\n<body>\n    <img src="dog.jpg" alt="Dog">\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Anchor Hardcore</title>\n</head>\n<body>\n    <a href="https://example.com" target="_blank">Visit Example</a>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Hardcore</title>\n</head>\n<body>\n    <form action="/submit" method="post">\n      <input type="text" name="username">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Hardcore</title>\n</head>\n<body>\n    <table>\n      <tr><th>Item</th><th>Price</th></tr>\n      <tr><td>Pen</td><td>5</td></tr>\n    </table>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Checkbox Hardcore</title>\n</head>\n<body>\n    <form>\n      <label for="agree">I agree</label>\n      <input type="checkbox" id="agree" checked>\n    </form>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Logo Hardcore</title>\n</head>\n<body>\n    <img src="logo.png" alt="Logo" width="100">\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Button Hardcore</title>\n</head>\n<body>\n    <button type="button">Submit</button>\n</body>\n</html>`
             ]
         },
         css: {
@@ -303,21 +517,51 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
                 `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
                 `div {\n    background: black;\n    width: 80px;\n    height: 30px;\n    padding: 20px;\n}`,
-                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n    width: 50px;\n    height: 40px;\n}`
+                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n    width: 50px;\n    height: 40px;\n}`,
+                `.container {\n    width: 100px;\n    margin: 0 auto;\n    padding: 10px;\n}`,
+                `#main {\n    color: purple;\n    font-weight: bold;\n}`,
+                `ul {\n    list-style: none;\n    padding: 0;\n}`,
+                `li {\n    color: orange;\n    font-size: 18px;\n}`,
+                `.box {\n    border: 1px solid #000;\n    background: #eee;\n    padding: 10px;\n}`,
+                `#header {\n    background-color: #eee;\n    text-align: center;\n}`,
+                `a {\n    color: red;\n    text-decoration: underline;\n}`,
+                `.footer {\n    text-align: center;\n    background: #222;\n    color: #fff;\n}`,
+                `input {\n    border-radius: 5px;\n    border: 1px solid #ccc;\n}`,
+                `.title {\n    font-size: 24px;\n    font-weight: bold;\n}`
             ],
             moderate: [
                 `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
                 `.footer {\n    background-color: #222;\n    color: #ccc;\n    padding: 20px;\n    text-align: center;\n}`,
                 `.nav {\n    display: flex;\n    justify-content: space-around;\n    background-color: #444;\n    padding: 10px;\n}`,
-                `.card {\n    border: 1px solid #ccc;\n    padding: 15px;\n    border-radius: 10px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n}`,
-                `.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 20px;\n}`
+                `.card {\n    border: 1px solid #ccc;\n    border-radius: 10px;\n    box-shadow: 0 0 10px rgba(0,0,0,0.1);\n    padding: 15px;\n}`,
+                `.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 20px;\n}`,
+                `#main {\n    padding: 20px;\n    background-color: #fafafa;\n    border-radius: 10px;\n}`,
+                `.sidebar {\n    width: 200px;\n    background: #f0f0f0;\n    padding: 15px;\n}`,
+                `button {\n    color: white;\n    background: #007bff;\n    border-radius: 5px;\n    padding: 10px 20px;\n}`,
+                `.alert {\n    color: white;\n    background: red;\n    padding: 10px;\n    border-radius: 5px;\n}`,
+                `#profile {\n    border: 2px solid #333;\n    padding: 10px;\n    border-radius: 8px;\n}`,
+                `.menu {\n    display: flex;\n    gap: 10px;\n    background: #eee;\n    padding: 10px;\n}`,
+                `.avatar {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n}`,
+                `input[type="text"] {\n    border: 1px solid #ccc;\n    padding: 5px;\n    width: 200px;\n}`,
+                `.highlight {\n    background: yellow;\n    color: black;\n    font-weight: bold;\n}`,
+                `#logo {\n    width: 100px;\n    height: 100px;\n    display: block;\n    margin: 0 auto;\n}`
             ],
             hardcore: [
-                `#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}`,
-                `.modal {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background-color: white;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n}`,
+                `#container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n    background: #f5f5f5;\n}`,
+                `.modal {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background-color: white;\n    padding: 20px;\n    box-shadow: 0 0 10px rgba(0,0,0,0.5);\n    z-index: 1000;\n}`,
                 `.tooltip {\n    position: relative;\n    display: inline-block;\n    cursor: pointer;\n}`,
-                `.tooltip .tooltip-text {\n    visibility: hidden;\n    width: 120px;\n    background-color: black;\n    color: #fff;\n    text-align: center;\n    padding: 5px;\n    border-radius: 5px;\n    position: absolute;\n    z-index: 1;\n}`,
-                `.tooltip:hover .tooltip-text {\n    visibility: visible;\n}`
+                `.tooltip .tooltip-text {\n    visibility: hidden;\n    width: 120px;\n    background-color: black;\n    color: #fff;\n    text-align: center;\n    padding: 5px;\n    border-radius: 5px;\n    position: absolute;\n    z-index: 1;\n    bottom: 125%;\n    left: 50%;\n    transform: translateX(-50%);\n}`,
+                `.tooltip:hover .tooltip-text {\n    visibility: visible;\n}`,
+                `#main-content {\n    margin: 0 auto;\n    width: 80%;\n    max-width: 1200px;\n    background: #fff;\n    box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n    padding: 40px;\n}`,
+                `.dropdown {\n    background: #fff;\n    border: 1px solid #ccc;\n    position: relative;\n    width: 200px;\n}`,
+                `.dropdown-content {\n    display: none;\n    position: absolute;\n    background: #f9f9f9;\n    min-width: 160px;\n    box-shadow: 0 8px 16px rgba(0,0,0,0.2);\n    z-index: 1;\n}`,
+                `.dropdown:hover .dropdown-content {\n    display: block;\n}`,
+                `.overlay {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    background: rgba(0,0,0,0.5);\n    z-index: 999;\n}`,
+                `#sidebar {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 250px;\n    height: 100vh;\n    background: #222;\n    color: #fff;\n    padding: 20px;\n}`,
+                `.progress-bar {\n    width: 0;\n    height: 20px;\n    background: linear-gradient(90deg, #4caf50, #8bc34a);\n    transition: width 0.5s;\n}`,
+                `.progress-bar.active {\n    width: 100%;\n}`,
+                `.tab {\n    display: inline-block;\n    padding: 10px;\n    border: 1px solid #ccc;\n    background: #f9f9f9;\n    cursor: pointer;\n}`,
+                `.tab.active {\n    background: #333;\n    color: #fff;\n    border-bottom: none;\n}`
             ]
         }
     };
@@ -342,18 +586,61 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "Enter your name //Sample Name\nYour name is //Sample Name"
             ],
             moderate: [
-                "Addition: 15",
-                "Subtraction: 5",
-                "Multiplication: 50",
-                "Division: 2",
-                "Modulus: 1"
+                // 1
+                "0\n1\n2\n3\n4",
+                // 2
+                "0\n1\n2\n3\n4",
+                // 3
+                "Wednesday",
+                // 4
+                "Sunday",
+                // 5
+                "Yes",
+                // 6
+                "5",
+                // 7
+                "Number: 5\nDecimals: 4.99\nBoolean: true",
+                // 8
+                "0\n1\n2\n3\n4",
+                // 9
+                "Jhon",
+                // 10
+                "5",
+                // 11
+                "The animal makes a sound\nThe pig says: wee wee",
+
             ],
             hardcore: [
-                "Data added successfully",
-                "Data retrieved successfully",
-                "Data updated successfully",
-                "Data deleted successfully",
-                "DataManager operations completed"
+                // 1
+                "Original string: Hello\nReversed string: olleH",
+                // 2
+                "The lowest age in the array is: 18",
+                // 3
+                "The average age is: 35.875",
+                // 4
+                "The sum is: 41",
+                // 5
+                "Volvo\nBMW\nFord\nMazda",
+                // 6
+                "Aimie\nChristoper\nDeezna\nJhon\nLee\nRiven\nSakamoto",
+                // 7
+                "Max value: 9",
+                // 8
+                "Even count: 3",
+                // 9
+                "1 2 \n3 4",
+                // 10
+                "JavaHardcore",
+                // 11
+                "Factorial: 120",
+                // 12
+                "0 1 1 2 3",
+                // 13
+                "Palindrome",
+                // 14
+                "Sum: 10",
+                // 15
+                "1",
             ]
         },
         html: {
@@ -423,64 +710,140 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `The Scanner is not called because of the incorrect data name. Do not copy the comments, it is only for direction.`,
             ],
             moderate: [
-                "Implement the addition method.",
-                "Implement the subtraction method.",
-                "Implement the multiplication method.",
-                "Implement the division method.",
-                "Implement the modulus method."
+                "The for loop keyword is misspelled and the print method is incorrect. Use 'for' and 'System.out.println'.",
+                "The loop condition is wrong. 'while (i > 5)' will not run as expected. Also, don't forget the semicolon after println.",
+                "You can't assign null to an int. Also, check the switch statement and default case syntax.",
+                "The value of 'day' is 0, but valid days start at 1. Set 'day' to a valid value to match a case.",
+                "The value of 'response' is 0, but there is no case 0. Set it to 1 or 2 to match a case.",
+                "You are trying to access numbers[3], but the array only has indices 0, 1, and 2. Use a valid index.",
+                "The float and boolean values are not declared correctly.",
+                "The statement keyword is wrong. Check the spelling correctly to make the code run.",
+                "Array index out of bounds: 'names[3]' does not exist for a 3-element array. Use a valid index like 0, 1, or 2.",
+                "The constructor and class name must match, and 'x = x;' does not assign a value. Also, 'Mains' should be 'Main'.",
+                "Class and object keywords are case-sensitive. Use 'class' and 'new', not 'Class' and 'NEW'. Also, check for extra parentheses.",
             ],
             hardcore: [
-                "Fix the method to add data to the list.",
-                "Fix the method to retrieve data from the list.",
-                "Fix the method to update data in the list.",
-                "Fix the method to delete data from the list.",
-                "Fix the DataManager class to handle all operations."
+                "The loop is going out of bounds. Remember: for a string, the last index is length - 1, not length.",
+                "You should set the initial value of lowestAge to the first element of the array, not zero.",
+                "You're dividing sum by length, but make sure both are the correct type and value. Double-check your division.",
+                "The sum variable is not initialized. Always set sum = 0 before using it in a loop.",
+                "You forgot to import ArrayList and use the correct syntax for creating and using it.",
+                "You need to import Arrays and use Arrays.sort to sort the array before printing.",
+                "If your array has only negative numbers, starting max at 0 will be wrong. Use the first element instead.",
+                "You are counting odd numbers, not even. Even numbers have n % 2 == 0.",
+                "The inner loop should use arr[i].length, not arr.length, to avoid index errors.",
+                "You can't use - to join strings. Use the correct operator to concatenate strings.",
+                "You are adding numbers for factorial, but you should multiply them (fact = fact * i).",
+                "Check your Fibonacci logic: print the first two numbers, then add them to get the next.",
+                "You are comparing strings with ==, which doesn't work in Java. Use .equals() instead.",
+                "You are overwriting sum instead of adding each digit. Use sum += num % 10.",
+                "Copying arrays by assignment makes them share memory. Use .clone() to make a real copy.",
             ]
         },
         html: {
             easy: [
-                "Fix the missing closing tag in the HTML structure.",
-                "Add a paragraph element to the HTML structure.",
-                "Fix the missing title in the HTML structure.",
-                "Add a header element to the HTML structure.",
-                "Fix the missing body tag in the HTML structure."
+                "No changes needed. This is a correct HTML structure.",
+                "No changes needed. This is a correct HTML structure.",
+                "The 'button' tag is empty. Add the text 'Pogi' inside the button.",
+                "No changes needed. This is a correct HTML structure.",
+                "The 'th' tag for 'Age' is written as 'th'Age'/age'. Change it to 'th'Age'/th'.",
+                "No changes needed. This is a correct HTML sucture.",
+                "The 'h1' tag is missing a closing '/h1'. Add '/h1' after 'Sample Header'.",
+                "The 'head' section is missing a 'title' tag. Add a 'title' inside 'head'.",
+                "The 'p' tag is not closed. Add '/p' after 'Example paragraph.'.",
+                "The 'body' tag is missing. Add 'body' and '/body' tags around the content.",
+                "The 'ul' list is empty. Add at least one 'li' item inside the 'ul'.",
+                "The 'img' tag is missing the src attribute. Add src=\"sample.jpg\" to the 'img' tag.",
+                "The 'a' tag is missing the href attribute. Add href=\"https://example.com\" to the 'a' tag.",
+                "The 'form' tag is missing the action attribute. Add action=\"/submit\" to the 'form' tag.",
+                "The 'input' tag is missing the type attribute. Add type=\"text\" to the 'input' tag.",
             ],
             moderate: [
-                "Fix the missing class attribute in the HTML structure.",
-                "Add a navigation bar to the HTML structure.",
-                "Fix the missing section element in the HTML structure.",
-                "Add a footer element to the HTML structure.",
-                "Fix the missing list items in the HTML structure."
+                "The 'div' tag is missing the class attribute. Add class=\"container\" to the div.",
+                "The content block is missing a 'h1' header. Add 'h1'Welcome'/h1' before the paragraph.",
+                "The navigation bar is missing the list of links. Add a 'ul' with 'li' items inside 'nav'.",
+                "The section is missing a title. Add 'h2'Section Title'/h2' before the paragraph.",
+                "The footer is empty. Add a 'p' tag with some text inside the 'footer'.",
+                "The table is missing a 'thead' and 'tbody'. Add them for better structure.",
+                "The list items are not inside a 'ul'. Wrap them with 'ul'...'/ul'.",
+                "The image is missing an alt attribute. Add alt=\"Cat\" to the 'img' tag.",
+                "The form is missing a label for the input. Add a 'label' for the username input.",
+                "The button is missing a type. Add type=\"button\" to the 'button' tag.",
+                "The table is missing the closing '/table' tag. Add '/table' at the end.",
+                "The input is missing a placeholder. Add placeholder=\"Enter your email\".",
+                "The anchor tag is missing a closing '/a'. Add '/a' at the end.",
+                "The image tag is missing the src attribute. Add src=\"logo.png\".",
+                "The form is missing a submit button. Add 'input type=\"submit\" value=\"Submit\"' inside the form."
             ],
             hardcore: [
-                "Fix the form action attribute to submit data.",
-                "Add a required attribute to the email input field.",
-                "Fix the missing article element in the HTML structure.",
-                "Add a sidebar element to the HTML structure.",
-                "Fix the missing header element in the HTML structure."
+                "The form is missing the method, required attribute, and the label is not linked to the input. Add method, required, and use 'for' in the label.",
+                "The email input is missing required and type, and the submit button is outside the form. Add type, required, and move the button inside the form.",
+                "The article is missing a heading, the paragraph is not closed, and there is an extra attribute. Add 'h1', close 'p', and remove extra attributes.",
+                "The aside is missing a proper heading, the paragraph is not closed, and the heading tag is wrong. Use 'h2' and close 'p'.",
+                "The header is missing a closed 'h1', a 'p' tag, and has a typo in the tag. Fix the tags and close them properly.",
+                "The table is missing 'tbody', 'th' is misspelled, and a row is not closed. Use correct tags and structure.",
+                "The list is missing the closing '/ul', 'li' tags are not closed, and there is an extra attribute. Close all tags and fix attributes.",
+                "The input is missing name and type, and the label is not linked. Add name, type, and use 'for' in the label.",
+                "The image tag is missing closing ', alt, and src is misspelled. Use correct attributes and close the tag.",
+                "The anchor tag is missing text, href, and has an extra attribute. Add href and text between the tags.",
+                "The form is missing action, method, and a submit button. Add these attributes and elements.",
+                "The table is missing 'th', 'tr' is not closed, and 'td' is misspelled. Use correct tags and close them.",
+                "The checkbox is missing a label, id, and the checked attribute is misspelled. Add label, id, and use 'checked'.",
+                "The image is missing alt, src, and has an extra attribute. Add src and alt attributes.",
+                "The button is missing closing tag, type, and text. Add type and text, and close the tag."
             ]
         },
         css: {
             easy: [
-                "Fix the missing background-color property.",
-                "Add a text-align property to center the header.",
-                "Fix the missing line-height property in the paragraph.",
-                "Add a padding property to the container.",
-                "Fix the missing border-radius property in the button."
+                "Add a yellow background color to the whole page using the body selector.",
+                "Change the text color of all h1 headers to blue.",
+                "Set the color of all paragraph (p) text to green.",
+                "Make all divs have a black background.",
+                "Set the background color of all buttons to red.",
+                "Make elements with the class 'container' 100px wide.",
+                "Change the text color of the element with id 'main' to purple.",
+                "Remove the bullet points from all unordered lists (ul).",
+                "Set the text color of all list items (li) to orange.",
+                "Add a black border to elements with the class 'box'.",
+                "Set the background color of the element with id 'header' to #eee.",
+                "Change the color of all links (a) to red.",
+                "Center the text inside elements with the class 'footer'.",
+                "Make all input fields have rounded corners (border-radius).",
+                "Set the font size of elements with the class 'title' to 24px."
             ],
             moderate: [
-                "Fix the missing background-color property in the header.",
-                "Add a padding property to the footer.",
-                "Fix the missing display property in the navigation bar.",
-                "Add a box-shadow property to the card.",
-                "Fix the missing grid-template-columns property in the grid."
+                "Make the .header background dark (#333) and the text white, with padding and centered text.",
+                "Set the .footer background to #222, text color to #ccc, add padding, and center the text.",
+                "Make the .nav use flex layout, space items evenly, set background to #444, and add padding.",
+                "Add a border, rounded corners, shadow, and padding to elements with the class .card.",
+                "Make .grid a grid layout with 3 columns and a 20px gap.",
+                "Add 20px padding, a light background, and rounded corners to the element with id 'main'.",
+                "Set the .sidebar width to 200px, background to #f0f0f0, and add padding.",
+                "Style all buttons with white text, blue background, rounded corners, and padding.",
+                "Make .alert have white text, red background, padding, and rounded corners.",
+                "Add a 2px solid border, padding, and rounded corners to the element with id 'profile'.",
+                "Make .menu use flex layout, add a gap, light background, and padding.",
+                "Set .avatar to be a 50x50px circle.",
+                "Style text inputs with a border, padding, and set width to 200px.",
+                "Make .highlight have a yellow background, black text, and bold font.",
+                "Set #logo to 100x100px, center it, and make it a block element."
             ],
             hardcore: [
-                "Fix the missing justify-content property in the container.",
-                "Add a transform property to center the modal.",
-                "Fix the missing visibility property in the tooltip.",
-                "Add a hover effect to display the tooltip text.",
-                "Fix the missing z-index property in the tooltip."
+                "Use flex to center #container both vertically and horizontally, fill the whole viewport, and set a light background.",
+                "Position .modal in the center of the screen, add padding, a white background, shadow, and high z-index.",
+                "Make .tooltip relative, display inline-block, and show a pointer cursor.",
+                "Hide .tooltip-text by default, style it as a tooltip box, and position it above the parent.",
+                "Show .tooltip-text when hovering over .tooltip.",
+                "Style #main-content with a max width, white background, shadow, and 40px padding.",
+                "Make .dropdown have a white background, border, relative position, and set width.",
+                "Hide .dropdown-content by default, position it absolutely, and style as a dropdown menu.",
+                "Show .dropdown-content when hovering over .dropdown.",
+                "Make .overlay cover the whole screen, fixed position, and use a semi-transparent dark background.",
+                "Fix #sidebar to the left, full height, dark background, white text, and padding.",
+                "Style .progress-bar with a gradient background, height 20px, width 0, and smooth transition.",
+                "When .progress-bar has the class .active, set its width to 100%.",
+                "Style .tab as inline-block, with border, background, padding, and pointer cursor.",
+                "When .tab has the class .active, make the background dark, text white, and remove the bottom border."
             ]
         }
     };
@@ -720,36 +1083,44 @@ document.addEventListener("DOMContentLoaded", async function () {
     let timerInterval;
 
 
-   /**
- * Generate a preview element based on the CSS solution.
- * @param {string} cssCode - The CSS code to analyze.
- * @returns {string} - The HTML element to preview.
- */
-function generatePreviewElement(cssCode) {
-    if (!cssCode) return '<div>Preview</div>';
+    /**
+  * Generate a preview element based on the CSS solution.
+  * @param {string} cssCode - The CSS code to analyze.
+  * @returns {string} - The HTML element to preview.
+  */
+    function generatePreviewElement(cssCode) {
+        if (!cssCode) return '<div>Preview</div>';
 
-    const normalizedCode = cssCode.replace(/\s+/g, ' ').trim();
+        const normalizedCode = cssCode.replace(/\s+/g, ' ').trim();
 
-    // Extract the selector from the CSS code
-    const selectorMatch = normalizedCode.match(/^[.#]?[a-zA-Z0-9_-]+/);
-    const selector = selectorMatch ? selectorMatch[0] : 'div';
+        // Extract the selector from the CSS code
+        const selectorMatch = normalizedCode.match(/^[.#]?[a-zA-Z0-9_-]+/);
+        const selector = selectorMatch ? selectorMatch[0] : 'div';
 
-    if (selector.startsWith('.')) {
-        return `<div class="${selector.slice(1)}">Div Element</div>`;
-    } else if (selector.startsWith('#')) {
-        return `<div id="${selector.slice(1)}">Div Element</div>`;
-    } else if (selector === 'button') {
-        return '<button class="button">Button</button>';
-    } else if (selector === 'h1') {
-        return '<h1>Header</h1>';
-    } else if (selector === 'p') {
-        return '<p>Paragraph</p>';
-    } else if (selector === 'div') {
-        return '<div>Div Element</div>';
-    } else {
-        return `<${selector}>Preview</${selector}>`; 
+        if (selector.startsWith('.')) {
+            return `<div class="${selector.slice(1)}">.${selector.slice(1)} preview</div>`;
+        } else if (selector.startsWith('#')) {
+            return `<div id="${selector.slice(1)}">#${selector.slice(1)} preview</div>`;
+        } else if (selector === 'button') {
+            return '<button class="button">Button</button>';
+        } else if (selector === 'h1') {
+            return '<h1>Header</h1>';
+        } else if (selector === 'p') {
+            return '<p>Paragraph</p>';
+        } else if (selector === 'ul') {
+            return '<ul><li>Item 1</li><li>Item 2</li></ul>';
+        } else if (selector === 'li') {
+            return '<ul><li>List Item</li></ul>';
+        } else if (selector === 'a') {
+            return '<a href="#">Link</a>';
+        } else if (selector === 'input') {
+            return '<input type="text" placeholder="Input">';
+        } else if (selector === 'div') {
+            return '<div>Div Element</div>';
+        } else {
+            return `<${selector}>Preview</${selector}>`;
+        }
     }
-}
 
     function initializeGame(language, difficulty, questionIndex) {
         console.log("Game is starting...");
