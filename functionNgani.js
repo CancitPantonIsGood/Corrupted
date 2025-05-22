@@ -388,7 +388,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 'public class Main {\n   public static void main(String[] args) {\n      int age = 18;\n      System.out.println("Sasha just turned 18");\n      if (age = 18) {\n            System.out.println("Sasha is legal");\n      } else {\n            System.out.println("Sasha is not legal age");\n      }\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      int toyo = 10;\n      int suka = 10;\n      int sibuyas = 10;\n      int bawang = 10;\n      int laurel = 5;\n      int total = toyo + suka + sibuyas + bawang + laurel;\n      System.out.println("Total: " + total);\n   }\n}',
                 'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
-                'public class Main {\n   public static void main(String[] args) {\n      char ave = "A";\n      System.out.print("Marry got an " + ave + " on the exam");\n   }\n}',
                 `public class Addition {\n   public static void main(String[] args) {\n      int x = 16;\n      int y = 32;\n      int total = x + y;\n      System.out.print(total);\n   }\n}`,
                 `public class Subtruction {\n   public static void main(String[] args) {\n      int x = 50;\n      int y = 30;\n      int total = x - y;\n      System.out.print(total);\n   }\n}`,
                 `public class Multiplication {\n   public static void main(String[] args) {\n      int x = 13;\n      int y = 19;\n      int total = x * y;\n      System.out.print(total);\n   }\n}`,
@@ -584,6 +583,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "130",
                 "1",
                 "Enter your name //Sample Name\nYour name is //Sample Name"
+                
             ],
             moderate: [
                 // 1
