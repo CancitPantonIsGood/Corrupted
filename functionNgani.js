@@ -1,5 +1,3 @@
-
-
 // Select all menu hyperlinks
 const menuLinks = document.querySelectorAll('.userMenu .menu a, .userMenu .sources a');
 const hoverSound = document.getElementById('selectingSound');
@@ -505,39 +503,41 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Anchor Hardcore</title>\n</head>\n<body>\n    <a href="https://example.com" target="_blank">Visit Example</a>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Hardcore</title>\n</head>\n<body>\n    <form action="/submit" method="post">\n      <input type="text" name="username">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Hardcore</title>\n</head>\n<body>\n    <table>\n      <tr><th>Item</th><th>Price</th></tr>\n      <tr><td>Pen</td><td>5</td></tr>\n    </table>\n</body>\n</html>`,
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Checkbox Hardcore</title>\n</head>\n<body>\n    <form>\n      <label for="agree">I agree</label>\n      <input type="checkbox" id="agree" checked>\n    </form>\n</body>\n</html>`,
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Checkbox Hardcore</title>\n</head>\n<body>\n    <form>\n      <input type="checkbox" cheked>\n    </form>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Logo Hardcore</title>\n</head>\n<body>\n    <img src="logo.png" alt="Logo" width="100">\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Button Hardcore</title>\n</head>\n<body>\n    <button type="button">Submit</button>\n</body>\n</html>`
             ]
         },
         css: {
             easy: [
-                `body {\n    background-color: yellow;\n    color: #fff;\n    font-family: Arial, sans-serif;\n}`,
-                `h1 {\n    color: blue;\n    font-size: 24px;\n    text-align: center;\n}`,
-                `p {\n    color: green;\n    font-size: 16px;\n    line-height: 1.5;\n}`,
-                `div {\n    background: black;\n    width: 80px;\n    height: 30px;\n    padding: 20px;\n}`,
-                `button {\n    background-color: red;\n    color: white;\n    padding: 10px;\n    border-radius: 5px;\n    width: 50px;\n    height: 40px;\n}`,
-                `.container {\n    width: 100px;\n    margin: 0 auto;\n    padding: 10px;\n}`,
-                `#main {\n    color: purple;\n    font-weight: bold;\n}`,
-                `ul {\n    list-style: none;\n    padding: 0;\n}`,
-                `li {\n    color: orange;\n    font-size: 18px;\n}`,
-                `.box {\n    border: 1px solid #000;\n    background: #eee;\n    padding: 10px;\n}`,
-                `#header {\n    background-color: #eee;\n    text-align: center;\n}`,
-                `a {\n    color: red;\n    text-decoration: underline;\n}`,
-                `.footer {\n    text-align: center;\n    background: #222;\n    color: #fff;\n}`,
-                `input {\n    border-radius: 5px;\n    border: 1px solid #ccc;\n}`,
-                `.title {\n    font-size: 24px;\n    font-weight: bold;\n}`
+                `body {\n    background-color: yellow;\n}`,
+                `h1 {\n    color: blue;\n}`,
+                `p {\n    color: green;\n}`,
+                `div {\n    background: black;\n}`,
+                `button {\n    background-color: red;\n}`,
+                `.container {\n    width: 100px;\n}`,
+                `#main {\n    color: purple;\n}`,
+                `ul {\n    list-style: none;\n}`,
+                `li {\n    color: orange;\n}`,
+                `.box {\n    border: 1px solid #000;\n}`,
+                `#header {\n    background-color: #eee;\n}`,
+                `a {\n    color: red;\n}`,
+                `.footer {\n    text-align: center;\n}`,
+                `input {\n    border-radius: 5px;\n}`,
+                `.title {\n    font-size: 24px;\n}`
             ],
             moderate: [
-                `.header {\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}`,
-                `.footer {\n    background-color: #222;\n    color: #ccc;\n    padding: 20px;\n    text-align: center;\n}`,
-                `.nav {\n    display: flex;\n    justify-content: space-around;\n    background-color: #444;\n    padding: 10px;\n}`,
-                `.card {\n    border: 1px solid #ccc;\n    border-radius: 10px;\n    box-shadow: 0 0 10px rgba(0,0,0,0.1);\n    padding: 15px;\n}`,
-                `.grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 20px;\n}`,
-                `#main {\n    padding: 20px;\n    background-color: #fafafa;\n    border-radius: 10px;\n}`,
-                `.sidebar {\n    width: 200px;\n    background: #f0f0f0;\n    padding: 15px;\n}`,
-                `button {\n    color: white;\n    background: #007bff;\n    border-radius: 5px;\n    padding: 10px 20px;\n}`,
-                `.alert {\n    color: white;\n    background: red;\n    padding: 10px;\n    border-radius: 5px;\n}`,
+                `.header {\n    background-color: #333;\n    color: white;\n}`,
+                `.footer {\n    background-color: #222;\n    color: #ccc;\n}`,
+                `.nav {\n    display: flex;\n    justify-content: space-around;\n}`,
+                `.card {\n    border: 1px solid #ccc;\n    border-radius: 10px;\n}`,
+                `.grid {\n    display: grid;\n    gap: 20px;\n}`,
+                `#main {\n    padding: 20px;\n    background-color: #fafafa;\n}`,
+                `.sidebar {\n    width: 200px;\n    background: #f0f0f0;\n}`,
+                `button {\n    color: white;\n    border-radius: 5px;\n}`,
+                `.alert {\n    color: white;\n    background: red;\n}`,
+                `#profile {\n    border: 2px solid #333;\n    padding: 10px;\n}`,
+                 `.alert {\n    color: white;\n    background: red;\n    padding: 10px;\n    border-radius: 5px;\n}`,
                 `#profile {\n    border: 2px solid #333;\n    padding: 10px;\n    border-radius: 8px;\n}`,
                 `.menu {\n    display: flex;\n    gap: 10px;\n    background: #eee;\n    padding: 10px;\n}`,
                 `.avatar {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n}`,
@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "130",
                 "1",
                 "Enter your name //Sample Name\nYour name is //Sample Name"
-                
+
             ],
             moderate: [
                 // 1
@@ -2002,25 +2002,52 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .trim();
         }
 
+        // Helper to extract text from HTML/CSS code
+        function extractTextFromCode(code, language) {
+            if (!code) return '';
+            if (language === 'html') {
+                // Remove all tags and decode HTML entities
+                const div = document.createElement('div');
+                div.innerHTML = code;
+                return div.textContent || div.innerText || '';
+            } else if (language === 'css') {
+                // For CSS, show the expected output description if available
+                // Or just show the selector name (e.g., ".box") if not
+                // You can improve this logic as needed
+                return code.replace(/[{].*?[}]/gs, '').replace(/[.#]/g, '').trim();
+            }
+            return code;
+        }
+
         let summaryHTML = `<table>
-            <tr>
-                <th>Question</th>
-                <th>Correct Answer</th>
-                <th>Your Answer</th>
-            </tr>`;
+        <tr>
+            <th>Question</th>
+            <th>Correct Answer</th>
+            <th>Your Answer</th>
+        </tr>`;
 
         questionOrder.forEach((questionIndex, i) => {
             const userAnswer = userAnswers[i];
             if (userAnswer) {
                 const correctAnswer = solutions[selectedLanguage][selectedDifficulty][questionIndex];
                 const isCorrect = normalizeCode(userAnswer) === normalizeCode(correctAnswer);
+
+                let displayCorrect = correctAnswer;
+                let displayUser = userAnswer;
+
+                // Only show text for HTML and CSS
+                if (selectedLanguage === 'html' || selectedLanguage === 'css') {
+                    displayCorrect = (correctAnswer || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    displayUser = (userAnswer || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                }
+
                 summaryHTML += `
-                    <tr>
-                        <td>Question ${i + 1}</td>
-                        <td><pre>${correctAnswer}</pre></td>
-                        <td><pre style="background:${isCorrect ? 'rgb(0, 133, 66)' : 'rgb(133, 0, 0)'};">${userAnswer}</pre></td>
-                    </tr>
-                `;
+    <tr>
+        <td>Question ${i + 1}</td>
+        <td><pre>${displayCorrect}</pre></td>
+        <td><pre style="background:${isCorrect ? 'rgb(0, 133, 66)' : 'rgb(133, 0, 0)'};">${displayUser}</pre></td>
+    </tr>
+`;
             }
         });
 
@@ -2041,6 +2068,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.log("Game exited and reset.");
         });
     }
+
 
     async function markAchievementCompleted(achievementKey) {
         const achievementId = achievementIds[achievementKey];
