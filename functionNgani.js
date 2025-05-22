@@ -233,89 +233,56 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <a href="https://example.com">Example Page</a>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <table>\n      <tr>\n        <th>Name</th>\n        <th>Age</age>\n        <th>Birthday</th>\n      </tr>\n    </table>\n</body>\n</html>`,
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Home</title>\n</head>\n<body>\n    <ol>\n      <li>Coffee</li>\n      <li>Milk</li>\n      <li>Milo</li>\n      <li>Alaksan FR</li>\n    </ol>\n</body>\n</html>`,
-                // 7. Missing closing </h1> tag
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Sample</title>\n</head>\n<body>\n    <h1>Sample Header\n    <p>Sample paragraph.</p>\n</body>\n</html>`,
-                // 8. No <title> in <head>
                 `<!DOCTYPE html>\n<html>\n<head>\n</head>\n<body>\n    <h1>Test Header</h1>\n    <p>Test paragraph.</p>\n</body>\n</html>`,
-                // 9. <p> tag not closed
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Example</title>\n</head>\n<body>\n    <h1>Example Header</h1>\n    <p>Example paragraph.\n</body>\n</html>`,
-                // 10. <body> tag missing
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo</title>\n</head>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</html>`,
-                // 11. <ul> list missing <li>
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <ul>\n    </ul>\n</body>\n</html>`,
-                // 12. <img> tag missing src
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img alt="Sample Image">\n</body>\n</html>`,
-                // 13. <a> tag missing href
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a>Click here</a>\n</body>\n</html>`,
-                // 14. <form> missing action
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="name">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
-                // 15. <input> missing type
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Example</title>\n</head>\n<body>\n    <input name="username">\n</body>\n</html>`,
 
 
             ],
             moderate: [
-                // 1
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Game Modes</title>\n</head>\n<body>\n    <div>\n        <h2>Game Modes</h2>\n        <ul>\n            <li>Normal Mode</li>\n            <li>Moderate Mode</li>\n            <li>Hard Mode</li>\n        </ul>\n    </div>\n</body>\n</html>`,
-                // 2
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Content Block</title>\n</head>\n<body>\n    <div class="content">\n        <p>This is a sample content block.</p>\n    </div>\n</body>\n</html>`,
-                // 3
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Header</title>\n</head>\n<body>\n    <div class="header">\n        <h1>Header</h1>\n        <nav>\n        </nav>\n    </div>\n</body>\n</html>`,
-                // 4
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Section</title>\n</head>\n<body>\n    <section>\n        <p>Section content goes here.</p>\n    </section>\n</body>\n</html>`,
-                // 5
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Footer</title>\n</head>\n<body>\n    <footer>\n    </footer>\n</body>\n</html>`,
-                // 6
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Example</title>\n</head>\n<body>\n    <table>\n      <tr>\n        <th>Name</th>\n        <th>Age</th>\n      </tr>\n      <tr>\n        <td>John</td>\n        <td>25</td>\n      </tr>\n    </table>\n</body>\n</html>`,
-                // 7
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <li>Item 1</li>\n    <li>Item 2</li>\n</body>\n</html>`,
-                // 8
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img src="cat.jpg">\n</body>\n</html>`,
-                // 9
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="username">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
-                // 10
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Content Block</title>\n</head>\n<body>\n    <div class="content">\n        <p>This is a sample content block.</p>\n    </div>\n</body>\n</html>`,
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Header</title>\n</head>\n<body>\n    <div class="header">\n        <h1>Header</h1>\n        <nav>\n        </nav>\n    </div>\n</body>\n</html>`,
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Section</title>\n</head>\n<body>\n    <section>\n        <p>Section content goes here.</p>\n    </section>\n</body>\n</html>`,
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Footer</title>\n</head>\n<body>\n    <footer>\n    </footer>\n</body>\n</html>`,
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Example</title>\n</head>\n<body>\n    <table>\n      <tr>\n        <th>Name</th>\n        <th>Age</th>\n      </tr>\n      <tr>\n        <td>John</td>\n        <td>25</td>\n      </tr>\n    </table>\n</body>\n</html>`,
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <li>Item 1</li>\n    <li>Item 2</li>\n</body>\n</html>`,
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img src="cat.jpg">\n</body>\n</html>`,
+                                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="username">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Button Example</title>\n</head>\n<body>\n    <button>Click me</button>\n</body>\n</html>`,
-                // 11
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Example</title>\n</head>\n<body>\n    <table>\n      <tr><td>Apple</td><td>10</td></tr>\n      <tr><td>Banana</td><td>5</td></tr>\n</body>\n</html>`,
-                // 12
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Example</title>\n</head>\n<body>\n    <input type="text" name="email">\n</body>\n</html>`,
-                // 13
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a href="https://google.com">Google\n</body>\n</html>`,
-                // 14
+                
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a href="https:gle.com">Google\n</body>\n</html>`,
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Logo Example</title>\n</head>\n<body>\n    <img alt="Logo">\n</body>\n</html>`,
-                // 15
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="user">\n    </form>\n</body>\n</html>`
             ],
             hardcore: [
-                // 1
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Hardcore</title>\n</head>\n<body>\n    <form action="submit.php">\n        <label>Username</label>\n        <input type="text" id="username">\n        <input type="submit" value="Submit">\n    </form>\n</body>\n</html>`,
-                // 2
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Email Hardcore</title>\n</head>\n<body>\n    <form>\n        <label for="email">Email:</label>\n        <input id="email" name="email">\n    </form>\n    <button>Submit</button>\n</body>\n</html>`,
-                // 3
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Article Hardcore</title>\n</head>\n<body>\n    <article>\n        <p class="main" open>Article content goes here.\n    </article>\n</body>\n</html>`,
-                // 4
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Aside Hardcore</title>\n</head>\n<body>\n    <aside>\n        <h3>Sidebar</h3>\n        <p>Sidebar content goes here.\n    </aside>\n</body>\n</html>`,
-                // 5
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Header Hardcore</title>\n</head>\n<body>\n    <header>\n        <h1 Header Title\n        <pHeader description.</header>\n</body>\n</html>`,
-                // 6
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Hardcore</title>\n</head>\n<body>\n    <table>\n      <thead>\n        <tr><thh>Name</thh><thh>Score</thh></tr>\n      </thead>\n      <tr><td>Alice<td>90</tr>\n    </table>\n</body>\n</html>`,
-                // 7
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Hardcore</title>\n</head>\n<body>\n    <ul>\n      <li class="item">Apple\n      <li>Banana\n</body>\n</html>`,
-                // 8
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Hardcore</title>\n</head>\n<body>\n    <form>\n      <label>Email</label>\n      <input>\n      <input type="submit">\n    </form>\n</body>\n</html>`,
-                // 9
-                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Hardcore</title>\n</head>\n<body>\n    <img srcc="dog.jpg" altDog"\n</body>\n</html>`,
-                // 10
+                `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Hardcore</title>\n</head>\n<body>\n    <img srcc="dog.jpg" altDog"\n</body>\n</html>`,              
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Anchor Hardcore</title>\n</head>\n<body>\n    <a target="_blank"></a>\n</body>\n</html>`,
-                // 11
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Hardcore</title>\n</head>\n<body>\n    <form>\n      <input type="text" name="username">\n    </form>\n</body>\n</html>`,
-                // 12
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Table Hardcore</title>\n</head>\n<body>\n    <table>\n      <tr><tds>Item<td>Price</tr>\n      <tr><td>Pen<td>5</tr>\n    </table>\n</body>\n</html>`,
-                // 13
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Checkbox Hardcore</title>\n</head>\n<body>\n    <form>\n      <input type="checkbox" cheked>\n    </form>\n</body>\n</html>`,
-                // 14
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Logo Hardcore</title>\n</head>\n<body>\n    <img width="100">\n</body>\n</html>`,
-                // 15
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Button Hardcore</title>\n</head>\n<body>\n    <button>\n</body>\n</html>`
             ]
         },
@@ -408,35 +375,33 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             ],
             hardcore: [
-                // 1. Reverse string (correct)
                 `public class Main {\n   public static void main(String[] args) {\n      String originalStr = "Hello";\n      String reversedStr = "";\n      System.out.println("Original string: " + originalStr);\n      for (int i = 0; i < originalStr.length(); i++) {\n         reversedStr = originalStr.charAt(i) + reversedStr;\n      }\n      System.out.println("Reversed string: " + reversedStr);\n   }\n}`,
-                // 2. Find lowest age (correct)
                 `public class Main {\n   public static void main(String[] args) {\n      int ages[] = {20, 22, 18, 35, 48, 26, 87, 70};\n      int lowestAge = ages[0];\n      for (int age : ages) {\n         if (lowestAge > age) {\n            lowestAge = age;\n         }\n      }\n      System.out.println("The lowest age in the array is: " + lowestAge);\n   }\n}`,
-                // 3. Average age (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int ages[] = {20, 22, 18, 35, 48, 26, 87, 70};\n      float avg, sum = 0;\n      int length = ages.length;\n      for (int age : ages) {\n         sum += age;\n      }\n      avg = sum / length;\n      System.out.println("The average age is: " + avg);\n   }\n}`,
-                // 4. Array sum (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int[] myArray = {1, 5, 10, 25};\n      int sum = 0;\n      for (int i = 0; i < myArray.length; i++) {\n         sum += myArray[i];\n      }\n      System.out.println("The sum is: " + sum);\n   }\n}`,
-                // 5. ArrayList print (correct, with import)
+
                 `import java.util.ArrayList;\npublic class Main {\n   public static void main(String[] args) {\n      ArrayList<String> cars = new ArrayList<String>();\n      cars.add("Volvo");\n      cars.add("BMW");\n      cars.add("Ford");\n      cars.add("Mazda");\n      for (String i : cars) {\n         System.out.println(i);\n      }\n   }\n}`,
-                // 6. Sort names (correct, with import)
+
                 `import java.util.Arrays;\npublic class Main {\n   public static void main(String[] args) {\n      String[] names = {"Lee", "Riven", "Jhon", "Christoper", "Deezna", "Sakamoto", "Aimie"};\n      Arrays.sort(names);\n      for (String i : names) {\n         System.out.println(i);\n      }\n   }\n}`,
-                // 7. Find max value (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int[] nums = {3, 7, 2, 9, 4};\n      int max = nums[0];\n      for (int n : nums) {\n         if (n > max) {\n            max = n;\n         }\n      }\n      System.out.println("Max value: " + max);\n   }\n}`,
-                // 8. Count even numbers (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int[] nums = {2, 3, 4, 5, 6};\n      int count = 0;\n      for (int n : nums) {\n         if (n % 2 == 0) {\n            count++;\n         }\n      }\n      System.out.println("Even count: " + count);\n   }\n}`,
-                // 9. Print 2D array (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int[][] arr = {{1,2},{3,4}};\n      for (int i = 0; i < arr.length; i++) {\n         for (int j = 0; j < arr[i].length; j++) {\n            System.out.print(arr[i][j] + " ");\n         }\n         System.out.println();\n      }\n   }\n}`,
-                // 10. String concatenation (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      String a = "Java";\n      String b = "Hardcore";\n      String c = a + b;\n      System.out.println(c);\n   }\n}`,
-                // 11. Factorial (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int n = 5;\n      int fact = 1;\n      for (int i = 1; i <= n; i++) {\n         fact = fact * i;\n      }\n      System.out.println("Factorial: " + fact);\n   }\n}`,
-                // 12. Fibonacci (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int n1 = 0, n2 = 1, n3, i, count = 5;\n      System.out.print(n1 + " " + n2);\n      for (i = 2; i < count; ++i) {\n         n3 = n1 + n2;\n         System.out.print(" " + n3);\n         n1 = n2;\n         n2 = n3;\n      }\n   }\n}`,
-                // 13. Palindrome check (correct)
+ 
                 `public class Main {\n   public static void main(String[] args) {\n      String str = "madam";\n      String rev = "";\n      for (int i = str.length() - 1; i >= 0; i--) {\n         rev += str.charAt(i);\n      }\n      if (str.equals(rev)) {\n         System.out.println("Palindrome");\n      } else {\n         System.out.println("Not Palindrome");\n      }\n   }\n}`,
-                // 14. Sum of digits (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int num = 1234;\n      int sum = 0;\n      while (num > 0) {\n         sum += num % 10;\n         num = num / 10;\n      }\n      System.out.println("Sum: " + sum);\n   }\n}`,
-                // 15. Array copy (correct)
+
                 `public class Main {\n   public static void main(String[] args) {\n      int[] a = {1,2,3};\n      int[] b = a.clone();\n      b[0] = 99;\n      System.out.println(a[0]);\n   }\n}`,
             ]
         },
@@ -464,13 +429,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Demo</title>\n</head>\n<body>\n    <h1>Demo Header</h1>\n    <p>Demo paragraph.</p>\n</body>\n</html>`,
                 // 11
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>List Example</title>\n</head>\n<body>\n    <ul>\n      <li>Item 1</li>\n      <li>Item 2</li>\n    </ul>\n</body>\n</html>`,
-                // 12
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Image Example</title>\n</head>\n<body>\n    <img src="sample.jpg" alt="Sample Image">\n</body>\n</html>`,
-                // 13
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Link Example</title>\n</head>\n<body>\n    <a href="https://example.com">Click here</a>\n</body>\n</html>`,
-                // 14
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Form Example</title>\n</head>\n<body>\n    <form action="/submit">\n      <input type="text" name="name">\n      <input type="submit">\n    </form>\n</body>\n</html>`,
-                // 15
+                
                 `<!DOCTYPE html>\n<html>\n<head>\n    <title>Input Example</title>\n</head>\n<body>\n    <input type="text" name="username">\n</body>\n</html>`,
             ],
             moderate: [
@@ -848,7 +813,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     };
 
-    // Define a mapping for achievement IDs
     const achievementIds = {
         firstCorrect: 'first-correct',
         perfectJavaEasy: 'perfect-java-easy',
@@ -904,17 +868,17 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         submitButton.disabled = true;
 
-        // Function to normalize code by removing extra spaces and formatting
+        // remove extra spaces and formatting
         function normalizeCode(code) {
-            if (!code) return ""; // Return an empty string if the code is undefined or null
+            if (!code) return "";
             return code
-                .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
-                .replace(/\s*=\s*/g, '=') // Ensure equal signs are consistent
-                .replace(/\s*\+\s*/g, '+') // Ensure plus signs are consistent
-                .replace(/\s*-\s*/g, '-') // Ensure minus signs are consistent
-                .replace(/\s*\*\s*/g, '*') // Ensure multiplication signs are consistent
-                .replace(/\s*\/\s*/g, '/') // Ensure division signs are consistent
-                .trim(); // Trim leading and trailing spaces
+                .replace(/\s+/g, ' ') 
+                .replace(/\s*=\s*/g, '=') 
+                .replace(/\s*\+\s*/g, '+') 
+                .replace(/\s*-\s*/g, '-') 
+                .replace(/\s*\*\s*/g, '*')
+                .replace(/\s*\/\s*/g, '/')
+                .trim();
         }
         if (correctCodes && correctCodes.some(correctCode => normalizeCode(userCode) === normalizeCode(correctCode))) {
             customNotification.style.display = 'block';
@@ -979,7 +943,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                     userData.achievements.perfectJavaEasy = true;
                     localStorage.setItem(loggedInUser, JSON.stringify(userData));
 
-                    // Update the UI for the second achievement
                     const secondAchievement = document.getElementById('perfect-java-easy');
                     secondAchievement.querySelector('.lock').textContent = 'Completed';
                     secondAchievement.querySelector('.lock').style.color = 'green';
@@ -996,7 +959,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const totalPoints = (userData.points || 0) + points;
             userData.points = totalPoints + points;
 
-            // Check if the user has reached 100 points
+            // reached 100 points
             if (totalPoints >= 100) {
                 if (!hundredPointsGiven) {
                     hundredPointsGiven = true;
@@ -1012,12 +975,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                     updateTotalMultiplier();
                     markAchievementCompleted('hundredPoints');
                 }
-
-                // Update the UI for the "100 Points" achievement
                 console.log("Achievement unlocked: 100 Points!");
             }
 
-            // Update points in local storage and database
+            // update points in local storage and database
             try {
                 const { data, error } = await supabase
                     .from("user")
@@ -1028,14 +989,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                     console.error("Error updating points:", error);
                 } else {
                     console.log("Points updated successfully in database:", data);
-                    userData.points = totalPoints; // Update local storage
+                    userData.points = totalPoints;
                     localStorage.setItem(loggedInUser, JSON.stringify(userData));
                 }
             } catch (error) {
                 console.error("Error updating points:", error);
             }
 
-            // All 10 questions answered, show Game Over screen
             setTimeout(async () => {
                 customNotification.style.display = 'none';
 
@@ -1066,8 +1026,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 border4.style.background = 'transparent';
             }, 1000);
         } else {
-            // Move to the next question in the shuffled order
-            const nextQuestionIndex = questionsAnswered; // Use the next index in the shuffled order
+            const nextQuestionIndex = questionsAnswered;
             setTimeout(() => {
                 customNotification.style.display = 'none';
                 border1.style.background = 'transparent';
@@ -1229,8 +1188,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
         });
 
-        // Reattach submit button logic
-        submitButton.disabled = false; // Ensure the button is enabled
+        submitButton.disabled = false; 
         submitButton.replaceWith(submitButton.cloneNode(true));
         const newSubmitButton = document.getElementById('submit-button');
         newSubmitButton.addEventListener('click', () => handleSubmit(language, difficulty));
@@ -1276,7 +1234,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const customNotification = document.getElementById('customNotification');
         let timeLeft = duration;
 
-        clearInterval(timerInterval); // Clear any existing timer
+        clearInterval(timerInterval); 
         timerInterval = setInterval(() => {
             timerDisplay.textContent = `Time Left: ${timeLeft}s`;
             timeLeft--;
@@ -1284,14 +1242,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (timeLeft < 0) {
                 clearInterval(timerInterval);
 
-                // Show "Time out" notification
                 customNotification.style.display = 'block';
                 customNotification.innerHTML = '<p>TIME OUT!</p>';
                 customNotification.style.color = 'orange';
                 customNotification.style.border = '2px solid orange';
                 customNotification.style.boxShadow = '0 0 10px orange, 0 0 20px orange';
 
-                // Hide the notification after 1 second and move to the next question
                 setTimeout(() => {
                     customNotification.style.display = 'none';
                     onTimeUp();
@@ -1300,7 +1256,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }, 1000);
     }
 
-    // Pool of buggy code templates
     const infiniteBuggyCodeTemplates = {
         java: [
             'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}',
@@ -1322,7 +1277,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let points = 0;
 
 
-    // Function to introduce random bugs into code
+    //random bugs into code
     function generateBuggyCode(language) {
         const templates = infiniteBuggyCodeTemplates[language];
         if (!templates) {
@@ -1330,10 +1285,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             return '/* No buggy code available for this language */';
         }
 
-        // Select a random template
         const template = templates[Math.floor(Math.random() * templates.length)];
 
-        // Introduce random bugs
         let buggyCode = template;
         if (language === 'java') {
             buggyCode = buggyCode.replace('System.out.println', 'system.out.println'); // Lowercase 'System'
@@ -1349,34 +1302,26 @@ document.addEventListener("DOMContentLoaded", async function () {
         return buggyCode;
     }
 
-
-    // Attach event listener to the infinite button
-    //document.getElementById('infinite-button').addEventListener('click', startInfiniteMode);
     updateTotalMultiplier();
 
-    // Event listeners for language selection
+    // eveent listeners for language selection
     document.querySelectorAll('.languageMenu div').forEach(option => {
         option.addEventListener('click', function () {
             selectedLanguage = option.getAttribute('data-language');
             console.log("Selected language:", selectedLanguage);
 
-            // Hide language menu and show difficulties menu
             languageMenu.style.display = "none";
             difficultiesMenu.style.display = "block";
         });
     });
 
-    // Event listeners for difficulty selection
+    // evvent listeners for difficulty selection
     document.querySelectorAll('.difficultiesMenu div').forEach(option => {
         option.addEventListener('click', function () {
             selectedDifficulty = option.getAttribute('data-difficulty');
             console.log("Selected difficulty:", selectedDifficulty);
-
-            // Hide difficulties menu and show game screen
             difficultiesMenu.style.display = "none";
             gameScreen.style.display = "block";
-
-            // Start the game with the selected language and difficulty
             startGame(selectedLanguage, selectedDifficulty);
         });
     });
@@ -1408,16 +1353,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     function toggleMenu(menu, button) {
         const isVisible = menu.style.display === "flex";
 
-        // Hide all other menus and deactivate their buttons
         menus.forEach((m, i) => {
             m.style.display = "none";
             buttons[i].classList.remove("active");
         });
 
-        // Toggle the visibility of the clicked menu
         menu.style.display = isVisible ? "none" : "flex";
 
-        // Toggle the active state of the button
         if (!isVisible) {
             button.classList.add("active");
         } else {
@@ -1484,7 +1426,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
-        // Validate ID format
+        // validate ID format
         if (!/^02000\d{6}$/.test(id)) {
             alert("ID must be your STI ID NUMBER.");
             return;
