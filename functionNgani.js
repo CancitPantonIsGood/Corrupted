@@ -1,15 +1,12 @@
-// Select all menu hyperlinks
 const menuLinks = document.querySelectorAll('.userMenu .menu a, .userMenu .sources a');
 const hoverSound = document.getElementById('selectingSound');
 
 let audioEnabled = true;
 
-// Enable audio playback after user interaction
 document.addEventListener('mouseover', () => {
     audioEnabled = true;
 });
 
-// Add event listeners for hover
 menuLinks.forEach(link => {
     link.addEventListener('mouseover', () => {
         if (audioEnabled) {
